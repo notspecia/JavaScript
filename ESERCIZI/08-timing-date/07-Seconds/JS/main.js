@@ -70,7 +70,7 @@ function getSecondsToTomorrow(date) {
 // current time
 const date = new Date();
 
-// recall function getSecondsToday, passing the current timetable as a topic
+// recall function getSecondsToday, passing the current time as a topic
 const secondsOfToday = getSecondsToday(date);
 console.log(secondsOfToday);
 

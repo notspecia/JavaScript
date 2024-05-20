@@ -22,7 +22,18 @@
 
 ## Approach to solution
 
+### Using `setInterval`
 
+1. **Function Definition**:
+- Define a function named `celsiusToFahrenheit` that converts Celsius temperatures to Fahrenheit and prints the result to the console.
+
+2. **Interval Setup**:
+- Initialize a variable `celsius` to 0.
+- Use `setInterval` to repeatedly execute an anonymous function every second.
+- Inside the anonymous function:
+- Call `celsiusToFahrenheit` with the current `celsius` value.
+- Increment the `celsius` value by 1.
+- If `celsius` exceeds 100, stop the interval using `clearInterval`.
 
 
 

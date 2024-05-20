@@ -18,4 +18,4 @@ All the topics mentioned are fully in -depth, happy reading :) !!
 
 ## to fix
 * fix and revisit the documentation of the exercises
-* complete the exercises n 6, n 9 of the timing and date section
+* complete the exercises n 9 of the timing and date section
