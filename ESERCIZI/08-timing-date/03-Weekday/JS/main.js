@@ -123,31 +123,31 @@ function getWeekDay(date, lang) {
     // printing of the day of the week in the requested format (EN)
     switch (true) {
       case dayOfWeek === 1:
-        console.log("today is: MO");
+        console.log("MO");
         break;
 
       case dayOfWeek === 2:
-        console.log("today is: TU");
+        console.log("TU");
         break;
 
       case dayOfWeek === 3:
-        console.log("today is: WE");
+        console.log("WE");
         break;
 
       case dayOfWeek === 4:
-        console.log("today is: TH");
+        console.log("TH");
         break;
 
       case dayOfWeek === 5:
-        console.log("today is: FR");
+        console.log("FR");
         break;
 
       case dayOfWeek === 6:
-        console.log("today is: SA");
+        console.log("SA");
         break;
 
       case dayOfWeek === 0:
-        console.log("today is: SU");
+        console.log("SU");
         break;
     }
 
@@ -156,31 +156,31 @@ function getWeekDay(date, lang) {
     // printing of the day of the week in the requested format (IT)
     switch (true) {
       case dayOfWeek === 1:
-        console.log("oggi è: LUN");
+        console.log("LUN");
         break;
 
       case dayOfWeek === 2:
-        console.log("oggi è: MAR");
+        console.log("MAR");
         break;
 
       case dayOfWeek === 3:
-        console.log("oggi è: MER");
+        console.log("MER");
         break;
 
       case dayOfWeek === 4:
-        console.log("oggi è: GIO");
+        console.log("GIO");
         break;
 
       case dayOfWeek === 5:
-        console.log("oggi è: VEN");
+        console.log("VEN");
         break;
 
       case dayOfWeek === 6:
-        console.log("oggi è: SAB");
+        console.log("SAB");
         break;
 
       case dayOfWeek === 0:
-        console.log("oggi è: DOM");
+        console.log("DOM");
         break;
     }
 
@@ -188,13 +188,7 @@ function getWeekDay(date, lang) {
     console.log("language format not founded!!");
 
   }
-
 }
-
-
-
-
-
 
 /* The "date" variable will be updated with different dates and syntax to test
 most cases*/

@@ -24,5 +24,5 @@ function mySetInterval(i) {
 
 /* cycle that performs 15 times the setTimeout function "mySetInterval" */
 for (let i = 0; i < 15; i++) {
-  let timerId = setTimeout(mySetInterval, i * 2000, i);
+  setTimeout(mySetInterval, (i + 1) * 2000, i);
 }

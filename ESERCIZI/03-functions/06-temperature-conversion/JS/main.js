@@ -19,7 +19,7 @@
  */
 function celsiusToFahrenheit(celsiusTemperature) {
     let fahrenheitTemperature = (celsiusTemperature * 9 / 5) + 32;
-    console.log("CIAO!,", celsiusTemperature, "gradi celsius, sono", fahrenheitTemperature, "gradi fahrenheit")
+    console.log("CIAO!,", celsiusTemperature, "gradi celsius, sono", fahrenheitTemperature, "gradi fahrenheit");
 }
 
 /**
@@ -29,7 +29,7 @@ function celsiusToFahrenheit(celsiusTemperature) {
  */
 function fahrenheitToCelsius(fahrenheitTemperature) {
     let celsiusTemperature = (fahrenheitTemperature - 32) * 5 / 9;
-    console.log("CIAO!,", fahrenheitTemperature, "gradi fahrenheit, sono", celsiusTemperature, "gradi celsius")
+    console.log("CIAO!,", fahrenheitTemperature, "gradi fahrenheit, sono", celsiusTemperature, "gradi celsius");
 }
 
 

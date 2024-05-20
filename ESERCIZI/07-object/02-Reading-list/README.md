@@ -43,10 +43,6 @@ To create an array of objects describing books, iterate through the array, and c
 - If the book has been read, a message indicating that you already read the book is logged.
 - If the book has not been read, a message indicating that you still need to read the book is logged.
 
-This approach effectively creates and logs information for an array of book objects, including whether each book has been read or not.
-
-
-
 
 
 ## files

@@ -33,9 +33,6 @@ function stop() {
 }
 
 
-
-
-
 // function "useful" will executed after 10 seconds
 let timerRun = setTimeout(useful, 10000);
 

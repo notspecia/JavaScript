@@ -52,12 +52,12 @@ function getSecondsToTomorrow(date) {
 
     /* We extract from the current time --> hour:minutes:seconds
     and we go to differentiate them with the maximum time of the day --> 23:59:59 */
-    const hour = 23 - date.getHours();
-    const minutes = 59 - date.getMinutes();
-    const seconds = 59 - date.getSeconds();
+    const hour = date.getHours();
+    const minutes = date.getMinutes();
+    const seconds = date.getSeconds();
 
     // We calculate the total seconds left for tomorrow
-    totalSeconds = (hour * 3600) + (minutes * 60) + seconds;
+    totalSeconds = 86400 - ((hour * 3600) + (minutes * 60) + seconds);
 
     return totalSeconds;
 

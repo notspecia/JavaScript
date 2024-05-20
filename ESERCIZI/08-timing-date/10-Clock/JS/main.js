@@ -17,13 +17,13 @@ let timerId = setInterval(function formatTime() {
     // updated date in real time
     const date = new Date();
 
-    // Let's go to extract from "date" --> hour:minutes:seconds 
+    // let's go to extract from "date" --> hour:minutes:seconds 
     const hour = date.getHours();
     const minutes = date.getMinutes();
     const seconds = date.getSeconds();
 
 
-    // Console print in the required format
+    // console print in the required format
     console.log(`now is: ${hour}:${minutes}:${seconds}`);
 
 }, 1000);
