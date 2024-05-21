@@ -15,7 +15,3 @@ During this course of JavaScript I'm learning the following notions, going to pr
 9.  event loop
 
 All the topics mentioned are fully in -depth, happy reading :) !!
-
-## to fix
-* fix and revisit the documentation of the exercises
-* complete the exercises n 9 of the timing and date section
