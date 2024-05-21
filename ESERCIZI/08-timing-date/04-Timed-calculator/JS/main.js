@@ -1,7 +1,7 @@
 /**
  * @file        main.js
  * @author      Gabriele Speciale
- * @date        2024-03-27
+ * @date        2024-05-15
  * @description 
  * 
  * ● We will modify ‘Calculator’ exercise from the lesson about functions

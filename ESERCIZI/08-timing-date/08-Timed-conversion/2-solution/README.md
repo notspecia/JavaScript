@@ -1,7 +1,7 @@
 ## Author Details
 
 * Name: Gabriele Speciale
-* Date: 2024-05-15
+* Date: 2024-05-18
 * Concat: gabriele.speciale@edu.itspiemonte.it
 
 
@@ -18,8 +18,8 @@
 
 
 
-## Approach to Solution
 
+## Approach to Solution
 
 2. **Using setTimeout**:
 - Define a function named `celsiusToFahrenheit` similarly to the `setInterval` approach.
