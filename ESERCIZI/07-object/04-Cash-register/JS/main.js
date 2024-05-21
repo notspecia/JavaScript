@@ -29,7 +29,7 @@ cashRegister(cartForParty)); // 60.55
  * to a variable in the form of array in which we store the keys contained in the object,
  * Finally we return a total sum of all the prices of the products contained in the cart
  * @param {object} cartForParty- cart spending containing the properties with values
- * @returns {cashOut} - total to be paid given the sum of the properties inside the cart
+ * @returns {number} - total to be paid given the sum of the properties inside the cart
  */
 function cashRegister(cartForParty) {
 
@@ -54,11 +54,6 @@ function cashRegister(cartForParty) {
 
 
 
-
-
-
-
-
 // cart containing various products (object)
 let cartForParty = {
     banana: "1.25",
@@ -68,10 +63,6 @@ let cartForParty = {
     nalgene: "10.34",
     proteinShake: "22.36"
 };
-
-
-
-
 
 // Call cartForParty function, we pass the Cart object (Cartforparty) as the topic
 let finalPrice = cashRegister(cartForParty);

@@ -53,8 +53,6 @@ This solution involves a function called `cashRegister` that calculates the tota
 4. **Testing the Function**:
 - The function is tested by calling it with the `cartForParty` object as input and logging the result to the console.
 
-This approach efficiently calculates the total price of items in a shopping cart object by iterating through its properties and summing up the prices.
-
 
 
 

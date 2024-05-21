@@ -14,7 +14,6 @@
   19th and getDateAgo(new Date(), 2) should be 18th
 ● Test the function to make sure it works reliably with any valid Date object
 ● Decide what to do with a negative 'days' parameter
-   
  ○ e.g. getDateAgo new Date(), -2
 
 

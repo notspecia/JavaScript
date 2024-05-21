@@ -60,6 +60,7 @@ function formatDate(date) {
     console.log("okay");
   }
 
+  // print on console the data format required
   console.log(`DATE PASSED --> ${day}.${month}.${year} ${hours}:${minutes}:${seconds}
 DATE CURRENT --> ${currentDate.getDate()}.${currentDate.getMonth()}.${currentDate.getFullYear()} ${currentDate.getHours()}:${currentDate.getMinutes()}:${currentDate.getSeconds()}\n\n\n`);
 

@@ -30,5 +30,5 @@ function celsiusToFahrenheit(celsius) {
 /* Let's go to cycle 100 times the setTimeOut 
 where we pass as the topic the Celsius degrees to the function that converts them and in fahrenheit*/
 for (let celsius = 0; celsius <= 100; celsius++) {
-    setTimeout(celsiusToFahrenheit, celsius * 100, celsius);
+    setTimeout(celsiusToFahrenheit, (celsius + 1) * 100, celsius);
 }

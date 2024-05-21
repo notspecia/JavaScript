@@ -37,11 +37,7 @@ function printItems(items) {
 
 
 
-// Global variable to update the array index
-let i = 0;
-
-
-// Array containing some words
+// Global Array containing some words
 let items = ["Pizza",
     "The Great Gatsby by F. Scott Fitzgerald",
     "Bananas",
@@ -72,6 +68,10 @@ let items = ["Pizza",
     "Moby-Dick by Herman Melville",
     "Orange Juice",
     "Frankenstein by Mary Shelley"];
+
+
+// Global variable to update the array index
+let i = 0;
 
 
 /* After a time interval of a second, 

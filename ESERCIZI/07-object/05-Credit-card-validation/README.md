@@ -74,10 +74,6 @@ This solution involves the implementation of a function called `validateCreditCa
 4. **Testing**:
 - The `validateCreditCard` function is called with different credit card numbers as input, and the results are printed to the console using the `printInformationCards` function.
 
-This approach ensures thorough validation of credit card numbers according to specified criteria and provides clear feedback on the validation results.
-
-
-
 
 
 

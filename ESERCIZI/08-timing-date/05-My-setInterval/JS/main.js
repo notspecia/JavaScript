@@ -13,7 +13,7 @@
 /**
  * function mySetInterval
  * function that receives the Index of how many times it has been
- * performed the function between a delay of 2 seconds
+ * performed the function between a delay of 1 seconds
  * @param {number} i - index number
  */
 function mySetInterval(i) {
@@ -24,5 +24,5 @@ function mySetInterval(i) {
 
 /* cycle that performs 15 times the setTimeout function "mySetInterval" */
 for (let i = 0; i < 15; i++) {
-  setTimeout(mySetInterval, (i + 1) * 2000, i);
+  setTimeout(mySetInterval, (i + 1) * 1000, i);
 }

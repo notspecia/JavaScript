@@ -7,7 +7,6 @@
      functions
    ● Call celsiusToFahrenheit on temperatures from 0 to 100 so that one 
      temperature is printed to the console every second
-
     ○ Use setInterval to achieve this goal.
     ○ Do the same thing using setTimeout.
  */
@@ -35,7 +34,7 @@ function celsiusToFahrenheit(celsiusTemperature) {
 
 
 
-
+// Global variable that updates each second by increasing by +1 degrees Celsius
 let celsius = 0;
 
 /* interval where inside there is an anonymous function that performs
