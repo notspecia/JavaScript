@@ -19,3 +19,7 @@ All the topics mentioned are fully in -depth, happy reading :) !!
 ## IMPORTANT THINGS
 Value by recalling function --> *ARGUMENT*: imUtility("hello");
 Value passed to the function --> *PARAMETER*: function imUtility(str){} 
+
+## TO FIX
+1. Complete notes regarding the event loop section 8b
+2. Regex exercise section 5
