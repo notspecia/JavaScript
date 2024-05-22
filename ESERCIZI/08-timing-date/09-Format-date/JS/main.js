@@ -26,7 +26,7 @@
  */
 function formatDate(date) {
 
-  // attribuiamo ad una varibile la data attuale (si aggiornerà sempre)
+  // We attribute the current date to a variable (always updates)
   let currentDate = new Date();
 
 
@@ -43,7 +43,7 @@ function formatDate(date) {
   let dateDiff = currentDate - date; // We breathe the milliseconds of difference between the dates
   let secDiff = Math.floor(dateDiff / 1000); // value that will always change, indicates the seconds of difference
   let minDiff = Math.floor(dateDiff / 60000); // value that will always change, indicates the minutes of difference
-
+  let hourDiff = Math.floor(dateDiff / 3600000); // value that will always change, indicates the hourss of difference
 
   /*Second/minutes printing on the basis of the difference in time
   + date update every second */
@@ -56,8 +56,10 @@ function formatDate(date) {
   } else if (minDiff < 60) {
     console.log(`${minDiff} min. ago`);
 
+  } else if (hourDiff < 24) {
+    console.log(`${hourDiff} hour. ago`);
   } else {
-    console.log("okay");
+    console.log("day ended!");
   }
 
   // print on console the data format required
@@ -71,7 +73,7 @@ DATE CURRENT --> ${currentDate.getDate()}.${currentDate.getMonth()}.${currentDat
 
 
 // variable that will contain the desired date
-let date = new Date();
+let date = new Date(2024, 4, 20, 13, 49, 34);
 
 // recall function formatDate
 setInterval(formatDate, 1 + 1000, date);

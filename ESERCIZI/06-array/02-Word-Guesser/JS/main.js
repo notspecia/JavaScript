@@ -153,7 +153,7 @@ function guessLetter(letter, letters, guessedLetters) {
 
       /* if you have not yet won, we go to compare the random letter passed as a topic, 
       with the array containing the correct letters of the string */
-      if (victrory != true) {
+      if (victory != true) {
 
          for (let i = 0; i < letters.length; i++) {
 
@@ -174,7 +174,7 @@ function guessLetter(letter, letters, guessedLetters) {
       /* If the word was guessed, you won, comparison whit .join()
       combines temporany the 2 arrays in the form of a string */
       if (guessedLetters.join("") === letters.join("")) {
-         victrory = true;
+         victory = true;
          message = `Congratulations you won!
 The word is: ${letters.join(" ")}`;
 
@@ -303,7 +303,7 @@ const words = ["TIGER", "ELEPHANT", "BANANA", "MOUNTAIN", "RAINBOW", "HELLO"]; /
 let letters;          // will be an array which contains the letters of the word
 let guessedLetters;   // will be updateded with the guessed letters
 let trys = 6;
-let victrory = false; // Boolean value that will change in "true" if the player wins
+let victory = false; // Boolean value that will change in "true" if the player wins
 let message;          // Let's pass our letters to the function as a topic
 
 // -----------------------------------------------------------------------------------------------------------

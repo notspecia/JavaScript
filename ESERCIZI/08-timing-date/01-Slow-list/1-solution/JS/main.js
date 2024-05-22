@@ -56,7 +56,7 @@ let items = ["Pizza",
 To determine the delay of each call to function printItems.*/
 for (let i = 0; i < items.length; i++) {
 
-    setTimeout(function printItems(item) {
+    let timerId = setTimeout(function printItems(item) {
         console.log(item);
     }, (i + 1) * 1000, items[i]);
 

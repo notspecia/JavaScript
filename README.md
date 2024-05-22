@@ -15,3 +15,7 @@ During this course of JavaScript I'm learning the following notions, going to pr
 9.  event loop
 
 All the topics mentioned are fully in -depth, happy reading :) !!
+
+## IMPORTANT THINGS
+Value by recalling function --> *ARGUMENT*: imUtility("hello");
+Value passed to the function --> *PARAMETER*: function imUtility(str){} 

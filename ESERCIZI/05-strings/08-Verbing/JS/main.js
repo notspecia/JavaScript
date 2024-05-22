@@ -83,16 +83,16 @@ let parolaMod; // modified string
 
 /* 1 verbing function recall,Let's pass a string as the topic, will be returned
 to the word of the word, the verb transformed into the correct form within the function*/
-parola = "play"
+parola = "play";
 parolaMod = verbing(parola);
 console.log(parolaMod);
 
 // 2 verbing function recall...
-parola = "call"
+parola = "call";
 parolaMod = verbing(parola);
 console.log(parolaMod);
 
 // 3 verbing function recall ...
-parola = "go"
+parola = "go";
 parolaMod = verbing(parola);
 console.log(parolaMod);

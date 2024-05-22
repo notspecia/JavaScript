@@ -19,7 +19,7 @@
  * It is passed as a topic an Object date, inside it we go
  * to extract the day of the week through the .get method (0-6)
  * We use a switch-case to go to print the abbreviation on consoles of the day of the week (EN)
- * @param {objcet} date - date passed as a topic
+ * @param {object} date - date passed as a topic
  */
 function getWeekDayEnglish(date) {
 
