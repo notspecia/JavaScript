@@ -58,7 +58,6 @@ function validateCreditCard(card) {
   let creditCard = {       // object that will contain information on credit card
   };
   creditCard.valid = true; // We insert a 1 property where we initialize that the validity of the paper is true
-  let almost2 = false;     // We initialize a Boolean that will be used to establish if there are at least 2 different digits!
   let sumCifre = 0;        // will contain the sum of the paper figures
 
 
@@ -116,7 +115,7 @@ function validateCreditCard(card) {
 
   /*---------------------------------------------------------------------------------------------------
     3 check --> at least two different digits (ex: 0 1) */
-
+  let almost2 = false;     // We initialize a Boolean that will be used to establish if there are at least 2 different digits!
   let firstDigit = cardMod.charAt(0); // Let's assign the first digit of the credit card to a variable
 
   //Let's check that at least one digit is !== from firstDigit

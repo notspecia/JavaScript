@@ -29,5 +29,4 @@ let timerId = setInterval(function formatTime() {
   |    now is: ${hour}:${minutes}:${seconds}      |
   +--------------------------+
     `);
-
 }, 1000);

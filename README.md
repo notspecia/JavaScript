@@ -1,4 +1,4 @@
-# JavaScript ENGLISH/ITALIAN COURSE VERSION 0.1
+# JavaScript ENGLISH/ITALIAN COURSE VERSION 0.2
 
 During this course of JavaScript I'm learning the following notions, going to practice with practical exercises that identify with reality:
 
@@ -18,8 +18,9 @@ All the topics mentioned are fully in -depth, happy reading :) !!
 
 ## IMPORTANT THINGS
 Value by recalling function --> *ARGUMENT*: imUtility("hello");
+
 Value passed to the function --> *PARAMETER*: function imUtility(str){} 
 
 ## TO FIX
 1. Complete notes regarding the event loop section 8b
-2. Regex exercise section 5
+2. do exercises of the event loop section 8b
