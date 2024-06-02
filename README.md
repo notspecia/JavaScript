@@ -1,4 +1,4 @@
-# JavaScript ENGLISH/ITALIAN COURSE VERSION 0.2
+# JavaScript ENGLISH/ITALIAN COURSE VERSION 0.3
 
 During this course of JavaScript I'm learning the following notions, going to practice with practical exercises that identify with reality:
 
@@ -24,5 +24,5 @@ Value passed to the function --> *PARAMETER*: function imUtility(str){}
 
 ## TO FIX
 
-1. do exercise number 2 (dungeon and dragons) of the event loop section 8b
+1. fix esercise number 2 (section 8 event loop), implement the logic of SPELL VS CHARACTER / ENEMY + use more functions
 2. read the new slides of section 10 (the-DOM) and do the exercises
