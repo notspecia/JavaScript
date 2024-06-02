@@ -13,6 +13,7 @@ During this course of JavaScript I'm learning the following notions, going to pr
 7.  objects
 8.  timing
 9.  event loop
+10. the-dom
 
 All the topics mentioned are fully in -depth, happy reading :) !!
 
@@ -22,5 +23,6 @@ Value by recalling function --> *ARGUMENT*: imUtility("hello");
 Value passed to the function --> *PARAMETER*: function imUtility(str){} 
 
 ## TO FIX
-1. Complete notes regarding the event loop section 8b
-2. do exercises of the event loop section 8b
+
+1. do exercise number 2 (dungeon and dragons) of the event loop section 8b
+2. read the new slides of section 10 (the-DOM) and do the exercises

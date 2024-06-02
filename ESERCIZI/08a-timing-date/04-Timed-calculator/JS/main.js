@@ -8,7 +8,7 @@
    ● Rewrite the last function that performs all 4 operations so that there is a 
      delay of 3 seconds between one operation and the next:
 
- * Write a function that will take one argument (a number) and perform the 
+   Write a function that will take one argument (a number) and perform the 
    following operations, using the functions you wrote earlier:
    
    ● Take half of the number and store the result
