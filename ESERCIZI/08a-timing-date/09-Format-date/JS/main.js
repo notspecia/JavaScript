@@ -31,19 +31,20 @@ function formatDate(date) {
 
 
   // We extract the information for print the date required format
-  const year = date.getFullYear();
-  const month = date.getMonth();
-  const day = date.getDate();
+  const year = date.getFullYear(); // used only for the format of the required date
+  const month = date.getMonth(); // used only for the format of the required date
+  const day = date.getDate(); // used only for the format of the required date
   const hours = date.getHours();
   const minutes = date.getMinutes();
   const seconds = date.getSeconds();
 
   // calculations for the difference in time
   // through Math.floor(), Let's go to round off the seconds / minutes
-  let dateDiff = currentDate - date; // We breathe the milliseconds of difference between the dates
-  let secDiff = Math.floor(dateDiff / 1000); // value that will always change, indicates the seconds of difference
-  let minDiff = Math.floor(dateDiff / 60000); // value that will always change, indicates the minutes of difference
-  let hourDiff = Math.floor(dateDiff / 3600000); // value that will always change, indicates the hourss of difference
+  const dateDiff = currentDate - date; // We breathe the milliseconds of difference between the dates
+
+  const secDiff = Math.floor(dateDiff / 1000); // value that will always change, indicates the seconds of difference
+  const minDiff = Math.floor(dateDiff / 60000); // value that will always change, indicates the minutes of difference
+  const hourDiff = Math.floor(dateDiff / 3600000); // value that will always change, indicates the hourss of difference
 
   /*Second/minutes printing on the basis of the difference in time
   + date update every second */
@@ -58,13 +59,16 @@ function formatDate(date) {
 
   } else if (hourDiff < 24) {
     console.log(`${hourDiff} hour. ago`);
+
   } else {
     console.log("day ended!");
+    clearInterval(timerId);
+
   }
 
   // print on console the data format required
-  console.log(`DATE PASSED --> ${day}.${month}.${year} ${hours}:${minutes}:${seconds}
-DATE CURRENT --> ${currentDate.getDate()}.${currentDate.getMonth()}.${currentDate.getFullYear()} ${currentDate.getHours()}:${currentDate.getMinutes()}:${currentDate.getSeconds()}\n\n\n`);
+  console.log(`DATE PASSED --> ${day}.${month + 1}.${year} ${hours}:${minutes}:${seconds}
+DATE CURRENT --> ${currentDate.getDate()}.${currentDate.getMonth() + 1}.${currentDate.getFullYear()} ${currentDate.getHours()}:${currentDate.getMinutes()}:${currentDate.getSeconds()}\n\n\n`);
 
 }
 
@@ -72,8 +76,8 @@ DATE CURRENT --> ${currentDate.getDate()}.${currentDate.getMonth()}.${currentDat
 
 
 
-// variable that will contain the desired date
-let date = new Date(2024, 4, 20, 13, 49, 34);
+// variable that will contain the current or desired date
+const date = new Date("2024 6 1 23:15:30");
 
 // recall function formatDate
-setInterval(formatDate, 1 + 1000, date);
+let timerId = setInterval(formatDate, 1 + 1000, date);

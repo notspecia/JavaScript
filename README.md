@@ -24,5 +24,6 @@ Value passed to the function --> *PARAMETER*: function imUtility(str){}
 
 ## TO FIX
 
-1. fix esercise number 2 (section 8 event loop), implement the logic of SPELL VS CHARACTER / ENEMY + use more functions
+1. fix esercise number 2 (section 8 event loop), implement the logic of SPELL VS CHARACTER / ENEMY 
+
 2. read the new slides of section 10 (the-DOM) and do the exercises
