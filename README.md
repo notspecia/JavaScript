@@ -12,7 +12,7 @@ During this course of JavaScript I'm learning the following notions, going to pr
 6.  regex
 7.  objects
 8.  timing
-9.  event loop
+9.  event-loop
 10. the-dom
 
 All the topics mentioned are fully in -depth, happy reading :) !!
@@ -24,6 +24,6 @@ Value passed to the function --> *PARAMETER*: function imUtility(str){}
 
 ## TO FIX
 
-1. fix esercise number 2 (section 8 event loop), implement the logic of SPELL VS CHARACTER / ENEMY 
+1. complete the documentation of the ex number 1 of the event-loop
 
 2. read the new slides of section 10 (the-DOM) and do the exercises

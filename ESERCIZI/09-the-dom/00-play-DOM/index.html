@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRY PLAY DOM</title>
+</head>
+
+<body>
+
+    <ul id="hobby-list">
+        <li class="hobby">Playing the banjo</li>
+        <li class="hobby">Paddleboarding</li>
+    </ul>
+       
+  
+    <script>
+
+        // RITORNA DA 0 A 1 ELEMENTI
+        // document.getElementById(id);
+
+
+        /* RITORNA DA 0 A N ELEMENTI,   ha una proprietà
+        .length, ma non ha i metodi degli array, se vogliamo usare i metodi degli array
+        allora trasformiamo questa HTMLcollecton in un array tramite Array.from()*/
+        // document.getElementsByTagName(tagName);
+
+
+        /*RITORNA DA 0 A N ELEMENTI, UN ARRAY LIKE (HTMLCollection), va a prendere
+        tutti gli elementi che possiedono quella .classe */
+        // let alsoHobbies = document.getElementsByClassName('hobby');
+
+
+        /*RITORNA DA 0 A 1 ELEMENTI, UN ARRAY LIKE (Nodelist), scriviamo nella stringa dei selettori CSS (selettori relazionali, pseudoclassi...)
+        solo il prima che trovo*/
+        //let firstHobby = document.querySelector('ul li.hobby');
+
+
+        /*RITORNA DA 0 A N ELEMENTI, UN ARRAY LIKE (Nodelist), scriviamo nella stringa dei selettori CSS (selettori relazionali, pseudoclassi...)
+         seleziona tutti quelli che hanno tutti la querySelectror       */
+        //let allItems = document.querySelectorAll('ul li.hobby'); 
+
+        /* gli HTMLCollection è un array live, si aggiorna in base a quello che si modifica
+        nella pagina
+        
+        la NODElist è statico, (il contrario)*/
+
+        /*
+        istanceof -> è un operatore BINARIO che operano su uno o + operandi, verifica che il valore dentro una variabile
+        sia di quel tipo */
+
+
+
+        /* MANIPOLAZIONE DEL DOM
+        lo style è un OGGETTO, posso tramite esso prendre le proprietà di questo oggetto
+        LA DOTNOTATION SI PUO USARE SOLO PER GLI OGGETTI, per questo viene detto oggetto
+        le proprietà in questo caso vanno scritte in KAMELCASE (background-color NO X) (backgroundColor SI!), perchè JS non accetta i - per le variabili
+        lo stile viene applicato INLINE, quindi cercare di NON scrivere mai codice cos*/
+        // let pageNode = document.body;
+        // pageNode.style.color = 'red';
+
+
+
+
+        let primaLista = document.querySelector("ul li");
+      
+        console.log(primaLista);
+
+    </script>
+
+</body>
+
+</html>

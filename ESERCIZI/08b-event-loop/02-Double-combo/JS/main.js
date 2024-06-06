@@ -60,7 +60,6 @@ function createQueCards() {
 
     // andiamo a inserire le carte (oggetti), all'interno della que
     for (let i = 0; i < numberOfCards; i++) {
-
         que.push(card);
     }
 
@@ -160,6 +159,57 @@ function whoWins(pointsPlayer1, pointsPlayer2) {
 
 
 
+// ---------------- vari combattimenti in base alla tipologie di carte -------------------
+
+function letsPlay(cardPlayer1, cardPlayer2) {
+
+    switch (true) {
+
+        // ! character VS character (duel) !
+        case cardPlayer1.type === "character" && cardPlayer2.type === "character":
+
+            charVSchar(cardPlayer1, cardPlayer2);
+            break;
+
+
+
+        //! character VS enemy || enemy VS character (attack) !
+        case cardPlayer1.type === "character" && cardPlayer2.type === "enemy" || cardPlayer1.type === "enemy" && cardPlayer2.type === "character":
+
+            charVSenemy(cardPlayer1, cardPlayer2);
+            break;
+
+
+
+        //! character / enemy (player1) VS spell(player2) (buff character / damage character) !
+        //! character / enemy (player2) VS spell(player1) (buff character / damage character) !
+        case (cardPlayer1.type === "character" || cardPlayer1.type === "enemy" && cardPlayer2.type === "spell") || (cardPlayer2.type === "character" || cardPlayer2.type === "enemy" && cardPlayer1.type === "spell"):
+
+            charOrEnemyVSspell(cardPlayer1, cardPlayer2);
+            break;
+
+
+        default:
+            console.log("NO EFFECTS!");
+            break;
+    }
+
+    console.log("\n\n\n\n\n\n\n\n");
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // CREATE FUNCTION CHAR VS CHAR
 function charVSchar(cardPlayer1, cardPlayer2) {
@@ -171,10 +221,7 @@ function charVSchar(cardPlayer1, cardPlayer2) {
     totalStas1 = cardPlayer1.strength + cardPlayer1.speed + cardPlayer1.health;
     totalStas2 = cardPlayer2.strength + cardPlayer2.speed + cardPlayer2.health;
 
-    console.log(`it's a DUEL!⚔️
-
-- TOTAL STAS OF CARD PLAYER1: ${totalStas1}
-- TOTAL STAS OF CARD PLAYER2: ${totalStas2}\n\n`);
+    console.log(`it's a DUEL!⚔️\n- TOTAL STAS OF CARD PLAYER1: ${totalStas1}\n- TOTAL STAS OF CARD PLAYER2: ${totalStas2}\n\n`);
 
     // decretiamo il vincitore del duello, e aggiungiamo come punti i suoi HP 
     if (totalStas1 === totalStas2) {
@@ -277,43 +324,48 @@ function charVSenemy(cardPlayer1, cardPlayer2) {
 
 
 // ---------------------- CREATE FUN CHAR/ENEMY VS SPELL && contrario --------------------------------------------------------------
+
 function charOrEnemyVSspell(cardPlayer1, cardPlayer2) {
 
 
-    /*dopo aver tirato la magia (buff o debuff), la battaglia continua se la magia
-    di danno del PLAYER2 non ha ucciso la carta di PLAYER1 sul colpo*/
-
-
-    // nel caso la spell ha effetto BUFF
+    //--------------- nel caso la spell ha effetto BUFF ----------
     if (cardPlayer1.method1 === "buff-character" || cardPlayer2.method1 === "buff-character") {
 
+        // se la spell di buff è di PLAYER1
         if (cardPlayer1.method1 === "buff-character") {
             cardPlayer2.health += cardPlayer1.power;
             console.log(`PLAYER1 USE ${cardPlayer1.typeEffect} SPELL✨ -> PLAYER2🛡️ +${cardPlayer1.power} HP!\nHP❤️ OF PLAYER2: ${cardPlayer2.health}HP\n\n`);
 
+            // se la spell di nerf è di PLAYER1
         } else {
             cardPlayer1.health += cardPlayer2.power;
             console.log(`PLAYER2 USE ${cardPlayer2.typeEffect} SPELL✨ -> PLAYER1🛡️ +${cardPlayer2.power} HP!\nHP❤️ OF PLAYER1: ${cardPlayer1.health}HP\n\n`);
         }
 
-        // nel caso la spell ha effetto DAMAGE
+
+        //------------ nel caso la spell ha effetto DAMAGE ------------
     } else {
 
+        // se la spell di buff è di PLAYER2
         if (cardPlayer1.method1 === "damage-character") {
             cardPlayer2.health -= cardPlayer1.power;
             console.log(`PLAYER1 USE ${cardPlayer1.typeEffect} SPELL✨ -> PLAYER2🛡️ -${cardPlayer1.power} HP!\nHP❤️ OF PLAYER2: ${cardPlayer2.health}HP\n\n`);
 
+            // se la spell di nerf è di PLAYER2
         } else {
             cardPlayer1.health -= cardPlayer2.power;
             console.log(`PLAYER2 USE ${cardPlayer2.typeEffect} SPELL✨ -> PLAYER1🛡️ -${cardPlayer2.power} HP!\nHP❤️ OF PLAYER1: ${cardPlayer1.health}HP\n\n`);
+
         }
 
     }
 
 
 
-    // la carta del PLAYER1 rimane in campo con la vita buffata / nerfata e il PLAYER2 pesca un altra carta
-    // if (cardFight.health > 0) {
+
+
+    /*dopo aver tirato la magia (buff o debuff), la battaglia continua se la magia
+    di danno del PLAYERx non ha ucciso la carta di PLAYERx sul colpo*/
 
 
 
@@ -322,21 +374,59 @@ function charOrEnemyVSspell(cardPlayer1, cardPlayer2) {
 
 
 
+    // la carta del PLAYERx rimane in campo con la vita buffata / nerfata e il PLAYERx che aveva la spell pescherà un altra carta
+    if (cardPlayer1.health > 0 || cardPlayer2.health > 0) {
 
 
 
 
+        // se la carta di PLAYER1 è un char/enemy, allora PLAYER2 aveva la spell e deve pescare una carta
+        if (cardPlayer1.health) {
+
+            // la coda di carte del PLAYER 2 deve essere > 0 per pescare!
+            if (que2.length !== 0) {
+
+                cardPlayer2 = que2.shift();
+                console.log(cardPlayer1);
+                console.log(`PLAYER2 draw a new card:`, cardPlayer2);
+
+                // giochiamo con la NUOVA CARTA DI PLAYER2 e la VECCHIA CARTA DI PLAYER1
+                letsPlay(cardPlayer1, cardPlayer2);
+
+                // se PLAYER2 non ha più carte nella sua que, termina il turno e il game
+            } else {
+                console.log(`PLAYER2 has no cards remain!\n\n`);
+                return;
+            }
 
 
+        } else {
 
+
+            // la coda di carte del PLAYER 1 deve essere > 0 per pescare!
+            if (que1.length !== 0) {
+
+                cardPlayer1 = que1.shift();
+                console.log(`PLAYER1 draw a new card:`, cardPlayer1);
+                console.log(cardPlayer2);
+
+                // giochiamo con la NUOVA CARTA DI PLAYER1 e la VECCHIA CARTA DI PLAYER2
+                letsPlay(cardPlayer1, cardPlayer2);
+
+                // se PLAYER1 non ha più carte nella sua que, termina il turno e il game
+            } else {
+                console.log(`PLAYER1 has no cards remain!\n\n`);
+                return;
+            }
+        }
 
 
         // se la spell fa abbastanza danno da uccidere il personaggio/nemico di PLAYER1,termina il turno
-    // } else {
-    //     console.log(`card of PLAYER1 destroyed! no points!`);
+    } else {
+        console.log(`card of PLAYER1 destroyed! no points!`);
+        flag = true;
 
-    // }
-
+    }
 }
 
 
@@ -347,19 +437,14 @@ function charOrEnemyVSspell(cardPlayer1, cardPlayer2) {
 
 
 
-
-
-
-
-
 /*
- * function letsPlayNome
+ * function drawCard
  * implentazione della logica del gioco
  * @param {TipoInput1} NomeInput1 - DescrizioneInput1
  * @param {TipoInput2} NomeInput2 - DescrizioneInput2
  * @returns {TipoOutput} - DescrizioneOutput
  */
-function letsPlay(que1, que2) {
+function drawCard(que1, que2) {
 
     // tabellone che aggiorna il punteggio dei 2 players
     console.log(`
@@ -388,42 +473,11 @@ function letsPlay(que1, que2) {
     let cardPlayer2 = que2.shift();
     console.log(cardPlayer2);
 
-
-
-    // ---------------- vari combattimenti in base alla tipologie di carte -------------------
-    switch (true) {
-
-        // ! character VS character (duel) !
-        case cardPlayer1.type === "character" && cardPlayer2.type === "character":
-
-            charVSchar(cardPlayer1, cardPlayer2);
-            break;
-
-
-
-        //! character VS enemy || enemy VS character (attack) !
-        case cardPlayer1.type === "character" && cardPlayer2.type === "enemy" || cardPlayer1.type === "enemy" && cardPlayer2.type === "character":
-
-            charVSenemy(cardPlayer1, cardPlayer2);
-            break;
-
-
-
-        //! character / enemy (player1) VS spell(player2) (buff character / damage character) !
-        //! character / enemy (player2) VS spell(player1) (buff character / damage character) !
-        case (cardPlayer1.type === "character" || cardPlayer1.type === "enemy" && cardPlayer2.type === "spell") || (cardPlayer2.type === "character" || cardPlayer2.type === "enemy" && cardPlayer1.type === "spell"):
-
-            charOrEnemyVSspell(cardPlayer1, cardPlayer2);
-            break;
-
-
-        default:
-            console.log("NO EFFECTS!")
-            break;
-    }
-
-    console.log("\n\n\n\n\n\n\n\n");
+    // passiamo le carte e iniziamo il gioco
+    letsPlay(cardPlayer1, cardPlayer2);
 }
+
+
 
 
 
@@ -440,7 +494,7 @@ console.log(que1, que2);
 
 
 
-// iniziamo il combattimento! il turno si svolge ogni 3 secondi di intervallo di tempo
+// il turno si svolge ogni 3 secondi di intervallo di tempo e viene pescata una carta dai 2 PLAYER!
 let pointsPlayer1 = 0;
 let pointsPlayer2 = 0;
-let timerId = setInterval(letsPlay, 3000, que1, que2);
+let timerId = setInterval(drawCard, 3000, que1, que2);
