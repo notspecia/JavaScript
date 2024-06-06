@@ -36,61 +36,58 @@ character cards
 
 
 
-
-
-
-
 /**
- * Nome della funzione
- * Descrizione della funzione
- * @param {TipoInput1} NomeInput1 - DescrizioneInput1
- * @param {TipoInput2} NomeInput2 - DescrizioneInput2
- * @returns {TipoOutput} - DescrizioneOutput
+ * function createQueCards
+ * andrà a generare una queue (array), che conterrà delle carte inizialmente vuote (oggetti), ogni queue potrà
+ * contenere dalle 10 alle 30 carte, il numero di carte sarà randomico utilizzando Math.round(Math.random()*...)
+ * @returns {object} - an array (queue), contenente delel carte (oggetti)
  */
 function createQueCards() {
 
     // dichiarazione variabili
     const max_cards = 30;
     const min_cards = 10;
-    let que = [];
+    let queue = []; // queue containing cards
     let card = {};
 
-    // andiamo a creare un numero casuale di carte (oggetti) da inserire nelle que
+    // andiamo a creare un numero casuale di carte (oggetti) da inserire nelle queue del giocatore
     let numberOfCards = Math.round(Math.random() * (max_cards - min_cards) + min_cards);
 
-    // andiamo a inserire le carte (oggetti), all'interno della que
+    // andiamo a inserire tramite il metodo .push le carte (oggetti), al fondo della queue
     for (let i = 0; i < numberOfCards; i++) {
-        que.push(card);
+        queue.push(card);
     }
 
-    return que;
+    return queue;
 }
 
 
-// ---------------------- INIZIO GENERAZIONE CARTE --------------------------------
+
 
 /**
- * Nome della funzione
- * Descrizione della funzione
- * @param {TipoInput1} NomeInput1 - DescrizioneInput1
- * @param {TipoInput2} NomeInput2 - DescrizioneInput2
+ * function fillQueCards
+ * riceve come parametro la que del giocatore che contiene delle carte (oggetti), questa funzione
+ * si occuperà a dare delle caratteristiche alle carte (type, strenght, speed, healt ...), queste statistiche
+ * avranno un punteggio minimo di 20 e massimo di 40 (scelto randomicamente)
+ * - CHARACTER --> può affrontare a duello un altro CHARACTER / combattere con un ENEMY
+ * - SPELL --> può avere un effeto magico positivo sul ENEMY o CHARACTER (buff)
+ * @param {object} que - array del giocatore contenente le carte
  * @returns {TipoOutput} - DescrizioneOutput
  */
 function fillQueCards(que) {
 
-    // dichiarazione variabili
+    // punteggio minimo e massimo delle statistiche (dinamico)
     const max_points_stas = 40;
     const min_points_stats = 20;
 
     // array contenente i vari tipi di carte
     const types = ["character", "spell", "enemy"];
 
-    // array contenente gli effetti degli incantesimi
+    // array contenente gli effetti degli incantesimi (alcuni sono di buff altri di nerf)
     const effect = ["shield", "healing", "stun", "curse", "debuff"];
 
 
-
-    // andiamo a riempire con delle caratteristiche tutte le carte della que
+    // --------andiamo a riempire con delle caratteristiche tutte le carte della que del giocatore--------
     for (let i = 0; i < que.length; i++) {
 
         // definiamo la tipologia di carta (characters, spells, enemies)
@@ -98,7 +95,7 @@ function fillQueCards(que) {
             type: types[Math.floor(Math.random() * types.length)],
         };
 
-        // se la carta è di tipo "character"
+        // se la carta è di tipo "character":
         if (que[i].type === "character") {
             que[i].strength = Math.round(Math.random() * (max_points_stas - min_points_stats) + min_points_stats);
             que[i].speed = Math.round(Math.random() * (max_points_stas - min_points_stats) + min_points_stats);
@@ -106,20 +103,21 @@ function fillQueCards(que) {
             que[i].method1 = "attack-enemy";
             que[i].method2 = "duel-vs-character";
 
-            // se la carta è di tipo "spell"
+
+            // se la carta è di tipo "spell" + andiamo ad applicare alla spell un determinato effetto:
         } else if (que[i].type === "spell") {
             que[i].power = Math.round(Math.random() * (max_points_stas - min_points_stats) + min_points_stats);
             que[i].typeEffect = effect[Math.floor(Math.random() * effect.length)];
 
-            // se la spell ha effetti positivi di buff
+            // se la spell ha effetti positivi di buff:
             if (que[i].typeEffect === "shield" || que[i].typeEffect === "healing") {
                 que[i].method1 = "buff-character";
 
-                // se la spell ha effetti negativi di attacco
+                // se la spell ha effetti di nerf:
             } else {
                 que[i].method1 = "damage-character";
-
             }
+
 
             // se la carta è di tipo "enemy"
         } else {
@@ -127,18 +125,21 @@ function fillQueCards(que) {
             que[i].speed = Math.round(Math.random() * (max_points_stas - min_points_stats) + min_points_stats);
             que[i].health = Math.round(Math.random() * (max_points_stas - min_points_stats) + min_points_stats);
             que[i].method1 = "attack-character";
-
         }
-
     }
-
 }
 
-// ---------------------- FINE GENERAZIONE CARTE --------------------------------
 
 
 
-// CREATE FUNCTION WHO WIN THE GAME
+
+/**
+ * Nome della funzione
+ * Descrizione della funzione
+ * @param {TipoInput1} NomeInput1 - DescrizioneInput1
+ * @param {TipoInput2} NomeInput2 - DescrizioneInput2
+ * @returns {TipoOutput} - DescrizioneOutput
+ */
 function whoWins(pointsPlayer1, pointsPlayer2) {
 
     // decretiamo il vincitore in base al punteggio accumalato dai giocatori
@@ -439,10 +440,12 @@ function charOrEnemyVSspell(cardPlayer1, cardPlayer2) {
 
 /*
  * function drawCard
- * implentazione della logica del gioco
- * @param {TipoInput1} NomeInput1 - DescrizioneInput1
- * @param {TipoInput2} NomeInput2 - DescrizioneInput2
- * @returns {TipoOutput} - DescrizioneOutput
+ * funzione che serve per decretare il vincitore basandosi sui punti accumulati dai 2 giocatori in caso
+ * uno dei 2 giocatori finisce le carte all'interno della sua queue.
+ * altrimenti, in caso entrambi hanno ancora delle carte, andranno a pescare la PRIMA carta della loro queue
+ * di cui verrà mostrata su console, e successivamente si andra a giocare il turno
+ * @param {object} que1 - queue (array) del PLAYER1
+ * @param {object} que2 - queue (array) del PLAYER2
  */
 function drawCard(que1, que2) {
 
@@ -458,7 +461,7 @@ function drawCard(que1, que2) {
     \n\n\n`);
 
 
-    //  il gioco finisce  quando uno dei 2 mazzi si esaurisce
+    //  il gioco finisce quando uno delle 2 queue dei giocatori si esaurisce
     if (que1.length === 0 || que2.length === 0) {
 
         whoWins(pointsPlayer1, pointsPlayer2);
@@ -466,7 +469,7 @@ function drawCard(que1, que2) {
     }
 
 
-    // andiamo a pescare le prima carta delle 2 que, e mostriamole stampandole
+    // andiamo a pescare le prima carta delle 2 que di ogni giocatore, e mostriamole stampandole
     let cardPlayer1 = que1.shift();
     console.log(cardPlayer1);
 
@@ -483,18 +486,20 @@ function drawCard(que1, que2) {
 
 
 
-// andiamo a creare e riempire le que dei 2 giocatori, con delle carte vuote
+// andiamo a creare e riempire le queue di 2 giocatori, con delle carte vuote
 let que1 = createQueCards();
 let que2 = createQueCards();
 
-// andiamo a modificare le carte delle 2 que, dandogli delle caratteristiche
+// modifichiamo le carte delle 2 queue, dandogli delle caratteristiche e successivamente verranno mostrare sulla console
 fillQueCards(que1);
 fillQueCards(que2);
 console.log(que1, que2);
 
 
 
-// il turno si svolge ogni 3 secondi di intervallo di tempo e viene pescata una carta dai 2 PLAYER!
-let pointsPlayer1 = 0;
-let pointsPlayer2 = 0;
+/* il turno si svolge ogni 3 secondi di intervallo di tempo, e viene pescata una carta dai 2 PLAYER!
+alla fine di ogni turno se ci sarà un vincitore senza pareggi o senza scontri, il PLAYER con la carta che ha vinto
+accumelare un tot di punti = alla salute totale rimasta della sua carta */
+let pointsPlayer1 = 0; // punteggio del PLAYER1
+let pointsPlayer2 = 0; // punteggio del PLAYER2
 let timerId = setInterval(drawCard, 3000, que1, que2);
