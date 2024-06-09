@@ -24,6 +24,6 @@ Value passed to the function --> *PARAMETER*: function imUtility(str){}
 
 ## TO FIX
 
-1. complete the documentation of the ex number 1 of the event-loop
+1. complete the documentation of the exesercise number 2 of the event-loop (section 9)
 
-2. read the new slides of section 10 (the-DOM) and do the exercises
+2. section 10 (the-DOM) do the exercises and takes notes about that

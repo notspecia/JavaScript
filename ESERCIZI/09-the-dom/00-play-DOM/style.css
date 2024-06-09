@@ -1,0 +1,17 @@
+/* BAD MODE
+proprietà iniziali del body */
+body {
+    color: green;
+    background-color: aqua;
+    padding-top: 12px;
+}
+
+
+/* GOOD MODE
+proprietà che si potranno aggiungere tramite il DOM */
+.modificaStyle{
+    background-color: yellow;
+    color: black;
+    font-size: 40px;
+    font-weight: bold; 
+}

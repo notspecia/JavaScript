@@ -5,16 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TRY PLAY DOM</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
     <ul id="hobby-list">
         <li class="hobby">Playing the banjo</li>
-        <li class="hobby">Paddleboarding</li>
+        <li class="hobby">Paddle boarding</li>
     </ul>
-       
-  
+
+
     <script>
 
         // RITORNA DA 0 A 1 ELEMENTI
@@ -57,15 +58,48 @@
         LA DOTNOTATION SI PUO USARE SOLO PER GLI OGGETTI, per questo viene detto oggetto
         le proprietà in questo caso vanno scritte in KAMELCASE (background-color NO X) (backgroundColor SI!), perchè JS non accetta i - per le variabili
         lo stile viene applicato INLINE, quindi cercare di NON scrivere mai codice cos*/
-        // let pageNode = document.body;
-        // pageNode.style.color = 'red';
+
+
+        // a collection of nodes
+        // let hobbies = document.getElementsByTagName('li'); // an HTMLCollection
+        // let alsoHobbies = document.getElementsByClassName('hobby'); // an HTMLCollection
+        // let allItems = document.querySelectorAll('ul li.hobby'); // a NodeList
+        
+        // stampiamo i vari array likes
+        // console.log(hobbies);
+        // console.log(alsoHobbies);
+        // console.log(allItems);
+
+        // andiamo ad assegnare ad una variabile un array like convertito in un array vero e proprio
+        // let arrayTrasformazione = Array.from(alsoHobbies);
+        // console.log(arrayTrasformazione);
+
+        // proviamo alcuni metodi su un array like (NON FUNZIONERA) e un array vero e proprio
+        // console.log(hobbies.shift); // undefind
+        // console.log(arrayTrasformazione.shift);
 
 
 
+        // andiamo a stampare con un ciclo for tutti gli elementi presenti nell'array 
+        // arrayTrasformazione.forEach(hobby => console.log(hobby.textContent));
 
-        let primaLista = document.querySelector("ul li");
-      
-        console.log(primaLista);
+        // andiamo a stampare con un ciclo tutti gli elementi presenti nell'array like (NodeList)
+        // allItems.forEach(item => console.log(item.textContent));
+    
+    
+    
+    // MANIPOLAZIONE DELLO STYLE
+
+
+    // MODO BRUTTO
+    // let pageNodeBad = document.body;
+    // pageNodeBad.style.backgroundColor = "red";
+    // pageNodeBad.style.color = "aqua";
+
+    // MODO CORRETTO
+    let pageNodeGood = document.body;
+    // andiamo ad aggiungere alla variabile che contiene il nodo del body (pageNodeGood), delle proprietà di stile appartenenti ad una classe
+    pageNodeGood.classList.add("modificaStyle");
 
     </script>
 

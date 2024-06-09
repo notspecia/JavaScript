@@ -2,7 +2,7 @@
  * @file        main.js
  * @author      Gabriele Speciale
  * @date        2024-05-30
- * @description 
+ * @description
  * 
 Create a simulation of a turn-based combat system in a Dungeons and Dragons game using two queues of cards
 
@@ -38,22 +38,22 @@ character cards
 
 /**
  * function createQueCards
- * andrà a generare una queue (array), che conterrà delle carte inizialmente vuote (oggetti), ogni queue potrà
- * contenere dalle 10 alle 30 carte, il numero di carte sarà randomico utilizzando Math.round(Math.random()*...)
- * @returns {object} - an array (queue), contenente delel carte (oggetti)
+ * will generate one queue (array), which will contain initially empty cards (oggetti), Each queue can
+* contain from 10 to 30 cards, The number of cards will be random using Math.round(Math.random()*...)
+ * @returns {object} - an array (queue), containing cards (objects)
  */
 function createQueCards() {
 
-    // dichiarazione variabili
+    // Variable declaration
     const max_cards = 30;
     const min_cards = 10;
     let queue = []; // queue containing cards
     let card = {};
 
-    // andiamo a creare un numero casuale di carte (oggetti) da inserire nelle queue del giocatore
+    // Let's create a random number of cards (objects) to be included in the player's queue
     let numberOfCards = Math.round(Math.random() * (max_cards - min_cards) + min_cards);
 
-    // andiamo a inserire tramite il metodo .push le carte (oggetti), al fondo della queue
+    // Let's go to insert through the method .push the cards (objects), at the bottom of the queue
     for (let i = 0; i < numberOfCards; i++) {
         queue.push(card);
     }
@@ -66,36 +66,36 @@ function createQueCards() {
 
 /**
  * function fillQueCards
- * riceve come parametro la que del giocatore che contiene delle carte (oggetti), questa funzione
- * si occuperà a dare delle caratteristiche alle carte (type, strenght, speed, healt ...), queste statistiche
- * avranno un punteggio minimo di 20 e massimo di 40 (scelto randomicamente)
- * - CHARACTER --> può affrontare a duello un altro CHARACTER / combattere con un ENEMY
- * - SPELL --> può avere un effeto magico positivo sul ENEMY o CHARACTER (buff)
- * @param {object} que - array del giocatore contenente le carte
- * @returns {TipoOutput} - DescrizioneOutput
+ * receives the player who contains cards (objects) as a parameter this function 
+ * will take care of the characteristics to the cards (type, strenght, speed, healt ...), These statistics
+* will have a minimum score of 20 and a maximum of 40 (chosen randomly)
+ * - CHARACTER --> can face another one in duel CHARACTER / fight with a ENEMY
+ * - SPELL --> It can have a positive magical effect on ENEMY or CHARACTER (buff) or a negative magical effect (nerf)
+ * - ENEMY --> can face only a fight in a fight CHARACTER
+ * @param {object} queue - player array containing the cards updated
  */
 function fillQueCards(que) {
 
-    // punteggio minimo e massimo delle statistiche (dinamico)
+    // Minimum and maximum statistics score (dynamic)
     const max_points_stas = 40;
     const min_points_stats = 20;
 
-    // array contenente i vari tipi di carte
+    // Array containing the various types of cards
     const types = ["character", "spell", "enemy"];
 
-    // array contenente gli effetti degli incantesimi (alcuni sono di buff altri di nerf)
+    // Array containing the effects of the spells (some are of buff others of nerf)
     const effect = ["shield", "healing", "stun", "curse", "debuff"];
 
 
-    // --------andiamo a riempire con delle caratteristiche tutte le carte della que del giocatore--------
+    // --------Let's fill all the player's cards with characteristics--------
     for (let i = 0; i < que.length; i++) {
 
-        // definiamo la tipologia di carta (characters, spells, enemies)
+        // We define the type of paper (characters, spells, enemies)
         que[i] = {
             type: types[Math.floor(Math.random() * types.length)],
         };
 
-        // se la carta è di tipo "character":
+        // If the paper is of the type "character":
         if (que[i].type === "character") {
             que[i].strength = Math.round(Math.random() * (max_points_stas - min_points_stats) + min_points_stats);
             que[i].speed = Math.round(Math.random() * (max_points_stas - min_points_stats) + min_points_stats);
@@ -104,22 +104,22 @@ function fillQueCards(que) {
             que[i].method2 = "duel-vs-character";
 
 
-            // se la carta è di tipo "spell" + andiamo ad applicare alla spell un determinato effetto:
+            // If the paper is of the type "spell" + Let's apply to the spell a certain effect:
         } else if (que[i].type === "spell") {
             que[i].power = Math.round(Math.random() * (max_points_stas - min_points_stats) + min_points_stats);
             que[i].typeEffect = effect[Math.floor(Math.random() * effect.length)];
 
-            // se la spell ha effetti positivi di buff:
+            // If the spell has positive effects of buffs:
             if (que[i].typeEffect === "shield" || que[i].typeEffect === "healing") {
                 que[i].method1 = "buff-character";
 
-                // se la spell ha effetti di nerf:
+                // If the spell has effects of nerf:
             } else {
                 que[i].method1 = "damage-character";
             }
 
 
-            // se la carta è di tipo "enemy"
+            // If the paper is of the type "enemy"
         } else {
             que[i].strength = Math.round(Math.random() * (max_points_stas - min_points_stats) + min_points_stats);
             que[i].speed = Math.round(Math.random() * (max_points_stas - min_points_stats) + min_points_stats);
@@ -131,100 +131,25 @@ function fillQueCards(que) {
 
 
 
-
-
 /**
- * Nome della funzione
- * Descrizione della funzione
- * @param {TipoInput1} NomeInput1 - DescrizioneInput1
- * @param {TipoInput2} NomeInput2 - DescrizioneInput2
- * @returns {TipoOutput} - DescrizioneOutput
+ * function charVSchar
+ * clash between 2 CHARACTER, to decree the winner of the shift, we go to compare
+ * the total statistics of the 2 cards, who has a total > wins the points
+ * @param {object} cardPlayer1 - card (oggetto) of PLAYER1
+ * @param {object} cardPlayer2 - card (oggetto) of PLAYER2
  */
-function whoWins(pointsPlayer1, pointsPlayer2) {
-
-    // decretiamo il vincitore in base al punteggio accumalato dai giocatori
-    if (pointsPlayer1 === pointsPlayer2) {
-        console.log("draw! GAME OVER");
-
-    } else if (pointsPlayer1 > pointsPlayer2) {
-        console.log("player 1 win! GAME OVER");
-
-    } else {
-        console.log("player 2 win! GAME OVER");
-    }
-
-    // stoppiamo il gioco! game over
-    clearInterval(timerId);
-
-}
-
-
-
-// ---------------- vari combattimenti in base alla tipologie di carte -------------------
-
-function letsPlay(cardPlayer1, cardPlayer2) {
-
-    switch (true) {
-
-        // ! character VS character (duel) !
-        case cardPlayer1.type === "character" && cardPlayer2.type === "character":
-
-            charVSchar(cardPlayer1, cardPlayer2);
-            break;
-
-
-
-        //! character VS enemy || enemy VS character (attack) !
-        case cardPlayer1.type === "character" && cardPlayer2.type === "enemy" || cardPlayer1.type === "enemy" && cardPlayer2.type === "character":
-
-            charVSenemy(cardPlayer1, cardPlayer2);
-            break;
-
-
-
-        //! character / enemy (player1) VS spell(player2) (buff character / damage character) !
-        //! character / enemy (player2) VS spell(player1) (buff character / damage character) !
-        case (cardPlayer1.type === "character" || cardPlayer1.type === "enemy" && cardPlayer2.type === "spell") || (cardPlayer2.type === "character" || cardPlayer2.type === "enemy" && cardPlayer1.type === "spell"):
-
-            charOrEnemyVSspell(cardPlayer1, cardPlayer2);
-            break;
-
-
-        default:
-            console.log("NO EFFECTS!");
-            break;
-    }
-
-    console.log("\n\n\n\n\n\n\n\n");
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// CREATE FUNCTION CHAR VS CHAR
 function charVSchar(cardPlayer1, cardPlayer2) {
 
+    // Total statistical points of the 2 cards CHARACTER
     let totalStas1 = 0;
     let totalStas2 = 0;
 
-    // calcoliamo le statistiche totali delle 2 carte chi ha il totale + alto vince
+    // We calculate the total statistics of the 2 cards, who has the total + high wins
     totalStas1 = cardPlayer1.strength + cardPlayer1.speed + cardPlayer1.health;
     totalStas2 = cardPlayer2.strength + cardPlayer2.speed + cardPlayer2.health;
-
     console.log(`it's a DUEL!⚔️\n- TOTAL STAS OF CARD PLAYER1: ${totalStas1}\n- TOTAL STAS OF CARD PLAYER2: ${totalStas2}\n\n`);
 
-    // decretiamo il vincitore del duello, e aggiungiamo come punti i suoi HP 
+    // We decree the winner of the duel, and add his HP as points
     if (totalStas1 === totalStas2) {
         console.log("DRAW!");
 
@@ -235,57 +160,48 @@ function charVSchar(cardPlayer1, cardPlayer2) {
     } else {
         pointsPlayer2 += cardPlayer2.health;
         console.log(`PLAYER2 WIN! + ${cardPlayer2.health} POINTS`);
-
     }
 }
 
 
 
-
-
-
-
-// CREATE FUNCTION ENEMY VS CHAR && contrario
+/**
+ * function charVSenemy
+ * clash between CHARACTER vs ENEMY, initialy we will confrontate the speed of the 2 cards
+ * The card that has + speed, then attacks first, the battle will continue until
+ * one of the 2 cards will not lose all HP
+ * If the speed is == then no fight will take place
+ *  @param {object} cardPlayer1 - card (oggetto) of PLAYER1
+ *  @param {object} cardPlayer2 - card (oggetto) of PLAYER2
+ */
 function charVSenemy(cardPlayer1, cardPlayer2) {
 
-    // se le 2 carte hanno la stessa velocità, non si combatterà
+    // If the 2 cards have the same speed, it won't fight and end the round
     if (cardPlayer1.speed === cardPlayer2.speed) {
         console.log("FIGHT DRAW!");
+        return;
+    }
 
-        /* se la velocità della carta 1 è > della carta 2, allora carta 1 attaccherà per prima
-        lo scontro termina nel momento in cui la vita di una delle 2 carte finisce */
-    } else if (cardPlayer1.speed > cardPlayer2.speed) {
+    /* If the paper speed 1 is > of paper 2, then paper 1 will attack first
+    The battle ends when the life of one of the 2 cards ends */
+    if (cardPlayer1.speed > cardPlayer2.speed) {
 
+        // The clash will end when one of the 2 cards will end its HP
         do {
             cardPlayer2.health -= cardPlayer1.strength;
-
             console.log(`PLAYER1 ATTACK⚔️ -> PLAYER2🛡️ -${cardPlayer1.strength} HP!\nHP❤️ OF PLAYER 2: ${cardPlayer2.health}HP\n\n`);
 
             if (cardPlayer2.health > 0) {
                 cardPlayer1.health -= cardPlayer2.strength;
-
                 console.log(`PLAYER2 ATTACK⚔️ -> PLAYER1🛡️ -${cardPlayer2.strength} HP!\nHP❤️ OF PLAYER 1: ${cardPlayer1.health}HP\n\n`);
-
             }
 
         } while (cardPlayer1.health > 0 && cardPlayer2.health > 0);
 
 
-
-        if (cardPlayer1.health > 0) {
-            pointsPlayer1 += cardPlayer1.health;
-            console.log(`PLAYER1 WIN! + ${cardPlayer1.health} POINTS`);
-
-        } else {
-            pointsPlayer2 += cardPlayer2.health;
-            console.log(`PLAYER2 WIN! + ${cardPlayer2.health} POINTS`);
-        }
-
-        /* se la velocità della carta 2 è > della carta 1, allora carta 2 attaccherà per prima
-        lo scontro termina nel momento in cui la vita di una delle 2 carte finisce */
+        /* If the paper 2 speed is > of paper 1, then paper 2 will attack first
+        The battle ends when the life of one of the 2 cards ends */
     } else {
-
-
 
         do {
             cardPlayer1.health -= cardPlayer2.strength;
@@ -293,100 +209,80 @@ function charVSenemy(cardPlayer1, cardPlayer2) {
 
             if (cardPlayer1.health > 0) {
                 cardPlayer2.health -= cardPlayer1.strength;
-
                 console.log(`PLAYER1 ATTACK⚔️ -> PLAYER2🛡️ -${cardPlayer1.strength} HP!\nHP❤️ OF PLAYER 2: ${cardPlayer2.health}HP\n\n`);
             }
 
         } while (cardPlayer1.health > 0 && cardPlayer2.health > 0);
+    }
 
+    // We decree the winner of the battle
+    if (cardPlayer1.health > 0) {
+        pointsPlayer1 += cardPlayer1.health;
+        console.log(`PLAYER1 WIN! + ${cardPlayer1.health} POINTS`);
 
-
-        if (cardPlayer1.health > 0) {
-            pointsPlayer1 += cardPlayer1.health;
-            console.log(`PLAYER1 WIN! + ${cardPlayer1.health} POINTS`);
-
-        } else {
-            pointsPlayer2 += cardPlayer2.health;
-            console.log(`PLAYER2 WIN! + ${cardPlayer2.health} POINTS`);
-
-        }
+    } else {
+        pointsPlayer2 += cardPlayer2.health;
+        console.log(`PLAYER2 WIN! + ${cardPlayer2.health} POINTS`);
     }
 }
 
 
 
-
-
-
-
-
-
-
-
-
-// ---------------------- CREATE FUN CHAR/ENEMY VS SPELL && contrario --------------------------------------------------------------
-
+/**
+ * function charOrEnemyVSspell
+ * clash between CHARACTER/ENEMY vs SPELL, the spell if it will have an effect of buff, will heal and adding HP
+ * to the card of the other player, if the spell has an effect of nerf, will reduce the HP to the card of
+ * the other enemy.
+ * If the enemy paper was not destroyed immediately with the Spell, then the player with the paper CHARACTER/ENEMY
+ * He will remain on the field with the HP modified previously, while the other will have to fish a new card from his queue
+ * After that the turn will always continue on the basis of the parameters of the clashes between the various types of cards
+ * @param {object} cardPlayer1 - card (oggetto) of PLAYER1
+ * @param {object} cardPlayer2 - card (oggetto) of PLAYER2
+ */
 function charOrEnemyVSspell(cardPlayer1, cardPlayer2) {
 
-
-    //--------------- nel caso la spell ha effetto BUFF ----------
+    //--------------- In case the spell has effect BUFF ----------
     if (cardPlayer1.method1 === "buff-character" || cardPlayer2.method1 === "buff-character") {
 
-        // se la spell di buff è di PLAYER1
+        // if the spell of buff is of the PLAYER1
         if (cardPlayer1.method1 === "buff-character") {
             cardPlayer2.health += cardPlayer1.power;
             console.log(`PLAYER1 USE ${cardPlayer1.typeEffect} SPELL✨ -> PLAYER2🛡️ +${cardPlayer1.power} HP!\nHP❤️ OF PLAYER2: ${cardPlayer2.health}HP\n\n`);
 
-            // se la spell di nerf è di PLAYER1
+            // if the spell of buff is of the PLAYER2
         } else {
             cardPlayer1.health += cardPlayer2.power;
             console.log(`PLAYER2 USE ${cardPlayer2.typeEffect} SPELL✨ -> PLAYER1🛡️ +${cardPlayer2.power} HP!\nHP❤️ OF PLAYER1: ${cardPlayer1.health}HP\n\n`);
         }
 
 
-        //------------ nel caso la spell ha effetto DAMAGE ------------
+        //------------ In case the spell has effect DAMAGE ------------
     } else {
 
-        // se la spell di buff è di PLAYER2
+        // if the spell of nerf is of the PLAYER1
         if (cardPlayer1.method1 === "damage-character") {
             cardPlayer2.health -= cardPlayer1.power;
             console.log(`PLAYER1 USE ${cardPlayer1.typeEffect} SPELL✨ -> PLAYER2🛡️ -${cardPlayer1.power} HP!\nHP❤️ OF PLAYER2: ${cardPlayer2.health}HP\n\n`);
 
-            // se la spell di nerf è di PLAYER2
+            // if the spell of nerf is of the PLAYER1
         } else {
             cardPlayer1.health -= cardPlayer2.power;
             console.log(`PLAYER2 USE ${cardPlayer2.typeEffect} SPELL✨ -> PLAYER1🛡️ -${cardPlayer2.power} HP!\nHP❤️ OF PLAYER1: ${cardPlayer1.health}HP\n\n`);
-
         }
-
     }
 
 
+    /*After pulling the magic (buff or debuff), the battle continues if the magic
+    Playerx damage, did not kill Playerx card on the shot */
 
-
-
-    /*dopo aver tirato la magia (buff o debuff), la battaglia continua se la magia
-    di danno del PLAYERx non ha ucciso la carta di PLAYERx sul colpo*/
-
-
-
-
-
-
-
-
-    // la carta del PLAYERx rimane in campo con la vita buffata / nerfata e il PLAYERx che aveva la spell pescherà un altra carta
+    // !!!!!!!!!!!!!!!!!!!la carta del PLAYERx rimane in campo con la vita buffata / nerfata e il PLAYERx che aveva la spell pescherà un altra carta
     if (cardPlayer1.health > 0 || cardPlayer2.health > 0) {
 
-
-
-
-        // se la carta di PLAYER1 è un char/enemy, allora PLAYER2 aveva la spell e deve pescare una carta
+        // se la carta di PLAYER1 è un CHARACTER/ENEMY (true), allora PLAYER2 aveva la spell e deve pescare una carta
         if (cardPlayer1.health) {
 
             // la coda di carte del PLAYER 2 deve essere > 0 per pescare!
             if (que2.length !== 0) {
-
                 cardPlayer2 = que2.shift();
                 console.log(cardPlayer1);
                 console.log(`PLAYER2 draw a new card:`, cardPlayer2);
@@ -394,15 +290,13 @@ function charOrEnemyVSspell(cardPlayer1, cardPlayer2) {
                 // giochiamo con la NUOVA CARTA DI PLAYER2 e la VECCHIA CARTA DI PLAYER1
                 letsPlay(cardPlayer1, cardPlayer2);
 
-                // se PLAYER2 non ha più carte nella sua que, termina il turno e il game
             } else {
+                // se PLAYER2 non ha più carte nella sua que, termina il turno e il game
                 console.log(`PLAYER2 has no cards remain!\n\n`);
                 return;
             }
 
-
         } else {
-
 
             // la coda di carte del PLAYER 1 deve essere > 0 per pescare!
             if (que1.length !== 0) {
@@ -421,19 +315,84 @@ function charOrEnemyVSspell(cardPlayer1, cardPlayer2) {
             }
         }
 
-
         // se la spell fa abbastanza danno da uccidere il personaggio/nemico di PLAYER1,termina il turno
     } else {
         console.log(`card of PLAYER1 destroyed! no points!`);
-        flag = true;
-
     }
 }
 
 
+/**
+ * function whoWins
+ * funzione che andrà a decretare il vincitore della partita, andando a confrontare
+ * il punteggio tra PLAYER1 e PLAYER2, successivamente per terminare il gioco definitivamente
+ * andiamo a fermare il setInterval()
+ * @param {number} pointsPlayer1 - punteggio totale del PLAYER1
+ * @param {number} pointsPlayer2 - punteggio totale del PLAYER2
+ */
+function whoWins(pointsPlayer1, pointsPlayer2) {
+
+    // decretiamo il vincitore in base al punteggio accumalato dai giocatori
+    if (pointsPlayer1 === pointsPlayer2) {
+        console.log("draw! GAME OVER");
+
+    } else if (pointsPlayer1 > pointsPlayer2) {
+        console.log("player 1 win! GAME OVER");
+
+    } else {
+        console.log("player 2 win! GAME OVER");
+    }
+
+    // stoppiamo il gioco! game over
+    clearInterval(timerId);
+}
 
 
 
+// ---------------- vari combattimenti in base alla tipologie di carte -------------------
+
+/**
+ * function letsPlay
+ * in base alla tipologie delle carte dei 2 players, andremo ad invocare differenti
+ * funzioni che simulano un combattimento tra di esse
+ * ci possono essere 2 casi in cui non avvenga nessuna battaglia e il turno terminerà:
+ * 1. ENEMY VS ENEMY
+ * 2. SPELL VS SPELL
+ * @param {object} cardPlayer1 - carta (oggetto) del PLAYER1
+ * @param {object} cardPlayer2 - carta (oggetto) del PLAYER2
+ */
+function letsPlay(cardPlayer1, cardPlayer2) {
+
+    switch (true) {
+
+        // ! character VS character (DUEL) !
+        case cardPlayer1.type === "character" && cardPlayer2.type === "character":
+
+            charVSchar(cardPlayer1, cardPlayer2);
+            break;
+
+
+        //! character VS enemy || enemy VS character (BATTLE) !
+        case cardPlayer1.type === "character" && cardPlayer2.type === "enemy" || cardPlayer1.type === "enemy" && cardPlayer2.type === "character":
+
+            charVSenemy(cardPlayer1, cardPlayer2);
+            break;
+
+
+        //! character/enemy (player1)  VS spell (player2) (buff character / damage character) !
+        //! character/enemy (player2)  VS spell (player1) (buff character / damage character) !
+        case (cardPlayer1.type === "character" || cardPlayer1.type === "enemy" && cardPlayer2.type === "spell") || (cardPlayer2.type === "character" || cardPlayer2.type === "enemy" && cardPlayer1.type === "spell"):
+
+            charOrEnemyVSspell(cardPlayer1, cardPlayer2);
+            break;
+
+
+        default:
+            console.log("NO EFFECTS!");
+            break;
+    }
+    console.log("\n\n\n\n\n\n\n\n");
+}
 
 
 
@@ -476,11 +435,10 @@ function drawCard(que1, que2) {
     let cardPlayer2 = que2.shift();
     console.log(cardPlayer2);
 
+
     // passiamo le carte e iniziamo il gioco
     letsPlay(cardPlayer1, cardPlayer2);
 }
-
-
 
 
 
