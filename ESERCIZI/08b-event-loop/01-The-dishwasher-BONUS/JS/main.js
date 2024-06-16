@@ -17,14 +17,6 @@
  */
 
 
-
-const min_piatti = 10;  // Minimum number of dirty plates in a stack
-const max_piatti = 50;  // Maximum number of dirty plates in a stack
-
-
-
-
-
 /**
  * function createDirtyStack
  * 
@@ -154,6 +146,10 @@ function runSimulation() {
     }, 2000);
 
 }
+
+
+const min_piatti = 10;  // Minimum number of dirty plates in a stack
+const max_piatti = 50;  // Maximum number of dirty plates in a stack
 
 
 // Start washing dishes!

@@ -1,0 +1,62 @@
+/**
+ * style.css
+ *
+ *
+ * let's style the stacks which contain each dirty plates and clean plates
+ *
+ */
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: inherit;
+}
+
+body {
+    height: 100%;
+}
+
+
+ul.dirty {
+    float: left;
+    margin-left: 30px;
+    position: absolute;
+    left: 0;
+    bottom: 98px;
+}
+
+ul.clean {
+    float: right;
+    margin-right: 30px;
+    position: absolute;
+    right: 0;
+    bottom: 100px;
+}
+
+
+
+ul.dirty img {
+    width: 90px;
+    margin-bottom: -70px;
+}
+
+ul.clean img {
+    width: 100px;
+    margin-bottom: -77px;
+}
+
+
+
+div.table {
+    background-color: brown;
+    width: 100%;
+    padding: 30px;
+    border-top: 4px solid;
+    position: absolute;
+    bottom: 0;
+    clear: both;
+}

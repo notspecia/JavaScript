@@ -3,7 +3,7 @@
  * @author      Gabriele Speciale
  * @date        2024-06-09
  * @description 
- * ● Add an external javascript file called main.js
+ *  ● Add an external javascript file called main.js
 
     ● In JavaScript: 
         ○ Change the body style so it has a font-family of "Arial, sans-serif"
@@ -18,17 +18,13 @@
         ○ The external css file should be applied after 4 seconds
  */
 
+
 /* Assigning to a variable the node containing the body
 to the body node, we apply through manipulation (bad) of the style
 a font-family "Arial, sans-serif" WE WILL APPLY AN INLINE STYLE WHICH IS A DISCOURAGED ACTION! */
 let bodyElement = document.querySelector("body");
 console.log("new body with inline style", bodyElement);
 bodyElement.style.fontFamily = "Arial, sans-serif";
-
-
-
-
-
 
 
 
@@ -47,10 +43,6 @@ favoritesNote.textContent = "eat, sleep, JS!";
 let homeTownNote = document.getElementById("hometown");
 console.log(homeTownNote);
 homeTownNote.textContent = "Italy, Turin";
-
-
-
-
 
 
 
@@ -86,17 +78,12 @@ lists.forEach(item => {
 
 
 
-
-
-
 /* We create an <img> element with my photo, and we apply
 some inline styles */
 let myPhoto = document.createElement("img");
 myPhoto.src = "IMG/IO.jpg";
 myPhoto.style.width = "200px";
 bodyElement.append(myPhoto);
-
-
 
 
 
@@ -114,7 +101,9 @@ function changeStyle() {
     document.head.append(linkToCss); // we add it to the document's head
 }
 
-/* We create a function after minimum 4 seconds,
+
+
+/* create a function after minimum 4 seconds,
 that will create inside the document's head a link that will connect
 to an external style.css file, which will apply properties
 on the class previously created in the <li>, always after at least 4 seconds */

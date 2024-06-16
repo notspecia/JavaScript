@@ -135,8 +135,8 @@ function fillQueCards(que) {
  * function charVSchar
  * clash between 2 CHARACTER, to decree the winner of the shift, we go to compare
  * the total statistics of the 2 cards, who has a total > wins the points
- * @param {object} cardPlayer1 - card (oggetto) of PLAYER1
- * @param {object} cardPlayer2 - card (oggetto) of PLAYER2
+ * @param {object} cardPlayer1 - card (object) of PLAYER1
+ * @param {object} cardPlayer2 - card (object) of PLAYER2
  */
 function charVSchar(cardPlayer1, cardPlayer2) {
 
@@ -171,8 +171,8 @@ function charVSchar(cardPlayer1, cardPlayer2) {
  * The card that has + speed, then attacks first, the battle will continue until
  * one of the 2 cards will not lose all HP
  * If the speed is == then no fight will take place
- *  @param {object} cardPlayer1 - card (oggetto) of PLAYER1
- *  @param {object} cardPlayer2 - card (oggetto) of PLAYER2
+ *  @param {object} cardPlayer1 - card (object) of PLAYER1
+ *  @param {object} cardPlayer2 - card (object) of PLAYER2
  */
 function charVSenemy(cardPlayer1, cardPlayer2) {
 
@@ -234,10 +234,10 @@ function charVSenemy(cardPlayer1, cardPlayer2) {
  * to the card of the other player, if the spell has an effect of nerf, will reduce the HP to the card of
  * the other enemy.
  * If the enemy paper was not destroyed immediately with the Spell, then the player with the paper CHARACTER/ENEMY
- * He will remain on the field with the HP modified previously, while the other will have to fish a new card from his queue
+ * He will remain on the field with the HP modified previously, while the other will have to draw a new card from his queue
  * After that the turn will always continue on the basis of the parameters of the clashes between the various types of cards
- * @param {object} cardPlayer1 - card (oggetto) of PLAYER1
- * @param {object} cardPlayer2 - card (oggetto) of PLAYER2
+ * @param {object} cardPlayer1 - card (object) of PLAYER1
+ * @param {object} cardPlayer2 - card (object) of PLAYER2
  */
 function charOrEnemyVSspell(cardPlayer1, cardPlayer2) {
 
@@ -275,47 +275,48 @@ function charOrEnemyVSspell(cardPlayer1, cardPlayer2) {
     /*After pulling the magic (buff or debuff), the battle continues if the magic
     Playerx damage, did not kill Playerx card on the shot */
 
-    // !!!!!!!!!!!!!!!!!!!la carta del PLAYERx rimane in campo con la vita buffata / nerfata e il PLAYERx che aveva la spell pescherà un altra carta
+
+    // The card of the PLAYERx remains on the pitch with life buffed / nerfed and the PLAYERx who had the spell, will draw another card
     if (cardPlayer1.health > 0 || cardPlayer2.health > 0) {
 
-        // se la carta di PLAYER1 è un CHARACTER/ENEMY (true), allora PLAYER2 aveva la spell e deve pescare una carta
+        // If the card of PLAYER1 is an CHARACTER/ENEMY (true), then PLAYER2 He had the spell and must draw a card
         if (cardPlayer1.health) {
 
-            // la coda di carte del PLAYER 2 deve essere > 0 per pescare!
+            // the queue of cards of the PLAYER 2 it must be > 0 for draw a new card!
             if (que2.length !== 0) {
                 cardPlayer2 = que2.shift();
                 console.log(cardPlayer1);
                 console.log(`PLAYER2 draw a new card:`, cardPlayer2);
 
-                // giochiamo con la NUOVA CARTA DI PLAYER2 e la VECCHIA CARTA DI PLAYER1
+                // Let's play with the NEW CARD OF PLAYER2 and THE OLD CARD OF PLAYER1
                 letsPlay(cardPlayer1, cardPlayer2);
 
             } else {
-                // se PLAYER2 non ha più carte nella sua que, termina il turno e il game
+                // if PLAYER2 has no more cards in his queue, The turn and the game ends
                 console.log(`PLAYER2 has no cards remain!\n\n`);
                 return;
             }
 
         } else {
 
-            // la coda di carte del PLAYER 1 deve essere > 0 per pescare!
+            // the queue of cards of the PLAYER 1 it must be > 0 for draw a new card!
             if (que1.length !== 0) {
-
                 cardPlayer1 = que1.shift();
                 console.log(`PLAYER1 draw a new card:`, cardPlayer1);
                 console.log(cardPlayer2);
 
-                // giochiamo con la NUOVA CARTA DI PLAYER1 e la VECCHIA CARTA DI PLAYER2
+                // Let's play with the NEW CARD OF PLAYER1 and THE OLD CARD OF PLAYER2
                 letsPlay(cardPlayer1, cardPlayer2);
 
-                // se PLAYER1 non ha più carte nella sua que, termina il turno e il game
+
             } else {
+                // if PLAYER2 has no more cards in his queue, The turn and the game ends
                 console.log(`PLAYER1 has no cards remain!\n\n`);
                 return;
             }
         }
 
-        // se la spell fa abbastanza danno da uccidere il personaggio/nemico di PLAYER1,termina il turno
+        // If the spell does enough damage to kill the CHARACTER/ENEMY of PLAYER1, The turn ends
     } else {
         console.log(`card of PLAYER1 destroyed! no points!`);
     }
@@ -324,15 +325,15 @@ function charOrEnemyVSspell(cardPlayer1, cardPlayer2) {
 
 /**
  * function whoWins
- * funzione che andrà a decretare il vincitore della partita, andando a confrontare
- * il punteggio tra PLAYER1 e PLAYER2, successivamente per terminare il gioco definitivamente
- * andiamo a fermare il setInterval()
- * @param {number} pointsPlayer1 - punteggio totale del PLAYER1
- * @param {number} pointsPlayer2 - punteggio totale del PLAYER2
+ * function that the winner of the game will decree, going to compare
+ *  the score between PLAYER1 and PLAYER2, then to finish the game definitively
+ * going to stop the setInterval()
+ * @param {number} pointsPlayer1 - Total score of PLAYER1
+ * @param {number} pointsPlayer2 - Total score of PLAYER2
  */
 function whoWins(pointsPlayer1, pointsPlayer2) {
 
-    // decretiamo il vincitore in base al punteggio accumalato dai giocatori
+    // Decrete the winner based on the score accumulated by the players
     if (pointsPlayer1 === pointsPlayer2) {
         console.log("draw! GAME OVER");
 
@@ -343,23 +344,23 @@ function whoWins(pointsPlayer1, pointsPlayer2) {
         console.log("player 2 win! GAME OVER");
     }
 
-    // stoppiamo il gioco! game over
+    // We stop the game! game over
     clearInterval(timerId);
 }
 
 
 
-// ---------------- vari combattimenti in base alla tipologie di carte -------------------
+// ---------------- various fights based on the type of cards -------------------
 
 /**
  * function letsPlay
- * in base alla tipologie delle carte dei 2 players, andremo ad invocare differenti
- * funzioni che simulano un combattimento tra di esse
- * ci possono essere 2 casi in cui non avvenga nessuna battaglia e il turno terminerà:
+ * Based on the types of the cards of the 2 PLAYERS, we will invoke different
+ * Functions that simulate a fight between them
+ * There may be 2 cases in which no battle takes place and the turn will end:
  * 1. ENEMY VS ENEMY
  * 2. SPELL VS SPELL
- * @param {object} cardPlayer1 - carta (oggetto) del PLAYER1
- * @param {object} cardPlayer2 - carta (oggetto) del PLAYER2
+ * @param {object} cardPlayer1 - card (object) of PLAYER1
+ * @param {object} cardPlayer2 - card (object) of PLAYER2
  */
 function letsPlay(cardPlayer1, cardPlayer2) {
 
@@ -397,18 +398,20 @@ function letsPlay(cardPlayer1, cardPlayer2) {
 
 
 
-/*
+/**
  * function drawCard
- * funzione che serve per decretare il vincitore basandosi sui punti accumulati dai 2 giocatori in caso
- * uno dei 2 giocatori finisce le carte all'interno della sua queue.
- * altrimenti, in caso entrambi hanno ancora delle carte, andranno a pescare la PRIMA carta della loro queue
- * di cui verrà mostrata su console, e successivamente si andra a giocare il turno
- * @param {object} que1 - queue (array) del PLAYER1
- * @param {object} que2 - queue (array) del PLAYER2
+ * useful for:
+ * 1. invoke the function that the winner will decide based on the points accumulated by the 2 PLAYERS (in case 
+ * one of the 2 players ends the cards inside his queue)
+ * 
+ * 2. If both still have some cards, they will go fishing the FIRST card of theirs queue
+ * of which it will be shown on console, and then will go to play the turn
+ * @param {object} que1 - queue (array/object) of PLAYER1
+ * @param {object} que2 - queue (array/object) of PLAYER2
  */
 function drawCard(que1, que2) {
 
-    // tabellone che aggiorna il punteggio dei 2 players
+    // scoreboard updating the score of 2 PLAYERS
     console.log(`
     +---------------------------------------------------------------+     
     |                      PLAYERS SCORE UPDATE                     |
@@ -420,15 +423,14 @@ function drawCard(que1, que2) {
     \n\n\n`);
 
 
-    //  il gioco finisce quando uno delle 2 queue dei giocatori si esaurisce
+    // The game ends when one of the 2 queues of the players runs out
     if (que1.length === 0 || que2.length === 0) {
-
         whoWins(pointsPlayer1, pointsPlayer2);
         return;
     }
 
 
-    // andiamo a pescare le prima carta delle 2 que di ogni giocatore, e mostriamole stampandole
+    // Let's go draw the first card of the 2 ques of each player, and we show them by printing them on the console
     let cardPlayer1 = que1.shift();
     console.log(cardPlayer1);
 
@@ -436,7 +438,7 @@ function drawCard(que1, que2) {
     console.log(cardPlayer2);
 
 
-    // passiamo le carte e iniziamo il gioco
+    // Let's pass the cards and start the game
     letsPlay(cardPlayer1, cardPlayer2);
 }
 
@@ -444,20 +446,20 @@ function drawCard(que1, que2) {
 
 
 
-// andiamo a creare e riempire le queue di 2 giocatori, con delle carte vuote
+// Let's create and fill the queues of 2 players, with empty cards
 let que1 = createQueCards();
 let que2 = createQueCards();
 
-// modifichiamo le carte delle 2 queue, dandogli delle caratteristiche e successivamente verranno mostrare sulla console
+// We modify the cards of the 2 these, giving it characteristics, and subsequently will be shown on the console
 fillQueCards(que1);
 fillQueCards(que2);
 console.log(que1, que2);
 
 
 
-/* il turno si svolge ogni 3 secondi di intervallo di tempo, e viene pescata una carta dai 2 PLAYER!
-alla fine di ogni turno se ci sarà un vincitore senza pareggi o senza scontri, il PLAYER con la carta che ha vinto
-accumelare un tot di punti = alla salute totale rimasta della sua carta */
-let pointsPlayer1 = 0; // punteggio del PLAYER1
-let pointsPlayer2 = 0; // punteggio del PLAYER2
+/* The turn takes place every 3 seconds of time interval, and the draw the first card of the Queue of the 2 PLAYERS!
+at the end of each round if there is a winner without draws or without battles, the PLAYER with the card that won
+recive a Tot of Points = to the total health that remained of his card */
+let pointsPlayer1 = 0; // score of the PLAYER1
+let pointsPlayer2 = 0; // score of the PLAYER2
 let timerId = setInterval(drawCard, 3000, que1, que2);

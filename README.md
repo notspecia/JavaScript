@@ -1,4 +1,4 @@
-# JavaScript ENGLISH/ITALIAN COURSE VERSION 0.3
+# JavaScript ENGLISH/ITALIAN COURSE VERSION 0.5
 
 During this course of JavaScript I'm learning the following notions, going to practice with practical exercises that identify with reality:
 
@@ -14,6 +14,7 @@ During this course of JavaScript I'm learning the following notions, going to pr
 8.  timing
 9.  event-loop
 10. the-dom
+11. events-and-listeners
 
 All the topics mentioned are fully in -depth, happy reading :) !!
 
@@ -24,6 +25,6 @@ Value passed to the function --> *PARAMETER*: function imUtility(str){}
 
 ## TO FIX
 
-1. complete the documentation of the exesercise number 2 of the event-loop (section 9)
+1. section 10 (the-DOM) takes more notes about that
 
-2. section 10 (the-DOM) do the exercises and takes notes about that
+2. read the new section 11 (events-and-listeners), take some notes and do the exercise
