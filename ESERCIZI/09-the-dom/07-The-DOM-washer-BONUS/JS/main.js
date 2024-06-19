@@ -38,7 +38,7 @@ function createDirtyStack(nameStack) {
 
    // fill the stack with dirty plates
    for (let i = 0; i < randomPlates; i++) {
-      
+
       // create a list item for each dirty plate
       let dirtyPlate = document.createElement("li");
       let imagePlate = document.createElement("img");
@@ -64,7 +64,7 @@ function createDirtyStack(nameStack) {
  */
 function cleaningPlates(stackDirtyPlates, allArrayStacksPlateDirty, stackCleanPlates, i) {
 
-   // get the last (top) plate from the dirty stack
+   // get the last (top) plate from the dirty stack(i)
    const dirtyPlate = allArrayStacksPlateDirty[i].pop();
 
    // remove the plate from the DOM
@@ -96,17 +96,16 @@ function cleaningPlates(stackDirtyPlates, allArrayStacksPlateDirty, stackCleanPl
  */
 function washDish(stackDirtyPlates, allArrayStacksPlateDirty, stackCleanPlates) {
 
-   // clean up to 2 plates from one stack at a time
-   for (let i = 0; i < allArrayStacksPlateDirty.length; i++) {
+   // counting of clean dishes each interval, when it's > 2 then we leave the cycle of function
+   let counter = 0;
 
+   // clean up to 2 plates from one stack at a time
+   for (let i = 0; i < allArrayStacksPlateDirty.length && counter < 2; i++) {
+
+      // If the length of the stack i(ex=0(1)) is > 0 so there are still dishes...
       if (allArrayStacksPlateDirty[i].length > 0) {
          cleaningPlates(stackDirtyPlates, allArrayStacksPlateDirty, stackCleanPlates, i);
-
-         if (allArrayStacksPlateDirty[i].length > 0) {
-            cleaningPlates(stackDirtyPlates, allArrayStacksPlateDirty, stackCleanPlates, i);
-            break;
-         }
-
+         counter++;
       }
 
    }
@@ -157,6 +156,7 @@ function runSimulation() {
 
    // debug console log
    console.log(allArrayStacksPlateDirty);
+   console.log(allArrayStacksPlateDirty.length);
 
 
 

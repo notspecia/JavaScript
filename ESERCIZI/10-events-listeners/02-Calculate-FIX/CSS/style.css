@@ -1,0 +1,30 @@
+/**
+ * style.css
+ *
+ *
+ * stylize the labels and the inputs
+ *
+ */
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: inherit;
+}
+
+
+label {
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+input {
+    background-color: whitesmoke;
+    border-radius: 30px;
+    padding: 5px;
+    margin: 60px 20px 0 0;
+}

@@ -1,4 +1,4 @@
-# JavaScript ENGLISH/ITALIAN COURSE VERSION 0.5
+# JavaScript ENGLISH/ITALIAN COURSE VERSION 0.6
 
 During this course of JavaScript I'm learning the following notions, going to practice with practical exercises that identify with reality:
 
@@ -28,3 +28,7 @@ Value passed to the function --> *PARAMETER*: function imUtility(str){}
 1. section 10 (the-DOM) takes more notes about that
 
 2. read the new section 11 (events-and-listeners), take some notes and do the exercise
+
+3. fix the ex number 2 and 3 (function number 3) of the section 10 event-listener
+
+4. fix the dishwasher BONUS of the event loop the cycle for logic, that clean the plats
