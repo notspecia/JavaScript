@@ -64,7 +64,7 @@ function createDirtyStack(nameStack) {
  */
 function cleaningPlates(stackDirtyPlates, allArrayStacksPlateDirty, stackCleanPlates, i) {
 
-   // get the last (top) plate from the dirty stack(i)
+   // get the last (top) plate from the dirty stack(i) and remove it from the stack
    const dirtyPlate = allArrayStacksPlateDirty[i].pop();
 
    // remove the plate from the DOM

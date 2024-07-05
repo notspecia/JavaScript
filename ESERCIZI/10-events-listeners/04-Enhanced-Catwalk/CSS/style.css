@@ -1,0 +1,72 @@
+/**
+ * style.css
+ *
+ *
+ * stylizing the buttons and other tags of support to the walking of the cat
+ *
+ */
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: inherit;
+}
+
+body{
+    background-color: blanchedalmond;
+}
+
+
+/* stilizzazione dei bottoni */
+div.buttons {
+    width: 80%;
+    margin: 40px auto 150px;
+}
+
+button {
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin: 0 100px;
+}
+
+button#start {
+    background-color: greenyellow;
+}
+
+button#stop {
+    background-color: red;
+}
+
+button:hover {
+    background-color: yellow;
+    border-color: red;
+}
+
+.hideButton {
+    display: none;
+}
+
+
+
+/* stilizizzazione dell'immagine */
+img {
+    width: 250px;
+    top: 120px;
+}
+
+
+
+/* stilizzazione del campo che mostra le informazioni */
+div.info {
+    width: 50%;
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 30px;
+    border-radius: 20px;
+    margin: 350px auto 0;
+}

@@ -86,21 +86,16 @@ ${cleanPlateStack.join("\n")}
  */
 function washDish(cleanPlateStack, dirtyPlateStacks) {
 
-    for (let i = 0; i < dirtyPlateStacks.length; i++) {
+    // counting of clean dishes each interval, when it's > 2 then we leave the cycle of function
+    let counter = 0;
+
+    for (let i = 0; i < dirtyPlateStacks.length && counter < 2; i++) {
 
         if (dirtyPlateStacks[i].length > 0) {
             cleanPlateStack.push(dirtyPlateStacks[i].pop());
-
-            if (dirtyPlateStacks[i].length > 0) {
-                cleanPlateStack.push(dirtyPlateStacks[i].pop());
-                break;
-
-            }
-
+            counter++;
         }
-
     }
-
 }
 
 

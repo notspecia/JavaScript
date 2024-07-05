@@ -80,6 +80,7 @@ function washDish(stackDirtyPlates, arrayStackPlateDirty, stackCleanPlates) {
 
 }
 
+
 /**
 * function runSimulation
 * 

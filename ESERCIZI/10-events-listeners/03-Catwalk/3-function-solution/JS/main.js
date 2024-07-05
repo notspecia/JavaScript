@@ -9,10 +9,8 @@
 
     ● Make the cat move across the screen by calling that function every 50ms
 
-    ● Write different versions of the function to handle the following variants:
-     ○ Variant 1: When the cat reaches the right side of the screen it should restart from the left
-     ○ Variant 2: When the cat reaches the right side of the screen, it should move backwards. 
-       When it reaches the left it should move forwards
+    ● Write different versions of the function to handle the following variant:
+     
      ○ Variant 3: When the cat reaches the middle of the screen, replace the img with a different 
        cat image. Keep it in the middle for 10 seconds, and then replace the img with the original 
        image and have it continue the walk as in variant 2
@@ -27,41 +25,52 @@
  */
 function catwalkBackwards() {
 
-  if (direction === "forward") {
-    walking += 10;
+  // Variabile contenente la metà della width della viewport
+  let halfViewPort = Math.round(window.innerWidth / 2); // Arrotondiamo il numero per evitare problemi di virgola
 
-  } else {
-    walking -= 10;
-  }
+  // Calcolo per la posizione centrale del gatto
+  let catPosition = walking + imageCat.width / 2;
 
-  imageCat.style.left = `${walking}px`;
+  console.log(`walking: ${catPosition}, halfViewPort: ${halfViewPort}`);
 
   // ---------------------------------------
-  let widthViewPort = window.innerWidth;
 
-
-  if (walking + imageCat.width / 2 >= widthViewPort / 2) {
-
-    imageCat.src = "https://media.tenor.com/47qpxBq_Tw0AAAAM/cat-cat-meme.gif";
+  // se il gatto è al centro della viewport, allora si fermerà e cambierà imamgine
+  if (Math.abs(catPosition - halfViewPort) < 10 && !catFree) {
+    imageCat.src = "https://static-cdn.jtvnw.net/jtv_user_pictures/cd3ac040-1b9b-4457-b540-a527dc035d21-profile_image-300x300.png";
 
     setTimeout(() => {
       imageCat.src = "http://www.anniemation.com/clip_art/images/cat-walk.gif";
+      catFree = true;
     }, 10000);
+
+    return;
+
+    // se il gatto non è al centro dello schermo, allora continua a muoversi
+  } else {
+
+    if (direction === "forward") {
+      walking += 10;
+
+    } else {
+      walking -= 10;
+    }
+
+    imageCat.style.left = `${walking}px`;
+
+
+    // controlla se il gatto ha raggiunto il lato destro della finestra
+    if (walking + imageCat.width >= window.innerWidth) {
+      direction = "backward";
+      imageCat.style.transform = "scaleX(-1)";
+    }
+
+    // controlla se il gatto ha raggiunto il lato sinistro della finestra
+    if (walking <= 0) {
+      direction = "forward";
+      imageCat.style.transform = "scaleX(1)";
+    }
   }
-
-
-  // controlla se il gatto ha raggiunto il lato destro della finestra
-  if (walking + imageCat.width >= widthViewPort) {
-    direction = "backward";
-    imageCat.style.transform = "scaleX(-1)";
-  }
-
-  // controlla se il gatto ha raggiunto il lato sinistro della finestra
-  if (walking <= 0) {
-    direction = "forward";
-    imageCat.style.transform = "scaleX(1)";
-  }
-
 }
 
 
@@ -76,6 +85,8 @@ let walking = 0;
 // stabiliamo la direzione di camminata del gatto 
 let direction = "forward";
 
-// ogni 50ms andrà a schedulare una funzione che sposta la gif del gatto verso destra (10 px)
-setInterval(catwalkBackwards, 50);
+// flag per il movimento
+let catFree = false;
 
+// ogni 5ms andrà a schedulare una funzione che sposta la gif del gatto verso destra (10 px)
+setInterval(catwalkBackwards, 50);

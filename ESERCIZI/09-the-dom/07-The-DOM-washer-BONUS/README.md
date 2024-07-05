@@ -32,7 +32,7 @@ bonus:
 
 ## Approach to solution
 
-### 1. html structure and javascript integration
+### 1. html structure 
 - **html setup**:
 - create an html structure with four `<ul>` elements to represent the stacks of dirty (three) and clean dishes (one)
 - include necessary css for styling the dish stacks and the plates

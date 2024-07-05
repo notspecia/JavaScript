@@ -26,7 +26,7 @@ create a simulation of a dishwasher system using two stacks of dishes
 
 ## Approach to Solution
 
-### 1. HTML Structure and JavaScript Integration
+### 1. HTML Structure
 - **HTML Setup**:
 - Create an HTML structure with two `<ul>` elements to represent the stacks of dirty and clean dishes
 - Include necessary CSS for styling the dish stacks

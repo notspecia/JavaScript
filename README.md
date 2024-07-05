@@ -15,20 +15,12 @@ During this course of JavaScript I'm learning the following notions, going to pr
 9.  event-loop
 10. the-dom
 11. events-and-listeners
+12. json-and-ajax
 
-All the topics mentioned are fully in -depth, happy reading :) !!
-
-## IMPORTANT THINGS
-Value by recalling function --> *ARGUMENT*: imUtility("hello");
-
-Value passed to the function --> *PARAMETER*: function imUtility(str){} 
+All the topics mentioned are fully in -depth whit examples, happy reading :) !!
 
 ## TO FIX
 
-1. section 10 (the-DOM) takes more notes about that
+1. section 11 (events-and-listeners), take more notes and complete exercise number 5
 
-2. read the new section 11 (events-and-listeners), take some notes and do the exercise
-
-3. fix the ex number 2 and 3 (function number 3) of the section 10 event-listener
-
-4. fix the dishwasher BONUS of the event loop the cycle for logic, that clean the plats
+2. read and take some notes and do exesercise about section 12

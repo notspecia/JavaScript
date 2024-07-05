@@ -5,8 +5,8 @@
     <!-- Meta Data information of the HTML file -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FLIGHT TABLE</title>
-    <meta name="description" content="table of flights">
+    <title>TABLE FLIGHTS ANIMATIONS </title>
+    <meta name="description" content="table of flights whit animations">
     <meta name="author" content="Speciale Gabriele">
 
     <!-- External font-styles  -->
@@ -19,6 +19,20 @@
 </head>
 
 <body>
+
+    <!-- div which contains informations about the row of the flight that the user clicked -->
+    <div id="moreInfoFlight">
+        <input type="checkbox" id="nav-toggle" name="navCheckBox">
+        <label for="nav-toggle"></label>
+
+        <!-- those tags will be filled by JS -->
+        <p class="date"></p>
+        <p class="time"></p>
+        <p class="destination"></p>
+        <p class="number"></p>
+        <p class="status"></p>
+    </div>
+
     <!-- Content start -->
     <h1>FLIGHT TABLE</h1>
 

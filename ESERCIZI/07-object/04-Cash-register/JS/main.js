@@ -39,9 +39,7 @@ function cashRegister(cartForParty) {
     /* returns an array containing the keys to an object, it also used
     for determinate the length of the object*/
     let arrayFromObj = Object.keys(cartForParty);
-
     console.log(arrayFromObj); // ['banana', 'handkerchief', 'Tshirt', 'apple', 'nalgene', 'proteinShake']
-
 
     /* Let's go to cycle all the keys contained by the arched array from the object */
     for (let i = 0; i < arrayFromObj.length; i++) {

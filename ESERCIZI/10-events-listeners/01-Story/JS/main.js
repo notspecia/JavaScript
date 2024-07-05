@@ -13,23 +13,21 @@
 
 /**
  * function makeStory
- * Descrizione della funzione
- * @param {TipoInput1} NomeInput1 - DescrizioneInput1
- * @param {TipoInput2} NomeInput2 - DescrizioneInput2
- * @returns {TipoOutput} - DescrizioneOutput
+ * This function is triggered when the button is clicked. It assigns the input values to variables,
+ * forms a story from them, and inserts the story into the designated div.
  */
 function makeStory() {
 
-  // andremo a prendere da questi input il valore scritto al loro interno!
+  // Get the values entered in the inputs and assign them to variables
   const name = document.getElementById("noun");
   const adjective = document.getElementById("adjective");
   const personName = document.getElementById("person");
 
+  // Create the story by combining the input values
   let story = document.getElementById("story");
   story.textContent = `${name.value} really like ${adjective.value} ${personName.value}`
 }
 
-
-// andiamo a prendere il button tramite ID
+// Get the button by ID and assign it to a variable
 const buttonStory = document.getElementById("gen-button");
 buttonStory.addEventListener("click", makeStory);

@@ -1,0 +1,17 @@
+/**
+ * style.css
+ *
+ *
+ * modify the image of the cat
+ *
+ */
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: inherit;
+}

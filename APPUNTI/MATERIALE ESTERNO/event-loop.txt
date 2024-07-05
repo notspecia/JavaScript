@@ -1,0 +1,70 @@
+Il documento caricato parla del "modello di concorrenza" in JavaScript, in particolare del ciclo degli eventi (event loop), e come gestisce operazioni asincrone, nonostante JavaScript sia un linguaggio single-threaded. Qui di seguito una spiegazione semplice in italiano:
+
+Modello di Concorrenza e Ciclo degli Eventi
+JavaScript è un linguaggio di programmazione che esegue il codice in un singolo thread, il che significa che può eseguire una sola operazione alla volta. 
+Tuttavia, utilizza un meccanismo chiamato event loop per gestire le operazioni asincrone, dando l'illusione di multitasking.
+
+
+
+
+
+
+Principali Componenti:
+
+1.Stack di chiamate (Call Stack):
+Funziona secondo il principio LIFO (Last In, First Out).
+Gestisce le chiamate di funzione. Quando una funzione viene chiamata, viene aggiunta in cima allo stack, e quando la funzione termina, viene rimossa dallo stack.
+È utile per tenere traccia dell'ordine di esecuzione delle funzioni.
+
+2.Heap:
+È una regione di memoria usata per allocare oggetti durante l'esecuzione del programma.
+La gestione della memoria è dinamica e viene gestita dal garbage collector (raccolta dei rifiuti), che libera memoria quando gli oggetti non sono più utilizzati.
+
+3.Coda(Queue):
+Funziona secondo il principio FIFO (First In, First Out).
+Contiene le operazioni che devono essere eseguite dopo che quelle nello stack di chiamate sono completate.
+
+
+
+
+
+
+
+Come Funziona il Ciclo degli Eventi:
+
+1.Stack di chiamate:
+Esegue le funzioni una alla volta, rimuovendo la funzione corrente dallo stack quando ha finito.
+
+2.Web APIs:
+Gestiscono operazioni asincrone come il fetching di dati (con fetch()), eventi del DOM, timer (con setTimeout(), setInterval()) e promesse (Promises).
+Coda dei Task (Task Queue):
+
+Quando un'operazione asincrona è completata (ad esempio un timer scade o una risposta fetch arriva), la relativa funzione di callback viene aggiunta alla coda dei task.
+
+
+
+Event Loop:
+Monitora costantemente la coda dei task e, quando lo stack di chiamate è vuoto, sposta il primo task dalla coda allo stack di chiamate per essere eseguito.
+Esempio:
+javascript
+Copia codice
+let f = () => console.log('first');
+let h = () => console.log('hi');
+let b = () => console.log('bye');
+
+setTimeout(h, 0);
+setTimeout(b, 400);
+setTimeout(b, 1000);
+
+f();
+In questo esempio:
+
+f() viene eseguita subito e stampa "first".
+setTimeout(h, 0) aggiunge h alla coda dei task per essere eseguita dopo 0 millisecondi (ma sarà eseguita solo quando lo stack è vuoto).
+setTimeout(b, 400) e setTimeout(b, 1000) aggiungono b alla coda dei task rispettivamente dopo 400 e 1000 millisecondi.
+Quindi, l'ordine di esecuzione sarà:
+
+"first" (immediato)
+"hi" (dopo che lo stack è vuoto)
+"bye" (due volte, ai tempi specificati)
+Questo è un riepilogo del documento sulla gestione della concorrenza in JavaScript e il funzionamento del ciclo degli eventi.
