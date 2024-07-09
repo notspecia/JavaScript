@@ -16,20 +16,24 @@ html {
     box-sizing: inherit;
 }
 
-body{
-    background-color: blanchedalmond;
+body {
+    text-align: center;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 
-/* stilizzazione dei bottoni */
+/* stylization of the buttons */
 div.buttons {
-    width: 80%;
-    margin: 40px auto 150px;
+    display: inline-block;
+    margin: 40px 0;
 }
 
 button {
-    padding: 10px 20px;
-    border-radius: 10px;
+    display: inline-block;
+    padding: 20px 30px;
+    border-radius: 20px;
     margin: 0 100px;
 }
 
@@ -42,31 +46,28 @@ button#stop {
 }
 
 button:hover {
-    background-color: yellow;
-    border-color: red;
+    cursor: pointer;
 }
 
+/* class used for hide the buttons */
 .hideButton {
     display: none;
 }
 
 
-
-/* stilizizzazione dell'immagine */
+/* stylization of the image */
 img {
     width: 250px;
-    top: 120px;
+    top: 150px;
 }
 
-
-
-/* stilizzazione del campo che mostra le informazioni */
+/* stylization of the div which contain the info of the fly */
 div.info {
-    width: 50%;
+    width: 70%;
     background-color: black;
     color: white;
     text-align: center;
-    padding: 30px;
+    padding: 60px 0;
     border-radius: 20px;
     margin: 350px auto 0;
 }

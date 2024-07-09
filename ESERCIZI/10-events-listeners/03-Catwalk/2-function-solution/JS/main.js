@@ -3,63 +3,59 @@
  * @author      Gabriele Speciale
  * @date        2024-06-18
  * @description 
- *  ● The cat should start from the left side of the screen
+ *  ● the cat should start from the left side of the screen
  * 
-    ● Write a function ‘catWalk()’ that moves the cat 10 pixels to the right
-
-    ● Make the cat move across the screen by calling that function every 50ms
-
-    ● Write different versions of the function to handle the following variant:
-     ○ Variant 2: When the cat reaches the right side of the screen, it should move backwards. 
-       When it reaches the left it should move forwards
+ *  ● write a function ‘catWalk()’ that moves the cat 10 pixels to the right
+ * 
+ *  ● make the cat move across the screen by calling that function every 50ms
+ * 
+ *  ● write different versions of the function to handle the following variant:
+ *    ○ variant 2: when the cat reaches the right side of the screen, it should move backwards. 
+ *       when it reaches the left it should move forwards
  */
-
 
 
 /**
- * function catwalkRestart
+ * function catwalkBackwards
  * 
- * Descrizione della funzione
+ * every 50 ms, this function is scheduled to move the cat from its original position
+ * once it reaches the right edge of the viewport, it changes the direction of its walk
+ * then again, when it reaches the left edge of the viewport, it starts walking forward again
  */
 function catwalkBackwards() {
 
-  if (direction === "forward") {
-    walking += 10;
+  // if moving forward, add 10px to walk position
+  if (catWalk.walkDirection === "forward") {
+    catWalk.walkPosition += 10;
 
+    // if moving backward, subtract 10px from walk position
   } else {
-    walking -= 10;
+    catWalk.walkPosition -= 10;
   }
 
-  imageCat.style.left = `${walking}px`;
 
-  let widthViewPort = window.innerWidth;
-  let catWidth = imageCat.width;
+  catWalk.imageCat.style.left = `${catWalk.walkPosition}px`;
 
-  // controlla se il gatto ha raggiunto il lato destro della finestra
-  if (walking + catWidth >= widthViewPort) {
-    direction = "backward";
-    imageCat.style.transform = "scaleX(-1)";
+  // if the cat's current position + the image width is >= the viewport width, change direction to backward
+  if (catWalk.walkPosition + catWalk.imageCat.width >= window.innerWidth) {
+    catWalk.walkDirection = "backward";
+    catWalk.imageCat.style.transform = "scaleX(-1)";
   }
 
-  // controlla se il gatto ha raggiunto il lato sinistro della finestra
-  if (walking <= 0) {
-    direction = "forward";
-    imageCat.style.transform = "scaleX(1)";
+  // if the cat's current position <= 0, change direction to forward
+  if (catWalk.walkPosition <= 0) {
+    catWalk.walkDirection = "forward";
+    catWalk.imageCat.style.transform = "scaleX(1)";
   }
 }
 
 
+// object that stores the walk parameters and direction of the cat
+let catWalk = {
+  walkPosition: 0, // current position of the cat (absolute position in px)
+  walkDirection: "forward", // current walking direction of the cat
+  imageCat: document.querySelector("img") // cat image with absolute position to the viewport
+};
 
-
-// assegniazione ad una variabile l'immagine del gatto
-let imageCat = document.querySelector("img");
-
-// valore number utilizzato per muovere il gatto di X px dalla sua posizione
-let walking = 0;
-
-// stabiliamo la direzione di camminata del gatto 
-let direction = "forward";
-
-// ogni 50ms andrà a schedulare una funzione che sposta la gif del gatto verso destra (10 px)
+// every 50ms schedules a function to move the cat gif to the right (10 px)
 setInterval(catwalkBackwards, 50);
-

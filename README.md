@@ -21,6 +21,4 @@ All the topics mentioned are fully in -depth whit examples, happy reading :) !!
 
 ## TO FIX
 
-1. section 11 (events-and-listeners), take more notes and complete exercise number 5
-
-2. read and take some notes and do exesercise about section 12
+1. read and take some notes and do exesercise about section 12 (json-and-ajax)

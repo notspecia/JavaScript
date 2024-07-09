@@ -30,8 +30,8 @@ function startMoving(event) {
   timerStart = setInterval(() => {
 
     // movement from its original position by Xpx at each interval
-    walkPosition += walkSpeed;
-    imageCat.style.left = `${walkPosition}px`;
+    catWalk.walkPosition += catWalk.walkSpeed;
+    catWalk.imageCat.style.left = `${catWalk.walkPosition}px`;
 
     /* hide the start button to prevent adding another start event listener
     / show the stop button to stop the cat when the button is clicked */
@@ -39,12 +39,12 @@ function startMoving(event) {
     buttonStop.classList.remove("hideButton");
 
     // if the cat's position + the width of its image is > the viewport, it resets
-    if (walkPosition + imageCat.width > window.innerWidth) {
-      walkPosition = 0;
+    if (catWalk.walkPosition + catWalk.imageCat.width > window.innerWidth) {
+      catWalk.walkPosition = 0;
     }
 
     // add the current speed of the cat to the info div at each interval
-    infoDiv.textContent = `current movement speed of cat: ${walkSpeed}px/h`;
+    infoDiv.textContent = `current movement speed of cat: ${catWalk.walkSpeed}px/h`;
 
   }, 50);
 }
@@ -79,7 +79,7 @@ function stopMoving(event) {
  * @param {object} event - event information
  */
 function speedMoving(event) {
-  walkSpeed += 2;
+  catWalk.walkSpeed += 2;
 }
 
 
@@ -94,22 +94,26 @@ function speedMoving(event) {
  */
 function slowMoving(event) {
 
-  if (walkSpeed > 1) {
-    walkSpeed -= 2;
+  if (catWalk.walkSpeed > 1) {
+    catWalk.walkSpeed -= 2;
   }
 }
+
+
+
+// used to stop the walk when the stop button is pressed
+let timerStart;
 
 // get the div that will contain the cat's movement speed
 let infoDiv = document.querySelector("div.info");
 
-// cat image with absolute position to the viewport
-let imageCat = document.querySelector("img");
 
-// number value used to move the cat X px from its original position (0px)
-let walkPosition = 0; // current position of the cat (absolute position in px)
-let walkSpeed = 3;    // walking speed
-let timerStart;       // used to stop the walk when the stop button is pressed
-
+// object that storage the walk parameters of the cat
+let catWalk = {
+  walkPosition: 0, // current position of the cat (absolute position in px)
+  walkSpeed: 3, // walking speed
+  imageCat: document.querySelector("img") // cat image with absolute position to the viewport
+};
 
 
 // get the buttons and assign them to variables
