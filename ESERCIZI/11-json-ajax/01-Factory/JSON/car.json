@@ -1,0 +1,23 @@
+{
+    "id": 1,
+    "make": "Toyota",
+    "model": "Mazda",
+    "year": 2022,
+    "color": "black",
+    "isElectric": true,
+    "features": [
+        "air conditioning",
+        "auto drive",
+        "bluetooth"
+    ],
+    "owner": {
+        "name": "Speciale Gabriele",
+        "licenseNumber": "ABCD33412",
+        "contacts": [
+            "email",
+            "phone",
+            "fax"
+        ]
+    },
+    "lastInspectionDate": null
+}

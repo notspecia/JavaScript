@@ -1,0 +1,34 @@
+{
+    "id": 1,
+    "name": "Toyota agency",
+    "location": "Tokyo, Japan",
+    "capacityCars": 4500,
+    "isOperational": true,
+    "departments": [
+        "assembly",
+        "inspections",
+        "painting",
+        "quality control"
+    ],
+    "manager": {
+        "name": "Speciale Luigi",
+        "employeeId": "02310LS",
+        "contacts": [
+            "email",
+            "conferences"
+        ],
+        "coFounders": [
+            {
+                "name": "Mario Rossi",
+                "age": 53,
+                "married": true
+            },
+            {
+                "name": "Giorgio Bianchi",
+                "age": 23,
+                "married": false
+            }
+        ]
+    },
+    "established": 2012
+}

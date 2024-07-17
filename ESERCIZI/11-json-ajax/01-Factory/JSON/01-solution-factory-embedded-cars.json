@@ -1,0 +1,150 @@
+{
+    "id": 1,
+    "name": "Toyota agency",
+    "location": "Tokyo, Japan",
+    "capacityCars": 4500,
+    "isOperational": true,
+    "departments": [
+        "assembly",
+        "inspections",
+        "painting",
+        "quality control"
+    ],
+    "manager": {
+        "name": "Speciale Luigi",
+        "employeeId": "02310LS",
+        "contacts": [
+            "email",
+            "conferences"
+        ],
+        "coFounders": [
+            {
+                "name": "Mario Rossi",
+                "age": 53,
+                "married": true
+            },
+            {
+                "name": "Giorgio Bianchi",
+                "age": 23,
+                "married": false
+            }
+        ]
+    },
+    "established": 2012,
+    "cars": [
+        {
+            "id": 1,
+            "make": "Toyota",
+            "model": "Mazda",
+            "year": 2022,
+            "color": "black",
+            "isElectric": true,
+            "features": [
+                "air conditioning",
+                "auto drive",
+                "bluetooth"
+            ],
+            "owner": {
+                "name": "Speciale Gabriele",
+                "licenseNumber": "ABCD33412",
+                "contacts": [
+                    "email",
+                    "phone",
+                    "fax"
+                ]
+            },
+            "lastInspectionDate": null
+        },
+        {
+            "id": 2,
+            "make": "Toyota",
+            "model": "Yaris",
+            "year": 2010,
+            "color": "gray",
+            "isElectric": false,
+            "features": [
+                "air conditioning",
+                "power steering"
+            ],
+            "owner": {
+                "name": "Conti Carlo",
+                "licenseNumber": "WE46273",
+                "contacts": [
+                    "email",
+                    "pec",
+                    "fax"
+                ]
+            },
+            "lastInspectionDate": null
+        },
+        {
+            "id": 3,
+            "make": "Toyota",
+            "model": "Corolla",
+            "year": 2020,
+            "color": "blue",
+            "isElectric": true,
+            "features": [
+                "air conditioning",
+                "auto drive",
+                "phonecall device"
+            ],
+            "owner": {
+                "name": "Barri Laura",
+                "licenseNumber": "EL45DF2",
+                "contacts": [
+                    "phone",
+                    "email"
+                ]
+            },
+            "lastInspectionDate": null
+        },
+        {
+            "id": 4,
+            "make": "Toyota",
+            "model": "RAV4",
+            "year": 2015,
+            "color": "red",
+            "isElectric": true,
+            "features": [
+                "power steering",
+                "auto drive",
+                "bluetooth"
+            ],
+            "owner": {
+                "name": "Bistrotti Luca",
+                "licenseNumber": "LU21ME56",
+                "contacts": [
+                    "email",
+                    "phone",
+                    "fax"
+                ]
+            },
+            "lastInspectionDate": null
+        },
+        {
+            "id": 5,
+            "make": "Toyota",
+            "model": "Hilux",
+            "year": 2023,
+            "color": "green",
+            "isElectric": true,
+            "features": [
+                "air conditioning",
+                "auto drive",
+                "bluetooth",
+                "power steering"
+            ],
+            "owner": {
+                "name": "Nostri Daniele",
+                "licenseNumber": "DA32M127",
+                "contacts": [
+                    "email",
+                    "instagram",
+                    "facebook"
+                ]
+            },
+            "lastInspectionDate": null
+        }
+    ]
+}

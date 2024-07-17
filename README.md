@@ -22,3 +22,5 @@ All the topics mentioned are fully in -depth whit examples, happy reading :) !!
 ## TO FIX
 
 1. read and take some notes and do exesercise about section 12 (json-and-ajax)
+
+2. fix documentation of ex 2 section 12 (json-and-ajax)
