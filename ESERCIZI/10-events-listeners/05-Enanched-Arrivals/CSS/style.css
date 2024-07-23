@@ -74,7 +74,7 @@ table tbody tr td {
 }
 
 /* Cursor style change on hover for cells */
-table tbody tr td:hover {
+table tbody tr:hover {
     cursor: pointer;
 }
 

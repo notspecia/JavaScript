@@ -1,4 +1,4 @@
-# JavaScript ENGLISH/ITALIAN COURSE VERSION 0.6
+# JavaScript ENGLISH/ITALIAN COURSE VERSION 0.8
 
 During this course of JavaScript I'm learning the following notions, going to practice with practical exercises that identify with reality:
 
@@ -16,11 +16,12 @@ During this course of JavaScript I'm learning the following notions, going to pr
 10. the-dom
 11. events-and-listeners
 12. json-and-ajax
+13. review-in-depth
 
 All the topics mentioned are fully in -depth whit examples, happy reading :) !!
 
 ## TO FIX
 
 1. read and take some notes and do exesercise about section 12 (json-and-ajax)
-
-2. fix documentation of ex 2 section 12 (json-and-ajax)
+2. do exsercise number 2 3 of section 12
+3. read and take some notes and do exesercise about section 13 (in-depth)

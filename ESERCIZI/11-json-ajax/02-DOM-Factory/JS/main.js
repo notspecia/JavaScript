@@ -12,6 +12,7 @@
     ○ Don’t use <table>
  */
 
+
 // object which contains the json object (from exsercise 1) writed into string in JS variable
 let objectJson = `{
     "name": "Toyota agency",
@@ -164,22 +165,17 @@ let objectJson = `{
 }`;
 
 
-// conversion from the string containing the object JSON, in question JS
-let objectJavaScript = JSON.parse(objectJson);
-
-
 
 /**
- * Nome della funzione
- * Descrizione della funzione
- * @param {TipoInput1} NomeInput1 - DescrizioneInput1
- * @param {TipoInput2} NomeInput2 - DescrizioneInput2
- * @returns {TipoOutput} - DescrizioneOutput
+ * function appendListItem
+ * create an element <li> with the text provided and adds it to a list <ul> specified
+ * @param {string} text - content that will be insered into the <li>
+ * @param {element} list - the element <ul> that will be filled
  */
-function createInformationsFactoryCars(text, list) {
+function appendListItem(text, list) {
 
-    /* elemento <li> che conterrà l'informazione del testo passato della factory, 
-    e che verrà appesso alla <ul> factory */
+    /* element <li> which will contain the information of the past text of the factory, 
+    and that will be appended on to the <ul> factory */
     let infoOfList = document.createElement("li");
     infoOfList.textContent = text;
 
@@ -190,47 +186,16 @@ function createInformationsFactoryCars(text, list) {
 
 
 /**
- * Nome della funzione
- * Descrizione della funzione
- * @param {TipoInput1} NomeInput1 - DescrizioneInput1
- * @param {TipoInput2} NomeInput2 - DescrizioneInput2
- * @returns {TipoOutput} - DescrizioneOutput
- */
-function createInformationsManagerFoundersFactory(objectManager, listFactory) {
-
-    // schedulazione funzioni che permettono di inserire informazioni del founder dagli oggetti, all'interno dei <li> della <ul> factory
-    createInformationsFactoryCars(`MANAGER--> ${objectManager.name}, ID: ${objectManager.employeeId}, CONTACTS: ${objectManager.contacts.join(", ")}`, listFactory);
-
-    // ciclo che schedula per ogni co-founder presente nell'array, le sue informazioni e inserirle nell' <li> della lista <ul> factory 
-    for (let i = 0; i < objectManager.coFounders.length; i++) {
-        createInformationsFactoryCars(`${i + 1} CO-FOUNDERS--> ${objectManager.coFounders[i].name}, AGE: ${objectManager.coFounders[i].age},  IS MARRIED?: ${objectManager.coFounders[i].married}`, listFactory);
-    }
-
-}
-
-
-/**
- * Nome della funzione
- * Descrizione della funzione
- * @param {TipoInput1} NomeInput1 - DescrizioneInput1
- * @param {TipoInput2} NomeInput2 - DescrizioneInput2
- * @returns {TipoOutput} - DescrizioneOutput
- */
-function createInformationsOwnerCars(objectOwner, listCars) {
-
-    // schedulazione funzioni che permettono di inserire informazioni dell'owner della car dagli oggetti, all'interno dei <li> della <ul> cars
-    createInformationsFactoryCars(`OWNER--> ${objectOwner.name}, LICENSE: ${objectOwner.licenseNumber}, CONTACTS: ${objectOwner.contacts.join(", ")}`, listCars);
-}
-
-
-/**
- * function generateFactory
- * inizialmente andrà a prendere dall'oggetto JSON le informazioni della factory e appenderle all'interno
- * dell'array `cars` presente nell'oggetto JSON citato prima
- * del document HTML, successivamente andrà ad invocare una funzione che si occuperà delle macchine all'interno
- * @param {object} object - DescrizioneInput1
+ * function generateFactoryCars
+ * generates and dynamically inserts information relating to a factory and cars in the DOM,
+ * starting from an object JS. 
+ * the information is displayed in two lists `<ul>` separated: 
+ * one for factory information, and one for information on cars
+ * @param {object} object - object javascript of the factory whit the cars
  */
 function generateFactoryCars(object) {
+
+    // --------------------------- FACTORY INFORMATIONS ---------------------------------
 
     // title <h1> will has the name of the factory
     let titleFactory = document.createElement("h1");
@@ -239,23 +204,35 @@ function generateFactoryCars(object) {
     // append the title of the factory at the start of the body
     document.body.prepend(titleFactory);
 
+
     /* get the <ul> a list which will contains the info of the factory, 
     from the document and stored into a variable */
     let listFactory = document.getElementById("factoryInfo");
 
-    // schedulazione funzioni che permettono di inserire contenuto dagli oggetti, all'interno dei <li> della <ul> factory
-    createInformationsFactoryCars(`LOCATION: ${object.location}`, listFactory);
-    createInformationsFactoryCars(`CAPACITY CARS: ${object.capacityCars}`, listFactory);
-    createInformationsFactoryCars(`IS OPERATIONAL?: ${object.isOperational}`, listFactory);
-    createInformationsFactoryCars(`DEPARTMENTS: ${object.departments.join(", ")}`, listFactory);
-    createInformationsManagerFoundersFactory(object.manager, listFactory);
-    createInformationsFactoryCars(`DATE ESTABLISHED: ${object.established}`, listFactory);
+    /* invocation functions that allow you to insert content from objects, 
+    within the <li> from the <ul> factory */
+    appendListItem(`LOCATION: ${object.location}`, listFactory);
+    appendListItem(`CAPACITY CARS: ${object.capacityCars}`, listFactory);
+    appendListItem(`IS OPERATIONAL?: ${object.isOperational}`, listFactory);
+    appendListItem(`DEPARTMENTS: ${object.departments.join(", ")}`, listFactory);
+    appendListItem(`MANAGER--> ${object.manager.name}, ID: ${object.manager.employeeId}, CONTACTS: ${object.manager.contacts.join(", ")}`, listFactory);
 
+    /* cycle that for each co-founder present in the array, 
+    within the <li> from the <ul> factory*/
+    for (let i = 0; i < object.manager.coFounders.length; i++) {
+        appendListItem(`${i + 1} CO-FOUNDERS--> ${object.manager.coFounders[i].name}, AGE: ${object.manager.coFounders[i].age},  IS MARRIED?: ${object.manager.coFounders[i].married}`, listFactory);
+
+    }
+    appendListItem(`DATE ESTABLISHED: ${object.established}`, listFactory);
+
+
+    // --------------------------- CARS INFORMATIONS ---------------------------------
 
     /* get the <ul> a list which will contains the cars, 
     from the document and stored into a variable */
     let listCars = document.getElementById("listCarsInfo");
 
+    // cycle that import infos about every cars which exist in the factory object
     for (let i = 0; i < object.cars.length; i++) {
 
         // creation of an title of the car 
@@ -265,17 +242,22 @@ function generateFactoryCars(object) {
         // append the title of the car into the <ul> cars list
         listCars.append(titleCar);
 
-        // schedulazione funzioni che permettono di inserire contenuto dagli oggetti, all'interno dei <li> della <ul> cars
-        createInformationsFactoryCars(`ID: ${object.cars[i].id}`, listCars);
-        createInformationsFactoryCars(`YEAR PRODUCTION: ${object.cars[i].year}`, listCars);
-        createInformationsFactoryCars(`COLOR: ${object.cars[i].color}`, listCars);
-        createInformationsFactoryCars(`IS ELECTRIC?: ${object.cars[i].isElectric}`, listCars);
-        createInformationsFactoryCars(`FEATURES OF THE CAR: ${object.cars[i].features.join(", ")}`, listCars);
-        createInformationsOwnerCars(object.cars[i].owner, listCars);
-        createInformationsFactoryCars(`LAST INSPECTION DATE: ${object.cars[i].lastInspectionDate}`, listCars);
+        /* invocation functions that allow you to insert content from the objects, 
+        within the <li> from the <ul> cars*/
+        appendListItem(`ID: ${object.cars[i].id}`, listCars);
+        appendListItem(`OWNER--> ${object.cars[i].owner.name}, LICENSE: ${object.cars[i].owner.licenseNumber}, CONTACTS: ${object.cars[i].owner.contacts.join(", ")}`, listCars);
+        appendListItem(`YEAR PRODUCTION: ${object.cars[i].year}`, listCars);
+        appendListItem(`COLOR: ${object.cars[i].color}`, listCars);
+        appendListItem(`IS ELECTRIC?: ${object.cars[i].isElectric}`, listCars);
+        appendListItem(`FEATURES OF THE CAR: ${object.cars[i].features.join(", ")}`, listCars);
+        appendListItem(`LAST INSPECTION DATE: ${object.cars[i].lastInspectionDate}`, listCars);
     }
+    
 }
 
 
-// invocazione della funzione che genera le informazioni dell'agenzia automobilistica e delle sue macchine in 2 <ul> diverse
+// conversion from the string containing the object JSON, in question JS
+const objectJavaScript = JSON.parse(objectJson);
+
+// invocation of the function that generates the information of the factory and its machines in 2 <ul> separate
 generateFactoryCars(objectJavaScript);
