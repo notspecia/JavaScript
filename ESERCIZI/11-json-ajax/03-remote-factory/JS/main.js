@@ -30,60 +30,119 @@
      are using as well as a list of their IDs
  */
 
-// created separate request objects for each URL
+// create separate request objects for each URL
 const factoryRequest = new XMLHttpRequest();
 const carsRequest = new XMLHttpRequest();
 
-// URLs of the JSON stored using jsonblob 
-const factoryUrl = "http://jsonblob.com/api/jsonBlob/1265346802797633536";
-const carsUrl = "http://jsonblob.com/api/jsonBlob/1265346918619144192";
+// URLs of the JSON stored using jsonblob
+const factoryUrl = "https://jsonblob.com/api/jsonBlob/1265346802797633536";
+const carsUrl = "https://jsonblob.com/api/jsonBlob/1265346918619144192";
 
-// open and send requests of the factory
+
+
+/**
+ * function appendListItem
+ * create an element <li> with the text provided and adds it to a list <ul> specified
+ * @param {string} text - content that will be insered into the <li>
+ * @param {element} list - the element <ul> that will be filled
+ */
+function appendListItem(text, list) {
+
+  /* element <li> which will contain the information of the past text of the factory, 
+  and that will be appended on to the <ul> factory */
+  let infoOfList = document.createElement("li");
+  infoOfList.textContent = text;
+
+  // append the X information <li> about the factory into the list <ul>
+  list.append(infoOfList);
+
+}
+
+
+
+/**
+ * function generateFactory
+ * function to generate the factory information and display it on the page
+ * @param {object} object - the factory data object
+ */
+function generateFactory(object) {
+
+  // title <h1> will has the name of the factory
+  let titleFactory = document.createElement("h1");
+  titleFactory.textContent = `${object.name}`;
+
+  // append the title of the factory at the start of the body
+  document.body.prepend(titleFactory);
+
+
+  /* get the <ul> a list which will contains the info of the factory, 
+  from the document and stored into a variable */
+  let listFactory = document.getElementById("factoryInfo");
+
+  /* invocation functions that allow you to insert content from objects, 
+  within the <li> from the <ul> factory */
+  appendListItem(`LOCATION: ${object.location}`, listFactory);
+  appendListItem(`CAPACITY CARS: ${object.capacityCars}`, listFactory);
+  appendListItem(`IS OPERATIONAL?: ${object.isOperational}`, listFactory);
+  appendListItem(`DEPARTMENTS: ${object.departments.join(", ")}`, listFactory);
+  appendListItem(`MANAGER--> ${object.manager.name}, ID: ${object.manager.employeeId}, CONTACTS: ${object.manager.contacts.join(", ")}`, listFactory);
+
+  /* cycle that for each co-founder present in the array, 
+  within the <li> from the <ul> factory*/
+  for (let i = 0; i < object.manager.coFounders.length; i++) {
+    appendListItem(`${i + 1} CO-FOUNDERS--> ${object.manager.coFounders[i].name}, AGE: ${object.manager.coFounders[i].age},  IS MARRIED?: ${object.manager.coFounders[i].married}`, listFactory);
+
+  }
+  appendListItem(`DATE ESTABLISHED: ${object.established}`, listFactory);
+
+}
+
+
+/**
+ * function handleRequestSuccess
+ * function to handle successful HTTPS requests
+ * @param {XMLHttpRequest} request - the XMLHttpRequest object
+ * @param {string} type - the type of data being handled (factory or cars)
+ */
+function handleRequestSuccess(request, type) {
+
+  // checking the status of the request (between 200 and 300 is good response)
+  if (request.status >= 200 && request.status < 300) {
+    const data = JSON.parse(request.responseText);
+    console.log(`${type} data:`, data);
+
+    // if the type of the data is "factory", evocate a function which manage that data
+    if (type === "factory") {
+      generateFactory(data);
+
+      // if the type of the data is "cars", evocate a function which manage that data
+    } else {
+      generateCars(data);
+    }
+
+    // bad request!
+  } else {
+    console.error(`error loading ${type} data:`, request.statusText);
+  }
+}
+
+/**
+ * function handleRequestError
+ * Function to handle errors in HTTP requests
+ * @param {string} type - The type of data that failed to load (factory or cars)
+ */
+function handleRequestError(type) {
+  console.error(`network error while loading ${type} data!`);
+}
+
+// set up and send requests for the factory, manipulate the state of the request whit eventlisteners
 factoryRequest.open("GET", factoryUrl, true);
+factoryRequest.addEventListener("load", () => handleRequestSuccess(factoryRequest, "factory"));
+factoryRequest.addEventListener("error", () => handleRequestError("factory"));
 factoryRequest.send();
 
-// open and send requests of the cars
+// set up and send requests for the cars, manipulate the state of the request whit eventlisteners
 carsRequest.open("GET", carsUrl, true);
+carsRequest.addEventListener("load", () => handleRequestSuccess(carsRequest, "cars"));
+carsRequest.addEventListener("error", () => handleRequestError("cars"));
 carsRequest.send();
-
-
-
-// add event listeners for the factory request if the request is loaded
-factoryRequest.addEventListener("load", () => {
-
-  // checking the status of the request (between 200 and 300 is good response)
-  if (factoryRequest.status >= 200 && factoryRequest.status < 300) {
-    const factoryData = JSON.parse(factoryRequest.responseText);
-    console.log("factory data:", factoryData);
-
-    // bad request!
-  } else {
-    console.error("error loading factory data!:", factoryRequest.statusText);
-  }
-});
-
-// add event listeners for the factory to manage the network problems of the request (didn't sended!)
-factoryRequest.addEventListener("error", () => {
-  console.error("Network error while loading factory data");
-});
-
-// -----------------------------------------------------------------------------------------------------------
-
-// add event listeners for the cars request if the request is loaded
-carsRequest.addEventListener("load", () => {
-
-  // checking the status of the request (between 200 and 300 is good response)
-  if (carsRequest.status >= 200 && carsRequest.status < 300) {
-    const carsData = JSON.parse(carsRequest.responseText);
-    console.log("cars data:", carsData);
-
-    // bad request!
-  } else {
-    console.error("error loading cars data:", carsRequest.statusText);
-  }
-});
-
-// add event listeners for the cars to manage the network problems of the request (didn't sended!)
-carsRequest.addEventListener("error", () => {
-  console.error("network error while loading cars data!");
-});

@@ -39,11 +39,21 @@
 
 ## Approach to solution
 
- created a solution to manage and display data about a car factory and its cars using jsonblob for storing JSON data.
+this application interacts with JSON data stored on jsonblob to display information about a car factory and its cars. 
 
-* stored the JSON which contain the factory and his cars there --> https://jsonblob.com/api#endpoints
-* url of my JSON factory blob --> http://jsonblob.com/1265346802797633536
-* url of my JSON cars blob -->http://jsonblob.com/1265346918619144192 
+users can click on each car to view more details in a collapsible panel and edit car details. changes are saved back to jsonblob, ensuring data is always up-to-date. 
+
+error handling is implemented to manage HTTP request failures.
+
+## JSONBlob Links and IDs
+
+### Factory Data
+- **URL:** [Factory JSON](https://jsonblob.com/api/jsonBlob/1265346802797633536)
+- **ID:** 1265346802797633536
+
+### Cars Data
+- **URL:** [Cars JSON](https://jsonblob.com/api/jsonBlob/1265346918619144192)
+- **ID:** 1265346918619144192
 
 
 
