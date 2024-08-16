@@ -1,7 +1,119 @@
-.car-details {
+/**
+ * style.css
+ *
+ *
+ * let's sets also the box-sizing property to border-box for all elements.
+ *
+ */
+
+html {
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: inherit;
+}
+
+/* div containing cars information that appears when a image of the car is clicked
+initially is hidden --> display: none */
+div#moreInfoCars {
+    display: none;
+    background: linear-gradient(to right, black, rgb(0, 50, 50));
+    box-shadow: 0 0 0 100vw rgba(0, 0, 0, 0.85);
+    width: 55vw;
+    height: 60vh;
+    padding-top: 40px;
+    border-radius: 30px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+/* styling for paragraphs (p) inside the moreInfoCars div */
+div#moreInfoCars p {
+    color: white;
+    font-size: 16px;
+    text-align: center;
+}
+
+/* class which will be added with JS to display the moreInfoCars div */
+div#moreInfoCars.show {
+    display: block;
+}
+
+/* styling for the close (X) button */
+label {
+    width: 25px;
+    height: 25px;
+    background: url("../IMG/close.png");
+    background-size: 100%;
+    cursor: pointer;
+    position: absolute;
+    right: 30px;
+    top: 30px;
+}
+
+/* The input checkbox is invisible but exists */
+input {
     display: none;
 }
 
-.error {
-    color: red;
+/* ---------------- styling the lists of the factory --------------- */
+
+h1 {
+    text-align: center;
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+
+h2 {
+    font-size: 35px;
+    margin: 100px 0;
+}
+
+/* ----------------- styling the cars (figures) created whit JS -----------------*/
+
+div#imagesCars {
+    width: 80%;
+    margin: 0 auto;
+}
+
+figure {
+    display: inline-block;
+    margin-bottom: 150px;
+    position: relative;
+}
+
+figure:hover {
+    cursor: pointer;
+}
+
+figure img {
+    width: 300px;
+    height: 200px;
+}
+
+figure figcaption {
+    background: linear-gradient( rgb(3, 114, 114), black);
+    color: whitesmoke;
+    font-size: 15px;
+    font-weight: bold;
+    padding: 7px;
+    border-radius: 30px;
+    position: absolute;
+    top: 10px;
+    right: 0;
 }

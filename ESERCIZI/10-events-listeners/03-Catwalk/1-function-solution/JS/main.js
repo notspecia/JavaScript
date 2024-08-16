@@ -21,7 +21,6 @@
  * once it reaches the right edge of the viewport, it returns to its original position
  */
 function catwalkRestart() {
-
   catWalk.walkPosition += 10;
   catWalk.imageCat.style.left = `${catWalk.walkPosition}px`;
 
@@ -29,9 +28,7 @@ function catwalkRestart() {
   if (catWalk.walkPosition + catWalk.imageCat.width > window.innerWidth) {
     catWalk.walkPosition = 0;
   }
-
 }
-
 
 
 // object that stores the walk parameters of the cat

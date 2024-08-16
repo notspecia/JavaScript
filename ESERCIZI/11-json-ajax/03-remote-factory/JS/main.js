@@ -30,14 +30,6 @@
      are using as well as a list of their IDs
  */
 
-// create separate request objects for each URL
-const factoryRequest = new XMLHttpRequest();
-const carsRequest = new XMLHttpRequest();
-
-// URLs of the JSON stored using jsonblob
-const factoryUrl = "https://jsonblob.com/api/jsonBlob/1265346802797633536";
-const carsUrl = "https://jsonblob.com/api/jsonBlob/1265346918619144192";
-
 
 
 /**
@@ -50,52 +42,125 @@ function appendListItem(text, list) {
 
   /* element <li> which will contain the information of the past text of the factory, 
   and that will be appended on to the <ul> factory */
-  let infoOfList = document.createElement("li");
-  infoOfList.textContent = text;
+  let listItem = document.createElement("li");
+  listItem.textContent = text;
 
   // append the X information <li> about the factory into the list <ul>
-  list.append(infoOfList);
-
+  list.append(listItem);
 }
-
 
 
 /**
  * function generateFactory
- * function to generate the factory information and display it on the page
+ * function which generate the factory information and display it on the page
  * @param {object} object - the factory data object
  */
 function generateFactory(object) {
 
   // title <h1> will has the name of the factory
-  let titleFactory = document.createElement("h1");
+  const titleFactory = document.createElement("h1");
   titleFactory.textContent = `${object.name}`;
 
-  // append the title of the factory at the start of the body
+  // append the title of the factory at the start of the body (prepend)
   document.body.prepend(titleFactory);
 
 
   /* get the <ul> a list which will contains the info of the factory, 
   from the document and stored into a variable */
-  let listFactory = document.getElementById("factoryInfo");
+  const listFactory = document.getElementById("factoryInfo");
 
-  /* invocation functions that allow you to insert content from objects, 
-  within the <li> from the <ul> factory */
+  /* ! invocation functions that allow you to insert content from objects, 
+  within the <li> from the <ul> factory! */
   appendListItem(`LOCATION: ${object.location}`, listFactory);
   appendListItem(`CAPACITY CARS: ${object.capacityCars}`, listFactory);
   appendListItem(`IS OPERATIONAL?: ${object.isOperational}`, listFactory);
   appendListItem(`DEPARTMENTS: ${object.departments.join(", ")}`, listFactory);
-  appendListItem(`MANAGER--> ${object.manager.name}, ID: ${object.manager.employeeId}, CONTACTS: ${object.manager.contacts.join(", ")}`, listFactory);
+  appendListItem(`MANAGER: ${object.manager.name}, ID: ${object.manager.employeeId}, CONTACTS: ${object.manager.contacts.join(", ")}`, listFactory);
 
   /* cycle that for each co-founder present in the array, 
-  within the <li> from the <ul> factory*/
+  within the <li> from the <ul> factory */
   for (let i = 0; i < object.manager.coFounders.length; i++) {
-    appendListItem(`${i + 1} CO-FOUNDERS--> ${object.manager.coFounders[i].name}, AGE: ${object.manager.coFounders[i].age},  IS MARRIED?: ${object.manager.coFounders[i].married}`, listFactory);
-
+    appendListItem(`${i + 1} CO-FOUNDERS: ${object.manager.coFounders[i].name}, AGE: ${object.manager.coFounders[i].age},  IS MARRIED: ${object.manager.coFounders[i].married}`, listFactory);
   }
-  appendListItem(`DATE ESTABLISHED: ${object.established}`, listFactory);
 
+  appendListItem(`DATE ESTABLISHED: ${object.established}`, listFactory);
 }
+
+
+/**
+ * function showInfoCar
+ * ?descrizione 
+ * @param {car} NomeInput1 - DescrizioneInput1
+ */
+function showInfoCar(car) {
+  document.querySelector("p.id").textContent = `ID CAR: ${car.id}`;
+  document.querySelector("p.model").textContent = `CAR: ${car.make} ${car.model} ${car.year}`;
+  document.querySelector("p.color").textContent = `COLOR: ${car.color}`;
+  document.querySelector("p.isElectric").textContent = `IS ELECTRIC?: ${car.isElectric}`;
+  document.querySelector("p.features").textContent = `FEATURES: ${car.features.join(", ")}`;
+  document.querySelector("p.owner").textContent = `OWNER: ${car.owner.name} ${car.owner.licenseNumber}`;
+  document.querySelector("p.ownerContacts").textContent = `OWNER CONTACTS: ${car.owner.contacts.join(", ")}`;
+  document.querySelector("p.lastInspectionDate").textContent = `LAST INSPECTION DATE: ${car.lastInspectionDate}`;
+}
+
+
+/**
+ * function generateCars
+ * function which generate the cars of the factory information and display it on the page
+ * for each car, is created an element figure which contains the image of the car
+ * and the caption of it, if the user press the figure of an car, will be showed more informations
+ * about it
+ * @param {object} object - the factory data object
+ */
+function generateCars(object) { 
+
+  // variable containing the div which shows more information about the CARS + the label X
+  const moreInfoDiv = document.getElementById("moreInfoCars");
+
+  // added to a variable the label symbol X, contained in the div which show more info about the car
+  const closeSimbol = document.querySelector("label");
+
+  // take from the document the div which will containt all the cars (element figure)
+  const containerImages = document.getElementById("imagesCars");
+
+  //! FOR EACH CAR CONTAINED IN THE OBJECT
+  object.forEach(car => {
+
+    // created element figure which will have an image and a figcaption, then will appended to the div main
+    let figure = document.createElement("figure");
+
+    // created element img to add to the figure, and added attributes: src, alt
+    let image = document.createElement("img");
+    image.src = car.image;
+    image.alt = `car image`;
+
+    // created element figcaption to add to the figure, and added to it a content text
+    let caption = document.createElement("figcaption");
+    caption.textContent = `${car.make} ${car.model} ${car.year}`;
+
+    // append the image and the figcaption elaborated, to the figure
+    figure.append(image, caption);
+
+    // append the figure to the div which contain the list of all cars
+    containerImages.append(figure);
+
+    // add event listener to the figure of the car, will show into a div, the information about that car
+    figure.addEventListener("click", () => {
+      moreInfoDiv.style.display = "block";
+      showInfoCar(car);
+    });
+
+    /* add event listener to the X label inside the div which show more info about the car
+    when it is clicked, the div will disappear */
+    closeSimbol.addEventListener("click", () => {
+      moreInfoDiv.style.display = "none";
+    });
+
+  });
+}
+
+
+// -----------------------------------------------------------------------------------------------------------
 
 
 /**
@@ -108,6 +173,8 @@ function handleRequestSuccess(request, type) {
 
   // checking the status of the request (between 200 and 300 is good response)
   if (request.status >= 200 && request.status < 300) {
+
+    // assigned to a variable the JSONblob of the factory / cars request
     const data = JSON.parse(request.responseText);
     console.log(`${type} data:`, data);
 
@@ -122,27 +189,38 @@ function handleRequestSuccess(request, type) {
 
     // bad request!
   } else {
-    console.error(`error loading ${type} data:`, request.statusText);
+    alert(`error loading ${type} data, retry later!`);
   }
 }
 
+
 /**
  * function handleRequestError
- * Function to handle errors in HTTP requests
+ * Function to handle errors in HTTP requests, it will show a message of error and add a bg color red
+ * on the body 
  * @param {string} type - The type of data that failed to load (factory or cars)
  */
 function handleRequestError(type) {
-  console.error(`network error while loading ${type} data!`);
+  alert(`network error while loading ${type} data retry later!`);
 }
 
-// set up and send requests for the factory, manipulate the state of the request whit eventlisteners
+
+// create separate request objects for each URL
+const factoryRequest = new XMLHttpRequest();
+const carsRequest = new XMLHttpRequest();
+
+// URLs of the JSON stored using jsonblob
+const factoryUrl = "https://jsonblob.com/api/jsonBlob/1265346802797633536";
+const carsUrl = "https://jsonblob.com/api/jsonBlob/1265750129310031872";
+
+// set up and send requests to obtain the JSONblob of the factory, manipulate the state of the request whit eventlisteners
 factoryRequest.open("GET", factoryUrl, true);
-factoryRequest.addEventListener("load", () => handleRequestSuccess(factoryRequest, "factory"));
-factoryRequest.addEventListener("error", () => handleRequestError("factory"));
+factoryRequest.addEventListener("load", () => { handleRequestSuccess(factoryRequest, "factory") });
+factoryRequest.addEventListener("error", () => { handleRequestError("factory") });
 factoryRequest.send();
 
-// set up and send requests for the cars, manipulate the state of the request whit eventlisteners
+// set up and send requests to obtain the JSONblob of the cars, manipulate the state of the request whit eventlisteners
 carsRequest.open("GET", carsUrl, true);
-carsRequest.addEventListener("load", () => handleRequestSuccess(carsRequest, "cars"));
-carsRequest.addEventListener("error", () => handleRequestError("cars"));
+carsRequest.addEventListener("load", () => { handleRequestSuccess(carsRequest, "cars") });
+carsRequest.addEventListener("error", () => { handleRequestError("cars") });
 carsRequest.send();

@@ -9,34 +9,6 @@
     ○ Do the same thing using setTimeout
  */
 
-
-
-
-/**
- * function printItems
- * receives the array as an entirely topic, and will go to print
- * The value of array in that position of the index "i"
- * when "i" is === length of the array "items"
- * we will erase the execution of the interval
- * @param {object} items - array whit differents values
- */
-function printItems(items) {
-
-    /* Let's go to print the value of index "i " of array items
-    then We increase by 1 (i++) the index*/
-    console.log(items[i]);
-    i++;
-
-    /*if the index "i" It is the same as the length of the array "items"
-    then let's cancel the execution of the interval of setIntervall()*/
-    if (i === items.length) {
-        clearTimeout(timerId);
-    }
-}
-
-
-
-
 // Global Array containing some words
 let items = ["Pizza",
     "The Great Gatsby by F. Scott Fitzgerald",
@@ -70,11 +42,33 @@ let items = ["Pizza",
     "Frankenstein by Mary Shelley"];
 
 
-// Global variable to update the array index
+/**
+ * function printItems
+ * receives the array as an entirely topic, and will go to print
+ * The value of array in that position of the index "i"
+ * when "i" is === length of the array "items"
+ * we will erase the execution of the interval
+ * @param {object} items - array whit differents values
+ */
+function printItems(items) {
+
+    /* Let's go to print the value of index "i " of array items
+    then We increase by 1 (i++) the index*/
+    console.log(items[i]);
+    i++;
+
+    /*if the index "i" It is the same as the length of the array "items"
+    then let's cancel the execution of the interval of setIntervall()*/
+    if (i === items.length) {
+        clearTimeout(timerId);
+    }
+}
+
+
+// global variable to update the array index
 let i = 0;
 
-
-/* After a time interval of a second, 
+/* after a time interval of a second, 
 Let's go to perform the function "printItems" passing as a topic
 The whole array with all the values */
 let timerId = setInterval(printItems, 1000, items);

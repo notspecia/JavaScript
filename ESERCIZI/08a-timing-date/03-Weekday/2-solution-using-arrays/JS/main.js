@@ -12,14 +12,12 @@
 
 
 
-
-
 /**
  * function getWeekDayEnglish
  * It is passed as a topic an Object date, inside it we go
  * to extract the day of the week through the .get method (0-6)
  * We use a switch-case to go to print the abbreviation on consoles of the day of the week (EN)
- * @param {objcet} date - date passed as a topic
+ * @param {object} date - date passed as a topic
  */
 function getWeekDayEnglish(date) {
 
@@ -28,14 +26,12 @@ function getWeekDayEnglish(date) {
 }
 
 
-
-
 /**
  * function getWeekDayItalian
  * It is passed as a topic an Object date, inside it we go
  * to extract the day of the week through the .get method (0-6)
  * We use a switch-case to go to print the abbreviation on consoles of the day of the week (IT)
- * @param {objcet} date - date passed as a topic
+ * @param {object} date - date passed as a topic
  */
 function getWeekDayItalian(date) {
 
@@ -44,14 +40,13 @@ function getWeekDayItalian(date) {
 }
 
 
-
 /**
  * function getWeekDay
  * It is passed as a topic an Object date, inside it we go
  * to extract the day of the week through the .get method (0-6)
  * We use a if statement in which according to the language (EN / IT),
  * We use 2 switch-case to go to print the abbreviation on consoles of the day of the week (EN - IT)
- * @param {objcet} date - date passed as a topic
+ * @param {object} date - date passed as a topic
  * @param {string} lang - Translation in the desired language
  */
 function getWeekDay(date, lang) {
@@ -66,13 +61,7 @@ function getWeekDay(date, lang) {
     console.log("language format not founded!!");
     
   }
-
 }
-
-
-
-
-
 
 
 
@@ -113,7 +102,6 @@ getWeekDayItalian(date2);
 
 
 console.log("\n------------------------\n\n");
-
 
 
 // 1 recall function getWeekDay (EN - IT)

@@ -29,15 +29,13 @@ function createDirtyStack(numberStack) {
     let stackPlatesDirty = [];
     let randomPlates = Math.round(Math.random() * (max_piatti - min_piatti) + min_piatti);
 
-    // Fill the stack with dirty plates
+    // fill the stack with dirty plates
     for (let i = 0; i < randomPlates; i++) {
         stackPlatesDirty.push(`plates number ${i + 1} of the STACK ${numberStack}`);
     }
 
     return stackPlatesDirty;
 }
-
-
 
 
 
@@ -53,14 +51,13 @@ function displayStacks(cleanPlateStack, dirtyPlateStacks) {
 
 
     for (let i = 0; i < dirtyPlateStacks.length; i++) {
-
         console.log(
             `STACK ${i + 1} OF DIRTY PLATES 🍽💩:\n
 ${dirtyPlateStacks[i].join("\n")}\n\n\n\n\n`
         );
     }
 
-    // Display the stack of clean plates
+    // display the stack of clean plates
     console.log(`---------------------------------
     STACK OF CLEAN PLATES🍽:\n
 ${cleanPlateStack.join("\n")}
@@ -72,9 +69,6 @@ ${cleanPlateStack.join("\n")}
     }
 
 }
-
-
-
 
 
 /**
@@ -100,16 +94,14 @@ function washDish(cleanPlateStack, dirtyPlateStacks) {
 
 
 
-
-
 /**
  * Every 2 seconds whit the setInterval() he comes:
  *  1. the trend of the remaining dirty dishes and the already clean dishes.
- *  2. After that through the function washDish(), will go to get the last dish
+ *  2. after that through the function washDish(), will go to get the last dish
  *     of the stack of dirty dishes, and we will insert it into the stack of clean dishes in growing order
  * 
  * If the length of the array (dirtyPlates.length) is === 0:
- *  1. We will go to print the situation that will be for the last time: 
+ *  1. we will go to print the situation that will be for the last time: 
  *     all dishes have been clean and there will be no dirty dish
  *  2. we stop the interval through the clearInterval()
  * 
@@ -135,7 +127,6 @@ function runSimulation() {
 
         } else {
             washDish(cleanPlateStack, dirtyPlateStacks);
-
         }
 
     }, 2000);
@@ -145,7 +136,6 @@ function runSimulation() {
 
 const min_piatti = 10;  // Minimum number of dirty plates in a stack
 const max_piatti = 50;  // Maximum number of dirty plates in a stack
-
 
 // Start washing dishes!
 runSimulation();

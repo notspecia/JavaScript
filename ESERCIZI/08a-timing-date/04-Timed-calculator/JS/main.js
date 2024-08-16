@@ -19,13 +19,11 @@
 
 
 
-
-
 /**
  * function operations
  * function that receives a number as a topic, this number will come
  * processed in various ways by some functions that are present inside,
- * Each function will have a 3 -second timeout, the function will do:
+ * Each function will have a 3 seconds of timeout, the function will do:
  * 1. number / 2
  * 2. number divided 2 to ^2
  * 3. number to the square used to calculate the area of a circle
@@ -49,6 +47,7 @@ function operations(num) {
                 setTimeout(function percentRatio(halfSquare, areaCyrcle) {
                     let percentNumber = (areaCyrcle / halfSquare) * 100;
                     console.log("the area of", areaCyrcle.toFixed(2), "It is about the", percentNumber.toFixed(0) + "%", "of the number at ^2:", halfSquare);
+
                 }, 3000, halfSquare, areaCyrcle);
             }, 3000, halfSquare);
         }, 3000, half);

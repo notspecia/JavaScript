@@ -11,9 +11,6 @@
  */
 
 
-
-
-
 /**
  * function getWeekDayEnglish
  * It is passed as a topic an Object date, inside it we go
@@ -58,14 +55,12 @@ function getWeekDayEnglish(date) {
 }
 
 
-
-
 /**
  * function getWeekDayItalian
  * It is passed as a topic an Object date, inside it we go
  * to extract the day of the week through the .get method (0-6)
  * We use a switch-case to go to print the abbreviation on consoles of the day of the week (IT)
- * @param {objcet} date - date passed as a topic
+ * @param {object} date - date passed as a topic
  */
 function getWeekDayItalian(date) {
 
@@ -102,7 +97,6 @@ function getWeekDayItalian(date) {
       break;
   }
 }
-
 
 
 /**
@@ -192,7 +186,6 @@ function getWeekDay(date, lang) {
 
 /* The "date" variable will be updated with different dates and syntax to test
 most cases*/
-
 
 
 // 1 recall function getWeekDayEnglish (EN)

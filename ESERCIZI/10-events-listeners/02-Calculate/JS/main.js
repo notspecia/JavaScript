@@ -57,7 +57,6 @@ function createCalculatorInput(textOfLabel, idInput, idButton) {
     divForInput.append(labelCyrcle, inputCyrcle, labelSecondNumber, inputSecondNumber, buttonCyrcle, breakLine);
 
   } else {
-
     // append label + input (for other cases) to the input support div
     divForInput.append(labelCyrcle, inputCyrcle, buttonCyrcle, breakLine);
   }

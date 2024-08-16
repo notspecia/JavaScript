@@ -16,11 +16,28 @@
 <body>
     <!-- Content start -->
 
+    <!-- div which contains informations about the row of the flight that the user clicked -->
+    <div id="moreInfoCars">
+        <input type="checkbox" id="nav-toggle" name="navCheckBox">
+        <label for="nav-toggle"></label>
+
+        <!-- the content of those tags will be filled by JS -->
+        <p class="id"></p>
+        <p class="model"></p>
+        <p class="color"></p>
+        <p class="isElectric"></p>
+        <p class="features"></p>
+        <p class="owner"></p>
+        <p class="ownerContacts"></p>
+        <p class="lastInspectionDate"></p>
+    </div>
+
     <!-- title <h1> generated whit JS whit the name of the factory -->
     <ul id="factoryInfo"></ul>
 
-    <h1 class="space">list of cars</h1>
-    <ul id="listCarsInfo"></ul>
+    <h2>List of cars</h2>
+    <!-- div which will containt the figure elements (img + figcaption), for each car -->
+    <div id="imagesCars"></div>
 
     <!-- end content -->
     <script src="JS/main.js" defer></script>

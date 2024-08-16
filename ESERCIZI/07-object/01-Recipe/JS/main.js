@@ -38,9 +38,6 @@ for (let i = 0; i < recipe["ingredients"].length; i++) {
 
 
 
-
-
-
 // BONUS PART --> array which contains various recipes (objects)
 let recipes = [
     {
@@ -75,8 +72,6 @@ for (i = 0; i < recipes.length; i++) {
     console.log("ingredients:");
 
     for (let j = 0; j < recipes[i].ingredients.length; j++) {
-
         console.log("the", j + 1, "ingredient is:", recipes[i].ingredients[j]);
-
     }
 }

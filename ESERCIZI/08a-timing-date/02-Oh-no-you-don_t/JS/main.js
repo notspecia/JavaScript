@@ -20,7 +20,6 @@ function useful() {
     console.log("hi! im useful!")
 }
 
-
 /**
  * function stop
  * function created with the aim that after 5 seconds it will stop the action 
@@ -33,9 +32,9 @@ function stop() {
 }
 
 
+
 // function "useful" will executed after 10 seconds
 let timerRun = setTimeout(useful, 10000);
-
 
 /* function "stop" will executed after 5 seconds, 
 and will stop the execution of the useful function*/

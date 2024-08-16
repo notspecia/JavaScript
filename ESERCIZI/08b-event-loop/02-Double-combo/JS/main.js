@@ -47,8 +47,9 @@ function createQueCards() {
     // Variable declaration
     const max_cards = 30;
     const min_cards = 10;
-    let queue = []; // queue containing cards
-    let card = {};
+
+    let queue = []; // queue containing cards (there are objects)
+    let card = {};  // cards (objects) insert into the queue
 
     // Let's create a random number of cards (objects) to be included in the player's queue
     let numberOfCards = Math.round(Math.random() * (max_cards - min_cards) + min_cards);
@@ -233,7 +234,7 @@ function charVSenemy(cardPlayer1, cardPlayer2) {
  * clash between CHARACTER/ENEMY vs SPELL, the spell if it will have an effect of buff, will heal and adding HP
  * to the card of the other player, if the spell has an effect of nerf, will reduce the HP to the card of
  * the other enemy.
- * If the enemy paper was not destroyed immediately with the Spell, then the player with the paper CHARACTER/ENEMY
+ * if the enemy paper was not destroyed immediately with the Spell, then the player with the paper CHARACTER/ENEMY
  * He will remain on the field with the HP modified previously, while the other will have to draw a new card from his queue
  * After that the turn will always continue on the basis of the parameters of the clashes between the various types of cards
  * @param {object} cardPlayer1 - card (object) of PLAYER1
@@ -326,7 +327,7 @@ function charOrEnemyVSspell(cardPlayer1, cardPlayer2) {
 /**
  * function whoWins
  * function that the winner of the game will decree, going to compare
- *  the score between PLAYER1 and PLAYER2, then to finish the game definitively
+ * the score between PLAYER1 and PLAYER2, then to finish the game definitively
  * going to stop the setInterval()
  * @param {number} pointsPlayer1 - Total score of PLAYER1
  * @param {number} pointsPlayer2 - Total score of PLAYER2
@@ -368,14 +369,12 @@ function letsPlay(cardPlayer1, cardPlayer2) {
 
         // ! character VS character (DUEL) !
         case cardPlayer1.type === "character" && cardPlayer2.type === "character":
-
             charVSchar(cardPlayer1, cardPlayer2);
             break;
 
 
         //! character VS enemy || enemy VS character (BATTLE) !
         case cardPlayer1.type === "character" && cardPlayer2.type === "enemy" || cardPlayer1.type === "enemy" && cardPlayer2.type === "character":
-
             charVSenemy(cardPlayer1, cardPlayer2);
             break;
 
@@ -383,19 +382,16 @@ function letsPlay(cardPlayer1, cardPlayer2) {
         //! character/enemy (player1)  VS spell (player2) (buff character / damage character) !
         //! character/enemy (player2)  VS spell (player1) (buff character / damage character) !
         case (cardPlayer1.type === "character" || cardPlayer1.type === "enemy" && cardPlayer2.type === "spell") || (cardPlayer2.type === "character" || cardPlayer2.type === "enemy" && cardPlayer1.type === "spell"):
-
             charOrEnemyVSspell(cardPlayer1, cardPlayer2);
             break;
 
 
         default:
-            console.log("NO EFFECTS!");
+            console.log("NO EFFECTS! DRAW NEW CARDS!");
             break;
     }
     console.log("\n\n\n\n\n\n\n\n");
 }
-
-
 
 
 /**
@@ -444,8 +440,6 @@ function drawCard(que1, que2) {
 
 
 
-
-
 // Let's create and fill the queues of 2 players, with empty cards
 let que1 = createQueCards();
 let que2 = createQueCards();
@@ -454,8 +448,6 @@ let que2 = createQueCards();
 fillQueCards(que1);
 fillQueCards(que2);
 console.log(que1, que2);
-
-
 
 /* The turn takes place every 3 seconds of time interval, and the draw the first card of the Queue of the 2 PLAYERS!
 at the end of each round if there is a winner without draws or without battles, the PLAYER with the card that won

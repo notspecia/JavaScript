@@ -91,7 +91,6 @@ div#moreInfoFlight {
     display: none;
     background-color: black;
     box-shadow: 0 0 0 100vw rgba(0, 0, 0, 0.8);
-    color: white;
     width: 55vw;
     height: 60vh;
     padding-top: 60px;
@@ -104,8 +103,9 @@ div#moreInfoFlight {
 
 /* Styling for paragraphs (p) inside the moreInfoFlight div */
 div#moreInfoFlight p {
-    text-align: center;
+    color: white;
     font-size: 25px;
+    text-align: center;
 }
 
 /* Class added with JS to display the moreInfoFlight div */

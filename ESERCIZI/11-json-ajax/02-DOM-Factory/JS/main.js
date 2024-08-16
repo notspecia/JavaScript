@@ -221,8 +221,8 @@ function generateFactoryCars(object) {
     within the <li> from the <ul> factory*/
     for (let i = 0; i < object.manager.coFounders.length; i++) {
         appendListItem(`${i + 1} CO-FOUNDERS--> ${object.manager.coFounders[i].name}, AGE: ${object.manager.coFounders[i].age},  IS MARRIED?: ${object.manager.coFounders[i].married}`, listFactory);
-
     }
+    
     appendListItem(`DATE ESTABLISHED: ${object.established}`, listFactory);
 
 
