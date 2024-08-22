@@ -93,7 +93,7 @@ function fillQueCards(que) {
 
         // We define the type of paper (characters, spells, enemies)
         que[i] = {
-            type: types[Math.floor(Math.random() * types.length)],
+            type: types[Math.floor(Math.random() * types.length)]
         };
 
         // If the paper is of the type "character":

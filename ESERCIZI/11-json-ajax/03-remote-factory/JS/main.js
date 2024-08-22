@@ -31,12 +31,11 @@
  */
 
 
-
 /**
  * function appendListItem
  * create an element <li> with the text provided and adds it to a list <ul> specified
  * @param {string} text - content that will be insered into the <li>
- * @param {element} list - the element <ul> that will be filled
+ * @param {NodeList} list - the element <ul> (list, that will be filled by the <li>
  */
 function appendListItem(text, list) {
 
@@ -50,6 +49,7 @@ function appendListItem(text, list) {
 }
 
 
+
 /**
  * function generateFactory
  * function which generate the factory information and display it on the page
@@ -57,11 +57,11 @@ function appendListItem(text, list) {
  */
 function generateFactory(object) {
 
-  // title <h1> will has the name of the factory
+  // title <h1> will has the name of the specific factory taken from the JSONblob of the factory
   const titleFactory = document.createElement("h1");
   titleFactory.textContent = `${object.name}`;
 
-  // append the title of the factory at the start of the body (prepend)
+  // append the title of the factory at the START of the body (prepend)
   document.body.prepend(titleFactory);
 
 
@@ -77,10 +77,9 @@ function generateFactory(object) {
   appendListItem(`DEPARTMENTS: ${object.departments.join(", ")}`, listFactory);
   appendListItem(`MANAGER: ${object.manager.name}, ID: ${object.manager.employeeId}, CONTACTS: ${object.manager.contacts.join(", ")}`, listFactory);
 
-  /* cycle that for each co-founder present in the array, 
-  within the <li> from the <ul> factory */
+  /* cycle that for each co-founder present in the array, within the <li> from the <ul> factory */
   for (let i = 0; i < object.manager.coFounders.length; i++) {
-    appendListItem(`${i + 1} CO-FOUNDERS: ${object.manager.coFounders[i].name}, AGE: ${object.manager.coFounders[i].age},  IS MARRIED: ${object.manager.coFounders[i].married}`, listFactory);
+    appendListItem(`${i + 1} CO-FOUNDERS: ${object.manager.coFounders[i].name}, AGE: ${object.manager.coFounders[i].age}, IS MARRIED: ${object.manager.coFounders[i].married}`, listFactory);
   }
 
   appendListItem(`DATE ESTABLISHED: ${object.established}`, listFactory);
@@ -89,10 +88,14 @@ function generateFactory(object) {
 
 /**
  * function showInfoCar
- * ?descrizione 
- * @param {car} NomeInput1 - DescrizioneInput1
+ * function that is activated, when the user goes to click a machine on the list
+ * once you click, a panel will applying + information relating to that car
+ * @param {object} car - the object of that specified car
  */
 function showInfoCar(car) {
+
+  /* let's take from HTML Document, all the various paragraphs and then fill them with the information
+  taken from the object `car`, and show them to the user*/
   document.querySelector("p.id").textContent = `ID CAR: ${car.id}`;
   document.querySelector("p.model").textContent = `CAR: ${car.make} ${car.model} ${car.year}`;
   document.querySelector("p.color").textContent = `COLOR: ${car.color}`;
@@ -110,22 +113,20 @@ function showInfoCar(car) {
  * for each car, is created an element figure which contains the image of the car
  * and the caption of it, if the user press the figure of an car, will be showed more informations
  * about it
- * @param {object} object - the factory data object
+ * @param {cars} object - the array which contains the cars (objects)
  */
-function generateCars(object) { 
+function generateCars(cars) {
 
   // variable containing the div which shows more information about the CARS + the label X
   const moreInfoDiv = document.getElementById("moreInfoCars");
-
   // added to a variable the label symbol X, contained in the div which show more info about the car
   const closeSimbol = document.querySelector("label");
-
   // take from the document the div which will containt all the cars (element figure)
   const containerImages = document.getElementById("imagesCars");
 
-  //! FOR EACH CAR CONTAINED IN THE OBJECT
-  object.forEach(car => {
-
+  //! FOR OF, CAR CONTAINED IN THE ARRAY WHICH HAVE MULTIPLE OBJECTS (CARS)
+  for (let car of cars) {
+ 
     // created element figure which will have an image and a figcaption, then will appended to the div main
     let figure = document.createElement("figure");
 
@@ -155,8 +156,7 @@ function generateCars(object) {
     closeSimbol.addEventListener("click", () => {
       moreInfoDiv.style.display = "none";
     });
-
-  });
+  }
 }
 
 
@@ -167,7 +167,7 @@ function generateCars(object) {
  * function handleRequestSuccess
  * function to handle successful HTTPS requests
  * @param {XMLHttpRequest} request - the XMLHttpRequest object
- * @param {string} type - the type of data being handled (factory or cars)
+ * @param {string} type - the type of data being handled (can be FACTORY or CARS)
  */
 function handleRequestSuccess(request, type) {
 
@@ -175,14 +175,14 @@ function handleRequestSuccess(request, type) {
   if (request.status >= 200 && request.status < 300) {
 
     // assigned to a variable the JSONblob of the factory / cars request
-    const data = JSON.parse(request.responseText);
-    console.log(`${type} data:`, data);
+    const data = JSON.parse(request.responseText); // transform a string into a usable object
+    console.log(`${type} data:`, data); // debug print
 
-    // if the type of the data is "factory", evocate a function which manage that data
+    // if the type of the data is "factory", evocate a function which manage the FACTORY DATA
     if (type === "factory") {
       generateFactory(data);
 
-      // if the type of the data is "cars", evocate a function which manage that data
+      // if the type of the data is "cars", evocate a function which manage the CARS DATA
     } else {
       generateCars(data);
     }
@@ -193,16 +193,15 @@ function handleRequestSuccess(request, type) {
   }
 }
 
-
 /**
  * function handleRequestError
- * Function to handle errors in HTTP requests, it will show a message of error and add a bg color red
- * on the body 
- * @param {string} type - The type of data that failed to load (factory or cars)
+ * Function to handle errors in HTTP requests, it will show a message of error
+ * @param {string} type - The type of data that failed to load (can be FACTORY or CARS)
  */
 function handleRequestError(type) {
   alert(`network error while loading ${type} data retry later!`);
 }
+
 
 
 // create separate request objects for each URL
@@ -213,14 +212,15 @@ const carsRequest = new XMLHttpRequest();
 const factoryUrl = "https://jsonblob.com/api/jsonBlob/1265346802797633536";
 const carsUrl = "https://jsonblob.com/api/jsonBlob/1265750129310031872";
 
-// set up and send requests to obtain the JSONblob of the factory, manipulate the state of the request whit eventlisteners
+// ?onload / onerror =  request shortcut event listener
+// set up and send requests to obtain the JSONblob of the FACTORY, manipulate the state of the request whit eventlisteners
 factoryRequest.open("GET", factoryUrl, true);
-factoryRequest.addEventListener("load", () => { handleRequestSuccess(factoryRequest, "factory") });
-factoryRequest.addEventListener("error", () => { handleRequestError("factory") });
+factoryRequest.onload = () => { handleRequestSuccess(factoryRequest, "factory") };
+factoryRequest.onerror = () => { handleRequestError("factory") };
 factoryRequest.send();
 
-// set up and send requests to obtain the JSONblob of the cars, manipulate the state of the request whit eventlisteners
+// set up and send requests to obtain the JSONblob of the CARS, manipulate the state of the request whit eventlisteners
 carsRequest.open("GET", carsUrl, true);
-carsRequest.addEventListener("load", () => { handleRequestSuccess(carsRequest, "cars") });
-carsRequest.addEventListener("error", () => { handleRequestError("cars") });
+carsRequest.onload = () => { handleRequestSuccess(carsRequest, "cars") };
+carsRequest.onerror = () => { handleRequestError("cars") };
 carsRequest.send();

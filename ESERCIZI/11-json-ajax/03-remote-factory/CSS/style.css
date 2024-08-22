@@ -21,7 +21,7 @@ html {
 initially is hidden --> display: none */
 div#moreInfoCars {
     display: none;
-    background: linear-gradient(to right, black, rgb(0, 50, 50));
+    background: linear-gradient(to right, black, rgb(0, 34, 34));
     box-shadow: 0 0 0 100vw rgba(0, 0, 0, 0.85);
     width: 55vw;
     height: 60vh;
@@ -37,7 +37,7 @@ div#moreInfoCars {
 /* styling for paragraphs (p) inside the moreInfoCars div */
 div#moreInfoCars p {
     color: white;
-    font-size: 16px;
+    font-size: 18px;
     text-align: center;
 }
 
@@ -69,6 +69,11 @@ h1 {
     text-align: center;
 }
 
+h2 {
+    font-size: 35px;
+    margin: 100px 0;
+}
+
 ul {
     list-style: none;
 }
@@ -78,14 +83,9 @@ li {
     text-align: center;
 }
 
-
-h2 {
-    font-size: 35px;
-    margin: 100px 0;
-}
-
 /* ----------------- styling the cars (figures) created whit JS -----------------*/
 
+/* center the div which contains the cars of the factory */
 div#imagesCars {
     width: 80%;
     margin: 0 auto;
@@ -97,17 +97,13 @@ figure {
     position: relative;
 }
 
-figure:hover {
-    cursor: pointer;
-}
-
 figure img {
     width: 300px;
     height: 200px;
 }
 
 figure figcaption {
-    background: linear-gradient( rgb(3, 114, 114), black);
+    background: linear-gradient(rgb(3, 114, 114), black);
     color: whitesmoke;
     font-size: 15px;
     font-weight: bold;
@@ -116,4 +112,8 @@ figure figcaption {
     position: absolute;
     top: 10px;
     right: 0;
+}
+
+figure:hover {
+    cursor: pointer;
 }
