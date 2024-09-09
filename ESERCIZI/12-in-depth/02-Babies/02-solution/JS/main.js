@@ -62,11 +62,9 @@ babies[3] = {
 console.log("BABIES INFORMATIONS-->", babies, "\n\n\n\n\n");
 
 
+// ----------------------------------------------------------------
 
-// -------------------------------------------------
-
-
-// print key-value pairs of the babies, BABY IS AN OBJECT {}
+// PRINT key-value pairs of the babies, BABY IS AN OBJECT {}
 for (let baby of babies) {
 
   // cycle nestled in which we go to get from each baby, KEY and VALUE
@@ -103,6 +101,7 @@ for (let baby of babies) {
     baby.outfits[outfits[Math.floor(Math.random() * outfits.length)]] = colors[Math.floor(Math.random() * colors.length)];
   }
 
+  
   // print each key-value pair of the baby (e.g., name: "Luke", months: 32...) in a formatted way
   for (let [key, value] of Object.entries(baby)) {
 

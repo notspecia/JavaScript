@@ -16,7 +16,7 @@
 // array of initial noises 
 let noisesArray = ['quack', 'sneeze', 'boom'];
 
-// new array which will contain the required sounds
+// new array which will be filled whit the required sounds
 let noisesArrayNew = [];
 
 // nested for loops applied for each sound
