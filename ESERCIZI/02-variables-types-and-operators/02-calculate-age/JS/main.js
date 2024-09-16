@@ -13,7 +13,7 @@
 
 // dichiarazione variabili
 let birth;       //anno di nascita
-let annoFuturo; //un anno futuro
+let annoFuturo;  //un anno futuro
 let eta;         //possibile età facendo birth - annoFuturo
 
 // inizializzazioni variabili
@@ -23,6 +23,3 @@ eta = annoFuturo - birth;
 
 // stampa su console di quanti anni avrò in X anno
 console.log("avrò circa", eta - 1, "o", eta, "anni, nel", annoFuturo);
-
-
-

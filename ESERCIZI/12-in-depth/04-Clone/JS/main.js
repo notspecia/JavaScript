@@ -30,6 +30,7 @@ function debuggingLog(key, value) {
 }
 
 
+
 /**
  * function clone
  * creates a deep clone of the original object
@@ -92,6 +93,6 @@ const cloneObject = clone(originalObject);
 console.log(originalObject);
 console.log(cloneObject);
 
-// log the 'name' properties of both the original and cloned objects
+// log the 'name' properties of both  (the original and cloned objects)
 console.log(originalObject.name);
 console.log(cloneObject.name);

@@ -74,6 +74,7 @@ function getBabyOutfit(baby) {
     // the sentence will be composed of the baby's outfit (using key-value pairs!)
     let str = `${baby.name} is wearing `;
 
+    // compose the string
     for (let [outfit, color] of Object.entries(baby.outfits)) {
         str += `${outfit} ${color} and `;
     }
