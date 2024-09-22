@@ -126,7 +126,7 @@ function generateCars(cars) {
 
   //! FOR OF, CAR CONTAINED IN THE ARRAY WHICH HAVE MULTIPLE OBJECTS (CARS)
   for (let car of cars) {
- 
+
     // created element figure which will have an image and a figcaption, then will appended to the div main
     let figure = document.createElement("figure");
 
@@ -211,6 +211,7 @@ const carsRequest = new XMLHttpRequest();
 // URLs of the JSON stored using jsonblob
 const factoryUrl = "https://jsonblob.com/api/jsonBlob/1265346802797633536";
 const carsUrl = "https://jsonblob.com/api/jsonBlob/1265750129310031872";
+
 
 // ?onload / onerror =  request shortcut event listener
 // set up and send requests to obtain the JSONblob of the FACTORY, manipulate the state of the request whit eventlisteners

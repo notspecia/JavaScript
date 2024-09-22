@@ -18,8 +18,9 @@ Think about the following question:
 - Is it a good idea to extend prototypes of built-in Javascript objects such as String, Array, etc?
  */
 
-//* debug print of what type is the extended prototype
+// //* debug print of what type is the extended prototype
 // console.log(typeof (String.prototype.dogSpeak));
+
 
 
 
@@ -44,7 +45,7 @@ s.dogSpeak();
 
 
 
-//! my personal solution to solve this ex (NOT USING METHOD), instead using functions!!
+//! my personal solution to solve this ex (NOT USING METHOD), instead using function!!
 // function dogSpeak(string) {
 //   console.log(string.concat(" ", "Woof!"));
 // }

@@ -104,10 +104,6 @@ function slowMoving(event) {
 // used to stop the walk when the stop button is pressed
 let timerStart;
 
-// get the div that will contain the cat's movement speed
-let infoDiv = document.querySelector("div.info");
-
-
 // object that storage the walk parameters of the cat
 let catWalk = {
   walkPosition: 0, // current position of the cat (absolute position in px)
@@ -115,6 +111,8 @@ let catWalk = {
   imageCat: document.querySelector("img") // cat image with absolute position to the viewport
 };
 
+// get the div that will contain the cat's movement speed
+let infoDiv = document.querySelector("div.info");
 
 // get the buttons and assign them to variables
 let buttonStart = document.getElementById("start");

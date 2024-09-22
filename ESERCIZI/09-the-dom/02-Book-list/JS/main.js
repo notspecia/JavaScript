@@ -115,6 +115,7 @@ function applyStyle() {
     document.head.append(linkToCss); // adding it to the document's head
 }
 
+
 /* We create a function that, after at least 5 seconds,
 will create a link in the document's head that will connect
 to an external style.css file, which will apply properties

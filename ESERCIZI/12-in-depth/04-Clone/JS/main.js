@@ -33,7 +33,8 @@ function debuggingLog(key, value) {
 
 /**
  * function clone
- * creates a deep clone of the original object
+ * creates a deep clone of the original object, also include an deeper cloning of
+ * the nested objects (in this case, will be an function recursion)
  * @param {object} originalObject - The object to be cloned
  * @returns {object} - the cloned object.
  */
@@ -46,16 +47,22 @@ function clone(originalObject) {
   cloneObject.name = "Speciale Gabriele";
 
 
-  // !copy all other properties from the original object (except the 'name')
+  // !copy all other properties from the original object (except the 'name'), we already assigned it to the new object
   for (let [key, value] of Object.entries(originalObject)) {
 
     if (key !== "name") {
 
-      // debugging function to log the key and value
-      debuggingLog(key, value);
+      // if the value is an object (but not a Date), call clone recursively
+      if (typeof value === "object" && !(value instanceof Date)) {
+        cloneObject[key] = clone(value); //* recursive function!
 
-      // add the key-value pair from the original to the cloned object
-      cloneObject[key] = value;
+      } else {
+        // add the key-value pair from the original to the cloned object
+        cloneObject[key] = value;
+
+        // debugging function to log the key and value
+        debuggingLog(key, value);
+      }
     }
   }
 
@@ -84,15 +91,24 @@ const originalObject = {
   }
 }
 
-// clone object
+console.log("ORIGINAL OBJECT:", originalObject);
+
+
+
+
+// create the clone object
 const cloneObject = clone(originalObject);
+console.log("CLONED OBJECT:", cloneObject);
 
 
 
-// log the original and cloned objects
-console.log(originalObject);
-console.log(cloneObject);
 
 // log the 'name' properties of both  (the original and cloned objects)
 console.log(originalObject.name);
 console.log(cloneObject.name);
+
+// try to change a value from the clone object (will NOT change the original!!)
+cloneObject.bankInformation.business = "speciaCompany srl";
+console.log(originalObject.bankInformation.business);
+console.log(cloneObject.bankInformation.business);
+
