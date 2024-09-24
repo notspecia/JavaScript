@@ -95,11 +95,9 @@ console.log("ORIGINAL OBJECT:", originalObject);
 
 
 
-
 // create the clone object
 const cloneObject = clone(originalObject);
 console.log("CLONED OBJECT:", cloneObject);
-
 
 
 

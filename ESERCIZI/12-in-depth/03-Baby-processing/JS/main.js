@@ -62,6 +62,7 @@ const babies = [
 ];
 
 
+
 /**
  * function getBabyOutfit
  * function that receives an object containing the baby's information as a parameter
@@ -121,6 +122,7 @@ function feedBaby(baby) {
     str += `${favoriteFoodsRandom.join(", ")}.`
     console.log(str);
 }
+
 
 
 // perform the same actions for each baby (OBJECT) in the babies (ARRAY)

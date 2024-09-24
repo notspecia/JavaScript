@@ -18,28 +18,22 @@ Think about the following question:
 - Is it a good idea to extend prototypes of built-in Javascript objects such as String, Array, etc?
  */
 
-// //* debug print of what type is the extended prototype
+//* debug print of what type is the extended prototype
 // console.log(typeof (String.prototype.dogSpeak));
 
 
-
-
-// TODO COMMENT HOW IT WORKS
+// add an method to the `String.prototype`
 String.prototype.dogSpeak = function () {
   console.log(this.concat(" ", "Woof!"));
 }
 
 
-
-// stringa di partenza a cui sarà chiamato il metodo --> dogSpeak()
+// create a string variable and call to it the dogSpeak method
 let s = 'We like to learn';
 s.dogSpeak();
 
-// stringa senza variabile assegnata a cui sarà chimato il metodo --> dogSpeak()
+// call dogSpeak method directly on a string literal
 'Dogs are smart'.dogSpeak();
-
-
-
 
 
 

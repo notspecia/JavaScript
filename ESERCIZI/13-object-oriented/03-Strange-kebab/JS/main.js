@@ -40,19 +40,24 @@
 
 
 /*
-01 --> .trim() ci permette di rimuovere gli spazi iniziali e finali della stringa
-02 --> 
+01 .replace() -> inserts a "-" before the character if it is an uppercase letter (anonymous function).
+02 .replace() -> replaces non-alphanumeric characters with "-".
+03 .replace() -> replaces multiple sequences of "-" with a single one.
+04 .replace() -> removes "-" at the beginning and end.
+05 .replace() -> removes single and multiple sequences of digits followed by a "-".
  */
 String.prototype.toStrangeKebab = function () {
 
-    return this.trim()
-        .replace(/([a-z])([A-Z])/g, "$1-$2")
-        .replace(/ /g, "")
-        .replace(/ /g, "")
-        .replace(/ /g, "")
-        .replace(/ /g, "")
+    return this
+        .replace(/[A-Z]/g, (letter) => "-".concat(letter))
+        .replace(/[^a-zA-Z0-9]/g, "-")
+        .replace(/-+/g, "-")
+        .replace(/^-|-$/g, "")
+        .replace(/^\d+-/g, "")
         .toLowerCase();
 }
+
+
 
 
 // creation and log of the array which contain the strings written is camelCase
@@ -69,6 +74,7 @@ const sourceCamel = [
 console.log(sourceCamel);
 
 
+// change all the string in calmelCase of the array, to kebab-case 
 sourceCamel.forEach(item => {
     console.log(item.toStrangeKebab());
 });

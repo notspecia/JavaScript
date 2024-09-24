@@ -74,7 +74,6 @@ class MusicVideo extends Video {
 
 
 
-
 //! creation of the instances and execution of the methods -----------------------------------
 
 

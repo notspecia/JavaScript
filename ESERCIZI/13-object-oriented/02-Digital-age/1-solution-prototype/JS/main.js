@@ -52,7 +52,6 @@ MusicVideo.prototype = Object.create(Video.prototype);
 
 
 
-
 //! added methods to the prototype objects -------------------------------------------
 
 // adding the .watch() method to the `Video` prototype
@@ -70,7 +69,6 @@ Video.prototype.watch = function () {
 MusicVideo.prototype.play = function () {
     console.log(`you played ${this.title} by ${this.artist}`);
 }
-
 
 
 

@@ -26,6 +26,12 @@ Think about the following question:
 
 ## Approach to solution
 
+this script extends the `String.prototype` by adding a new method `dogSpeak()` which appends " woof!" to any given string
+
+### **extending the string prototype**:
+- a new method `dogSpeak()` is added directly to the `String.prototype`
+- this allows all string instances, whether declared as variables or literals, to call `dogSpeak()` as a built-in method
+- the method uses the `concat()` function to append `" woof!"` to the original string and prints the result to the console
 
 
 

@@ -135,6 +135,7 @@ const outfits = ["T-shirt", "Shirt", "Blouse", "Sweater", "Hoodie", "Tank top", 
 const colors = ["red", "blue", "green", "yellow", "purple"];
 
 
+
 /* 01. add the outfits key property (an object) to each baby
    02. print key-value pairs of the babies, BABY IS AN OBJECT {} */
 for (let baby of babies) {

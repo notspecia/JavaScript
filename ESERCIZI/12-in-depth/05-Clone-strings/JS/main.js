@@ -43,7 +43,7 @@ function debuggingLog(key, value) {
  * function cloneStrings
  * 
  * clones only the string properties of the given object.
- *! if the object contains nested objects, the function will clone the string properties inside those objects as well!!
+ **if the object contains nested objects, the function will clone the string properties inside those objects as well!!
  * 
  * @param {object} originalObject - The object to be cloned (can be the original or an nested object (value))
  * @returns {object} - a new object created whit only the string properties

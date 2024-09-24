@@ -19,18 +19,20 @@ let noisesArray = ['quack', 'sneeze', 'boom'];
 // new array which will be filled whit the required sounds
 let noisesArrayNew = [];
 
+
+
 // nested for loops applied for each sound
 for (let noise of noisesArray) {
 
-    for (let i = 0; i < noise.length; i++) {
+  for (let i = 0; i < noise.length; i++) {
 
-        // capitalize the letter based on the index (i) of the sound
-        // !.repeat() method --> used to insert "!" multiple times based on the index (i + 1)
-        let noiseModified = noise.slice(0, i) + noise[i].toUpperCase() + noise.slice(i + 1) + "!".repeat(i + 1);
+    // capitalize the letter based on the index (i) of the sound
+    // !.repeat() method --> used to insert "!" multiple times based on the index (i + 1)
+    let noiseModified = noise.slice(0, i) + noise[i].toUpperCase() + noise.slice(i + 1) + "!".repeat(i + 1);
 
-        // add the newly modified sound to the previously created array
-        noisesArrayNew.push(noiseModified);
-    }
+    // add the newly modified sound to the previously created array
+    noisesArrayNew.push(noiseModified);
+  }
 }
 
 console.log(noisesArrayNew);
