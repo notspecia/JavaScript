@@ -12,21 +12,21 @@
 
 
 
-/*every second, the current time trough console will be printed through console
+/* every second, the current time trough console will be printed through console
 The setInterval*/
 let timerId = setInterval(function formatTime() {
 
-    // updated date in real time
-    const date = new Date();
+  // updated date in real time
+  const date = new Date();
 
-    // let's go to extract from "date" --> hour:minutes:seconds 
-    const hour = date.getHours();
-    const minutes = date.getMinutes();
-    const seconds = date.getSeconds();
+  // let's go to extract from "date" --> hour:minutes:seconds 
+  const hour = date.getHours();
+  const minutes = date.getMinutes();
+  const seconds = date.getSeconds();
 
 
-    // console print in the required format
-    console.log(`
+  // console print in the required format
+  console.log(`
   +--------------------------+
   |    now is: ${hour}:${minutes}:${seconds}      |
   +--------------------------+

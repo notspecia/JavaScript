@@ -3,10 +3,11 @@
 
 
 /*
- ! RITORNA DA 0 A N ELEMENTI, ha una proprietà .length, ma non possiede i metodi degli array, 
+ ! RITORNA DA 0 A N ELEMENTI, ha una proprietà .length, ma non possiede i metodi degli array,
  ! se vogliamo usare i metodi degli array
  ! allora trasformiamo questa HTMLcollecton in un array tramite Array.from() */
-// document.getElementsByTagName(tagName);
+// let element = document.getElementsByTagName(tagName);
+// Array.from(element);
 
 
 /*
@@ -16,17 +17,17 @@
 
 
 /*
-! RITORNA DA 0 A 1 ELEMENTI, UN ARRAY LIKE (Nodelist), scriviamo nella stringa dei selettori CSS (selettori relazionali, pseudoclassi...)
-! solo il prima che trovo*/
+! RITORNA DA 0 A 1 ELEMENTI, scriviamo nella stringa dei selettori CSS (selettori relazionali, pseudoclassi...)
+! solo il prima che trovo */
 //let firstHobby = document.querySelector('ul li.hobby');
 
 
 /*
 ! RITORNA DA 0 A N ELEMENTI, UN ARRAY LIKE (Nodelist), scriviamo nella stringa dei selettori CSS (selettori relazionali, pseudoclassi...)
-! seleziona tutti quelli che hanno tutti quella selezione di query*/
+! seleziona tutti quelli che hanno tutti quella selezione di query */
 //let allItems = document.querySelectorAll('ul li.hobby');
 
-/* 
+/*
 ! gli HTMLCollection è un array live, si aggiorna in base a quello che si modifica nella pagina
 ! la NODElist è statico, (il contrario)*/
 
@@ -36,7 +37,7 @@
 
 
 
-/* 
+/*
 ? MANIPOLAZIONE DEL DOM
 ! lo style è un OGGETTO, posso tramite esso prendre le proprietà di questo oggetto
 ! LA DOTNOTATION SI PUO USARE SOLO PER GLI OGGETTI, per questo viene detto oggetto
@@ -64,7 +65,7 @@
 
 
 
-//! andiamo a stampare con un ciclo for tutti gli elementi presenti nell'array 
+//! andiamo a stampare con un ciclo for tutti gli elementi presenti nell'array
 // arrayTrasformazione.forEach(hobby => console.log(hobby.textContent));
 
 //! andiamo a stampare con un ciclo tutti gli elementi presenti nell'array like (NodeList)

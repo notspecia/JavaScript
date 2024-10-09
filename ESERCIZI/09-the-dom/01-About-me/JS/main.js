@@ -19,19 +19,18 @@
  */
 
 
-/* Assigning to a variable the node containing the body
+/* assigning to a variable the node containing the body
 to the body node, we apply through manipulation (bad) of the style
 a font-family "Arial, sans-serif" WE WILL APPLY AN INLINE STYLE WHICH IS A DISCOURAGED ACTION! */
-let bodyElement = document.querySelector("body");
-console.log("new body with inline style", bodyElement);
-bodyElement.style.fontFamily = "Arial, sans-serif";
+document.body.style.fontFamily = "Arial, sans-serif";
 
 
 
 
-/* Assigning to each variable the node containing that specific #id (of the spans)
+/* assigning to each variable the node containing that specific #id (of the spans)
 to these nodes (span), we add content with personal data using dot notation */
 console.log("\nspan modified:");
+
 let nicknameNote = document.getElementById("nickname");
 console.log(nicknameNote);
 nicknameNote.textContent = "gabry";
@@ -45,12 +44,49 @@ console.log(homeTownNote);
 homeTownNote.textContent = "Italy, Turin";
 
 
+/* we create an <img> element with my photo, and we apply
+some inline styles */
+let myPhoto = document.createElement("img");
+myPhoto.src = "IMG/IO.jpg";
+myPhoto.style.width = "300px";
+document.body.append(myPhoto);
 
 
-/* We assign to a variable a NodeList through querySelectorAll
+/* we assign to a variable a NodeList through querySelectorAll
 that will contain all selectors with the <li> tag */
 let lists = document.querySelectorAll("li"); // NodeList
 console.log(lists);
+
+
+
+// -----------------------------------------------------------------------
+
+
+/**
+ * function changeStyle
+ * scheduled after minimum 4 seconds, it will create inside the <head> of the document
+ * a link with attributes -> rel="stylesheet", href="CSS/style.css"
+ * thus a link to the external CSS file that will apply properties to the <li> with the "list-item" class
+ */
+function changeStyle() {
+    let linkToCss = document.createElement("link"); // creating link element
+    linkToCss.rel = "stylesheet"; // adding the rel attribute to the previous element
+    linkToCss.href = "./CSS/style.css"; // adding the href attribute to the previous element
+    document.head.append(linkToCss); // we add it to the document's head
+}
+
+
+/* create a function after minimum 4 seconds,
+that will create inside the document's head a link that will connect
+to an external style.css file, which will apply properties
+on the class previously created in the <li>, always after at least 4 seconds */
+setTimeout(changeStyle, 4000);
+
+
+
+
+
+
 
 /*
 We iterate and add a class "list-item" to all <li> elements present in the document
@@ -74,37 +110,3 @@ lists.forEach(item => {
     item.className = "list-item";
     console.log(item);
 });
-
-
-
-
-/* We create an <img> element with my photo, and we apply
-some inline styles */
-let myPhoto = document.createElement("img");
-myPhoto.src = "IMG/IO.jpg";
-myPhoto.style.width = "200px";
-bodyElement.append(myPhoto);
-
-
-
-
-/**
- * function changeStyle
- * scheduled after minimum 4 seconds, it will create inside the <head> of the document
- * a link with attributes -> rel="stylesheet", href="CSS/style.css"
- * thus a link to the external CSS file that will apply properties to the <li> with the "list-item" class
- */
-function changeStyle() {
-    let linkToCss = document.createElement("link"); // creating link element
-    linkToCss.rel = "stylesheet"; // adding the rel attribute to the previous element
-    linkToCss.href = "./CSS/style.css"; // adding the href attribute to the previous element
-    document.head.append(linkToCss); // we add it to the document's head
-}
-
-
-
-/* create a function after minimum 4 seconds,
-that will create inside the document's head a link that will connect
-to an external style.css file, which will apply properties
-on the class previously created in the <li>, always after at least 4 seconds */
-setTimeout(changeStyle, 4000);

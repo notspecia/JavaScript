@@ -35,16 +35,17 @@
 
 //! classes used to create istances ----------------------------------------------------------
 
-// CLASSE per la creazione di istanze di Video
+// CLASS for the creation of `video` istances
 class Video {
 
-    // funzione costruttore per assegnare il titolo e i secondi al video
+    // constructor function to assign the title and seconds to the video
     constructor(config) {
         this.title = config.title || "untitled";
         this.seconds = config.seconds || null;
     }
 
-    // metodo che può essere usato dalle istanze create sia con `Video` che con `MusicVideo` (eredità anche questa classe `extends`)
+    /* creation of an method that can be used by the requests created both with: 
+    `Video` that with `MusicVideo` (also inheritance this class `extends`) */
     watch() {
         if (this.seconds) {
             console.log(`you watched ${this.seconds} seconds of ${this.title}`);
@@ -57,16 +58,16 @@ class Video {
 
 
 
-// CLASSE per la creazione di istanze di MusicVideo
+// CLASS for the creation of `musicVideo` istances
 class MusicVideo extends Video {
 
-    // funzione costruttore per assegnare l'artista oltre alle proprietà SUPERIORI (classe `Video`) ereditate
+    // constructor function to assign the artist, + addition to the properties SUPERIORS (class `Video`) heredity
     constructor(config) {
         super(config);
         this.artist = config.artist || "unknown";
     }
 
-    // metodo che può essere usato dalle istanze create con `MusicVideo`
+    // method that can be used by the istances created with `MusicVideo`
     play() {
         console.log(`you played ${this.title} by ${this.artist}`);
     }
@@ -113,6 +114,7 @@ for (let i = 0; i < 30; i++) {
     // randomly decide the type of instance to create (0 -> video, 1 -> musicVideo)
     const randomInstance = Math.round(Math.random());
 
+    
     // if the random number is 0, create a video instance
     if (randomInstance === 0) {
         let video = new Video({

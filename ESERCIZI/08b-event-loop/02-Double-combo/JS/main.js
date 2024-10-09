@@ -69,7 +69,7 @@ function createQueCards() {
  * function fillQueCards
  * receives the player who contains cards (objects) as a parameter this function 
  * will take care of the characteristics to the cards (type, strenght, speed, healt ...), These statistics
-* will have a minimum score of 20 and a maximum of 40 (chosen randomly)
+ * will have a minimum score of 20 and a maximum of 40 (chosen randomly)
  * - CHARACTER --> can face another one in duel CHARACTER / fight with a ENEMY
  * - SPELL --> It can have a positive magical effect on ENEMY or CHARACTER (buff) or a negative magical effect (nerf)
  * - ENEMY --> can face only a fight in a fight CHARACTER

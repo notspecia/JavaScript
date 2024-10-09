@@ -45,12 +45,13 @@
 03 .replace() -> replaces multiple sequences of "-" with a single one.
 04 .replace() -> removes "-" at the beginning and end.
 05 .replace() -> removes single and multiple sequences of digits followed by a "-".
+.toLowerCase() -> transforms all the characters into lower case.
  */
 String.prototype.toStrangeKebab = function () {
 
     return this
         .replace(/[A-Z]/g, (letter) => "-".concat(letter))
-        .replace(/[^a-zA-Z0-9]/g, "-")
+        .replace(/[^\w]/g, "-")
         .replace(/-+/g, "-")
         .replace(/^-|-$/g, "")
         .replace(/^\d+-/g, "")

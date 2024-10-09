@@ -52,15 +52,15 @@ let books = [
 
 
 
-// Creation of an <h1> element for the title and adding it to the body of the page
+// creation of an <h1> element for the title and adding it to the body of the page
 let headerTitle = document.createElement("h1");
 headerTitle.textContent = "My Book List";
-document.body.append(headerTitle);
 
-// Creation of a <ul> element for the book list and adding it to the body
+// creation of a <ul> element for the book list and adding it to the body
 let listBooks = document.createElement("ul");
-document.body.append(listBooks);
 
+
+document.body.append(headerTitle, listBooks);
 
 
 
@@ -84,9 +84,9 @@ for (let i = 0; i < books.length; i++) {
     readBook.textContent = "ALREADY READED? " + books[i].alreadyRead;
     // Adding a CSS class based on the reading status of the book
     if (books[i].alreadyRead) {
-        readBook.classList.add("read"); // Book read
+        readBook.classList.add("read"); 
     } else {
-        readBook.classList.add("notRead"); // Book not read
+        readBook.classList.add("notRead"); 
     }
 
     /* Creation of an <img> element for the book's cover image

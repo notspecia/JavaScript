@@ -32,19 +32,19 @@
  */
 function operations(num) {
 
-    setTimeout(function halfNumber(num) {
+    setTimeout(() => {
         let half = num / 2;
         console.log("the number", num + ",", "dividing it for 2 is:", half);
 
-        setTimeout(function squareHalf(half) {
+        setTimeout(() => {
             let halfSquare = half * half;
             console.log("The number divided before:", half + ",", "to the square does:", halfSquare);
 
-            setTimeout(function areaRadius(halfSquare) {
+            setTimeout(() => {
                 let areaCyrcle = Math.PI * halfSquare * halfSquare;
                 console.log("The area of the circle with radius", halfSquare, "And", areaCyrcle.toFixed(2));
 
-                setTimeout(function percentRatio(halfSquare, areaCyrcle) {
+                setTimeout(() => {
                     let percentNumber = (areaCyrcle / halfSquare) * 100;
                     console.log("the area of", areaCyrcle.toFixed(2), "It is about the", percentNumber.toFixed(0) + "%", "of the number at ^2:", halfSquare);
 
