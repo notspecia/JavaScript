@@ -1,0 +1,131 @@
+/**
+ * style.css
+ *
+ * Let's style the table containing the flights.
+ */
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: inherit;
+}
+
+/* Added a background image to the body of the page */
+body {
+    background-image: url(../IMG/air.jpg);
+    background-size: cover;
+    background-position: left;
+    background-attachment: fixed;
+}
+
+/* ------------------------ Creation of the table which contains the flights ----------------------------- */
+
+/* Title of the page */
+h1 {
+    font-size: 60px;
+    text-align: center;
+    font-family: "Permanent Marker", cursive;
+    font-style: normal;
+    font-weight: 400;
+}
+
+/* Main table */
+table {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border-collapse: collapse;
+    margin: 40px auto;
+}
+
+/* Styling for even rows in the tbody */
+table tbody tr:nth-child(even) {
+    background-color: rgba(128, 128, 128, 0.8);
+    color: black;
+}
+
+/* Styling for odd rows in the tbody */
+table tbody tr:nth-child(odd) {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: white;
+}
+
+/* Styling for rows with the class 'delay' (added dynamically with JS) */
+table tbody tr.delay {
+    background-color: lightcoral;
+    color: black;
+}
+
+/* Styling for header cells (th) in the thead */
+table thead tr th {
+    color: black;
+    font-size: 25px;
+    padding: 20px 40px;
+    border-bottom: 2px solid black;
+}
+
+/* Styling for cells (td) in the tbody that contain flight information */
+table tbody tr td {
+    font-size: 14px;
+    text-align: center;
+    padding: 25px 15px;
+}
+
+/* Cursor style change on hover for cells */
+table tbody tr:hover {
+    cursor: pointer;
+}
+
+/* Styling for the last cell (td -> status) in each row */
+table tbody tr td:last-child {
+    font-weight: bold;
+}
+
+/* ------------------ Creation of a content container for flight information --------------------------- */
+
+/* Div containing flight information that appears when a row (tr) is clicked
+Initially hidden --> display: none */
+div#moreInfoFlight {
+    display: none;
+    background-color: black;
+    box-shadow: 0 0 0 100vw rgba(0, 0, 0, 0.8);
+    width: 55vw;
+    height: 60vh;
+    padding-top: 60px;
+    border-radius: 30px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Styling for paragraphs (p) inside the moreInfoFlight div */
+div#moreInfoFlight p {
+    color: white;
+    font-size: 25px;
+    text-align: center;
+}
+
+/* Class added with JS to display the moreInfoFlight div */
+div#moreInfoFlight.show {
+    display: block;
+}
+
+/* Styling for the close (X) button */
+label {
+    width: 25px;
+    height: 25px;
+    background: url("../IMG/close.png");
+    background-size: 100%;
+    cursor: pointer;
+    position: absolute;
+    right: 30px;
+    top: 30px;
+}
+
+/* The input checkbox is invisible but exists */
+input {
+    display: none;
+}

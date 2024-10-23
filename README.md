@@ -1,4 +1,4 @@
-# JavaScript ENGLISH/ITALIAN COURSE VERSION 1.0
+# JavaScript ENGLISH/ITALIAN COURSE VERSION 1.3
 
 During this course of JavaScript I'm learning the following notions, going to practice with practical exercises that identify with reality:
 
@@ -19,12 +19,12 @@ During this course of JavaScript I'm learning the following notions, going to pr
 11. json-and-ajax
 12. review-in-depth
 13. object-oriented
+14. moudules-build-tools
+15. modern-JavaScript
 
 All the topics mentioned are fully in-depth whit examples, happy reading :) !!
 
 ## TODO
 
 1. learn more about section 11 (json-and-ajax)
-2. try some examples whit the classes on the section 13 (oop)
-3. complete the exsercise num3 and the documentaion of the exsercises of the section 13 (oop)
-3. continue to try and learn the regex from the `Quantifiers`
+2. complete and learn the exsercises of the section 14, 15 (modules, modern JS)

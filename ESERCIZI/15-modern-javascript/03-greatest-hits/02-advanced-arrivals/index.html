@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Meta Data information of the HTML file -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADVANCED ARRIVALS ES6</title>
+    <meta name="description" content="table of flights whit animations using ES6 features">
+    <meta name="author" content="Speciale Gabriele">
+
+    <!-- External font-styles -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+
+    <!-- External CSS file style -->
+    <link rel="stylesheet" href="CSS/style.css">
+</head>
+
+<body>
+
+    <!-- div which contains informations about the row of the flight that the user clicked -->
+    <div id="moreInfoFlight">
+        <input type="checkbox" id="nav-toggle" name="navCheckBox">
+        <label for="nav-toggle"></label>
+
+        <!-- the content of those tags will be filled by JS -->
+        <p class="date"></p>
+        <p class="time"></p>
+        <p class="destination"></p>
+        <p class="number"></p>
+        <p class="status"></p>
+    </div>
+
+    <!-- Content start -->
+    <h1>FLIGHT TABLE</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Destination</th>
+                <th>Flight</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <!-- dynamic creation of <tr> who will contain the <td> -->
+        </tbody>
+    </table>
+
+    <!-- end content -->
+    <script src="JS/main.js" defer></script>
+</body>
+
+</html>
