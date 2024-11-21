@@ -203,17 +203,19 @@ function handleRequestError(type) {
 }
 
 
+// --------------------------------------------------------------------------------------------
+
+
+// URLs of the JSON stored using jsonblob, use the HTTPS protocol!!! and add after .com -> api/jsonBlob/...
+const factoryUrl = "https://jsonblob.com/api/jsonBlob/1308432253742931968";
+const carsUrl = "https://jsonblob.com/api/jsonBlob/1308432041112690688";
 
 // create separate request objects for each URL
 const factoryRequest = new XMLHttpRequest();
 const carsRequest = new XMLHttpRequest();
 
-// URLs of the JSON stored using jsonblob
-const factoryUrl = "https://jsonblob.com/api/jsonBlob/1265346802797633536";
-const carsUrl = "https://jsonblob.com/api/jsonBlob/1265750129310031872";
 
-
-// ?onload / onerror =  request shortcut event listener
+// onload / onerror =  request shortcut event listener
 // set up and send requests to obtain the JSONblob of the FACTORY, manipulate the state of the request whit eventlisteners
 factoryRequest.open("GET", factoryUrl, true);
 factoryRequest.onload = () => { handleRequestSuccess(factoryRequest, "factory") };

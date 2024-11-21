@@ -1,10 +1,14 @@
-function prova() {
-    console.log("ciao");
+
+const text = document.querySelector("p");
+const inputName = document.querySelector("input#inputName");
+const inputAge = document.querySelector("input#inputAge")
+
+
+// parametro di default se non venisse passato alla funzione!!
+function addInfo(name = "Missigno", age = null) {
+    text.textContent = `hello! ${name} and u're ${age}`;
 }
 
-
-for (let i = 0; i < 10; i++) {
-    setTimeout(prova, 2000);
-}
-
-console.log("hello!")
+document.querySelector("button").addEventListener("click", () => {
+    addInfo(inputName.value);
+});

@@ -1,4 +1,4 @@
-# JavaScript ENGLISH/ITALIAN COURSE VERSION 1.3
+# JavaScript ENGLISH/ITALIAN COURSE VERSION 1.5
 
 During this course of JavaScript I'm learning the following notions, going to practice with practical exercises that identify with reality:
 
@@ -20,11 +20,15 @@ During this course of JavaScript I'm learning the following notions, going to pr
 12. review-in-depth
 13. object-oriented
 14. moudules-build-tools
-15. modern-JavaScript
+15. modern-JavaScript promises-async
+16. error-handling
+17. browser-apis
 
 All the topics mentioned are fully in-depth whit examples, happy reading :) !!
 
 ## TODO
 
 1. learn more about section 11 (json-and-ajax)
-2. complete and learn the exsercises of the section 14, 15 (modules, modern JS)
+2. learn and more code about the promises and async code section 15
+3. learn, read and do exsercise about the section 16 (error handling)
+4. learn, read and do exsercise about the section 17 (browser apis)

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Device API</title>
+  <meta name="description" content="Device API example geolocation" />
+  <meta name="author" content="Daniele Margiacchi" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+  <link rel="stylesheet" href="./styles/style.css?v=1.0" />
+</head>
+<body>
+  <h1>Andate su https://marje.it/deviceAPI per provare dal telefono</h1>
+
+  <button id="track">Avvia itinerario</button>
+  <button id="stop" class="hidden">Stop itinerario</button>
+  <button id="percorso">Visualizza spostamenti</button>
+
+  <div id="message"></div>
+
+  <div id="spostamenti" class="hidden">
+    <h3>I tuoi spostamenti</h3>
+  </div>
+
+  <!-- end of the body -->
+  <script src="./scripts/main.js"></script>
+</body>
+</html>

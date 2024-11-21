@@ -5,12 +5,6 @@ export default function (num1, num2) {
 
 
 
-
-
-
-
-
-
 // export di molteplici variabili e funzioni
 export const PI = 3.14;
 

@@ -1,3 +1,35 @@
+//* ------------------------------------------------------------------------------------------------------------------------
+//* ------------------------------------- RIPASSO DI CODICE MODERNO ES6 ----------------------------------------------------
+//* ------------------------------------------------------------------------------------------------------------------------
+
+
+// // BLOCK SCOPE (let) -> Le variabili dichiarate all'interno di un blocco { } non sono accessibili dall'esterno del blocco
+// for (let i = 0; i < 10; i++) {
+//     let t = i;
+//     console.log('inside i = ', i);
+//     console.log('inside t = ', t);
+// }
+// console.log('outside i = ', i); // i not defined
+// console.log('outside t = ', t); // t not defined
+
+
+// // FUNCTION SCOPE (var) -> Le variabili dichiarate all'interno di un blocco { } sono accessibili dall'esterno del blocco.
+// for (var i = 0; i < 10; i++) {
+//     var t = i;
+//     console.log('inside i = ', i);
+//     console.log('inside t = ', t);
+// }
+
+// console.log('outside i = ', i); // 10
+// console.log('outside t = ', t); // 9
+
+//? ----------------------------------------------------------
+
+
+
+//* ------------------------------------- CHAINING + ARROW FUNCTIONS AND SCOPE ----------------------------------------------------
+
+
 /* questo codice utilizza funzioni freccia (arrow functions) e la funzione setTimeout()
 per dimostrare il comportamento delle operazioni asincrone in JavaScript. */
 
@@ -16,10 +48,7 @@ per dimostrare il comportamento delle operazioni asincrone in JavaScript. */
 // setTimeout(f, 1500);
 
 
-
-// ------------------------------------------------------
-
-
+//? ------------------------------------------------------------------
 
 // // applichiamo il chaining dei metodi con delle arrow functions
 // let result = [1, 2, 3, 4]
@@ -29,10 +58,7 @@ per dimostrare il comportamento delle operazioni asincrone in JavaScript. */
 
 // console.log(`result = ${result.join(", ")}`);
 
-
-
-// -----------------------------------------------------
-
+//? ------------------------------------------------------------------
 
 // // PROBLEMA
 // let person = {
@@ -49,11 +75,10 @@ per dimostrare il comportamento delle operazioni asincrone in JavaScript. */
 //     },
 // };
 
-
-// person.talk(); // I am james
+// person.talk(); // I am Gabriele
 // person.talkLater(); // I am still !!!!!!!
 
-
+// ----------------------------------------
 
 // // SOULUZIONE
 // /* le arrow functions, a differenza delle funzioni normali, non creano un proprio contesto this.
@@ -74,10 +99,10 @@ per dimostrare il comportamento delle operazioni asincrone in JavaScript. */
 // person.talkArrow(); // I am still james
 
 
+//* ------------------------------------- DESTRUCTING (ARRAY / OBJECTS) ----------------------------------------------------
 
-// -------------------------------------------------------------------------
 
-
+/* */
 
 // const person = {
 //     firstName: 'james',
@@ -96,125 +121,19 @@ per dimostrare il comportamento delle operazioni asincrone in JavaScript. */
 
 
 
-// -------------------------------------------------------------------------
 
-
-
-//! SPIEGAZIONE PROMISE VIDEO -> https://www.youtube.com/watch?v=NOzi4wBHn0o
-/* le promise sono OGGETTI, che gestiscono il codice e le operazioni asincrone che promettono un valore prima o poi
-inizialmente verrà mostrato come usare le callback functions, per poi capire l'utilità delle PROMISE
-*FASI:        PENDING --> RESOLVED || REJECTED
-?SINTASSI:    new Promise((resolve, reject)) => {CODICE ASINCRONO}
-*/
-
-
-//! ripasso delle callback functions, inseriamo:  CALLBACK FUNCTION  +  RITARDO IN ms
-/*
-01. rendiamo asincorne le funzioni mettendo un setTimeOut al loro interno.
-
-02. se volessimo fare questi lavoretti (funzioni) in ORDINE di come gli abbiamo scritti, allora dobbiamo modificare
-le funzioni aggiungendo a loro come parametro una callback function per far si che vengano eseguite in ORDINE, 
-altrimenti verrano seguite in base ai ms stabiliti in maniera asincrona */
-
-function playVideogames(callback) {
-
-    setTimeout(() => {
-        console.log("now im playing videogames O.O");
-        callback();
-    }, 3000);
-}
-
-
-function writeCode(callback) {
-
-    setTimeout(() => {
-        console.log("im typing code :(");
-        callback();
-    }, 1000);
-}
-
-
-function takeOutTrash(callback) {
-
-    setTimeout(() => {
-        console.log("im taking out the trash bleahhh!");
-        callback();
-    }, 500);
-}
-
-
-// invochiamo la funzione passando una callback arrow function che contiene la funzione successiva che vogliamo eseguire ecc...
-// ORDINE RISPETTATO!!
-playVideogames(() => {
-    writeCode(() => {
-        takeOutTrash(() => {
-            console.log("DAY ENDED, GOODNIGHT!");
-        });
-    });
-});
-
-
-
-//! utilizzo delle promise nell'esempio precedente per renderlo + ottimale! (NO BISOGNO DELLE CALLBACK FUNCTIONS)
-/*todo */
-
-function playVideogames() {
-
-    setTimeout(() => {
-        console.log("now im playing videogames O.O");
-        callback();
-    }, 3000);
-}
-
-
-function writeCode() {
-
-    setTimeout(() => {
-        console.log("im typing code :(");
-        callback();
-    }, 1000);
-}
-
-
-function takeOutTrash() {
-
-    setTimeout(() => {
-        console.log("im taking out the trash bleahhh!");
-        callback();
-    }, 500);
-}
+/* */
 
 
 
 
+//* ------------------------------------- SPREAD OPERATOR (ARRAY / OBJECTS) ----------------------------------------------------
 
 
+/* */
 
 
+//* ------------------------------------- OPTIONAL CHAINING ----------------------------------------------------
 
 
-
-
-
-// -------------------------------------------------------------------------
-
-
-
-// console.log(`main starts`);
-
-
-// new Promise((resolve, reject) => {
-//     setTimeout(() => {
-//         Math.random() > 0.9 ? resolve('won toss') : reject(new Error('failed toss'));
-//     }, 5000);
-// })
-//     // handles the result
-//     .then(result => console.log(result))
-//     // handles the error
-//     .catch(err => console.error(err.message))
-//     // runs when promise resolves or rejects
-//     .finally(() => console.log('end of game'));
-
-
-
-// console.log(`main continues`);
+/* */

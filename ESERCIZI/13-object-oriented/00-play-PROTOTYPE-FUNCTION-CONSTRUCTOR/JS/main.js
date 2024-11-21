@@ -29,7 +29,8 @@ Se provi a farlo, non avrai l'effetto desiderato. */
 // !02. SEMPLICE FUNZIONE --> WORK!
 /* In questo caso, il codice funziona perché NON stai utilizzando una funzione costruttore,
 ma una semplice funzione che restituisce un oggetto letterale.
-Questo è diverso dal meccanismo di una funzione costruttore con `new` */
+
+Questo è diverso dal meccanismo di una funzione costruttore delle istanze con `new` */
 
 // function Canine(latinName) {
 //     return {
@@ -59,7 +60,7 @@ Questo è diverso dal meccanismo di una funzione costruttore con `new` */
 /*in questo caso andiamo a creare un oggetto e lo assegneremo a 2 variabili DIVERSE,
 
 il PROBLEMA!!!!!!!!:
-Adam e Sam non sono copie indipendenti di person,
+Adam e Sam non sono copie indipendenti di `person`
 ma puntano entrambi allo stesso oggetto in memoria. Quindi, se cambi una proprietà di adam,
 cambierà anche per sam (e viceversa), perché in realtà stai modificando lo stesso oggetto. */
 
@@ -74,7 +75,8 @@ cambierà anche per sam (e viceversa), perché in realtà stai modificando lo st
 // console.log(adam.heart); // black
 // console.log(sam.heart);  // black
 
-// adam.heart = 'big'; //! will change also the original!!!
+
+// adam.heart = 'big'; //! will change also the original for every copy!!!
 
 // console.log(adam.heart); // big
 // console.log(sam.heart);  // big
@@ -91,7 +93,7 @@ cambierà anche per sam (e viceversa), perché in realtà stai modificando lo st
 
 
 // !01. CREATION OBJECT WHIT Object.create() and NO CONSTRUCTOR
-/* Il metodo statico crea un nuovo oggetto utilizzando
+/* Il metodo statico Object.create(), crea un nuovo oggetto utilizzando
 un oggetto esistente come prototipo del nuovo oggetto creato. */
 
 // let person = {
@@ -104,6 +106,7 @@ un oggetto esistente come prototipo del nuovo oggetto creato. */
 
 // console.log(adam.heart); // black
 // console.log(sam.heart);  // black
+
 
 // adam.heart = 'yellow'; //?  will NOT change also the original!!!
 
@@ -128,11 +131,15 @@ Funziona come un modello (stampino) per creare più oggetti con proprietà e met
 Quando viene chiamata con la parola chiave `new`, viene creata una nuova istanza dell'oggetto
 e `this` all'interno del costruttore si riferisce all'oggetto appena creato. */
 
-// Canine is called a Constructor Function -->  typeof Canine is 'function'
+
+// // Canine is called a Constructor Function -->  typeof Canine is 'function'
 // function Canine(latinName, age) {
 //     this.genus = 'Canis';
 //     this.latinName = latinName;
 //     this.age = age;
+//     this.saluti = function () {
+//         console.log(`ciao faccio parte della famiglia dei: ${this.latinName}`);
+//     }
 // };
 
 
@@ -141,13 +148,14 @@ e `this` all'interno del costruttore si riferisce all'oggetto appena creato. */
 // let greyWolf = new Canine('Canis lupus', 7);
 
 // console.log(dog, greyWolf);
+// greyWolf.saluti(); // try to use an method whit and istance
 
 
 // --------------------------------------------------------------------------------------------
 
 
-// !02. add METHODS and PROPERTIES to the prototype of the  ---> CONSTRUCTOR FUNCTION (Canine)!!!
-/* si sta aggiungendo il metodo `howl` al prototipo di `Canine`
+// !02. add METHODS and PROPERTIES (separated) to the prototype of the  ---> CONSTRUCTOR FUNCTION (Canine)!!!
+/* si sta aggiungendo il metodo `howl` separatamente, al prototipo di `Canine`
 significa che tutte le istanze di Canine avranno accesso a questo metodo senza che il metodo sia duplicato in ogni istanza.
 Questo è un modo efficiente di condividere metodi tra tutte le istanze.
 
@@ -160,56 +168,54 @@ possono comunque chiamarlo perché lo ereditano dal prototipo di `Canine` */
 //     this.latinName = latinName;
 // };
 
-// let dog = new Canine('Canis familiaris');
-// let greyWolf = new Canine('Canis lupus');
-
-
-
 // // add the METHOD TO THE --> prototype of the CONSTRUCTOR
-// Canine.prototype.howl = function() {
-//     console.log('AAAAWWWOOOOOO');
+// Canine.prototype.howl = function () {
+//     console.log(`AAAAWWWOOOOOO im ${this.latinName}`);
 // }
 
 
+// let dog = new Canine('Canis familiaris');
+// let greyWolf = new Canine('Canis lupus');
+
 // // U CAN USE THE METHOD ON BOTH `ISTANCE`
-// dog.howl(); // AAAAWWWOOOOOO
-// greyWolf.howl(); // AAAAWWWOOOOOO
+// dog.howl(); 
+// greyWolf.howl(); 
 
 
 // --------------------------------------------------------------------------------------------
 
 
-// !03. add METHODS and PROPERTIES to an ISTANCE (dog || greywolf) does not apply them to all instances!!
+// !03. add METHODS and PROPERTIES to an `single ISTANCE` (dog || greywolf) does not apply them to all instances!!
 /* quando aggiungi metodi o proprietà a un'`istanza` specifica di un oggetto,
 questi NON VENGONO ereditati o applicati alle ALTRE ISTANZE dello stesso tipo!! */
 
+// funzione costruttrice per creare delle istanze
+function Canine(latinName) {
+    this.genus = 'Canis';
+    this.latinName = latinName;
+};
 
-// function Canine(latinName) {
-//     this.genus = 'Canis';
-//     this.latinName = latinName;
-// };
-
-// let dog = new Canine('Canis familiaris');
-// let greyWolf = new Canine('Canis lupus');
-
-
-
-// // METODO aggiunto solamente all'istanza dell'oggetto `dog` (non sarà applicato a greyWolf!)
-// dog.fetch = function () {
-//     console.log('dog wants to play fetch!');
-// };
-
-// // METODO aggiunto solamente all'istanza dell'oggetto `greyWolf`(non sarà applicato a dog!)
-// greyWolf.hunt = function () {
-//     console.log('grey wolf is hunting its prey');
-// };
+let dog = new Canine('Canis familiaris');
+let greyWolf = new Canine('Canis lupus');
 
 
-// dog.fetch(); //? dog wants to play fetch!
-// dog.hunt(); //! Error: dog.hunt is not a function
+// METODO aggiunto solamente all'istanza dell'oggetto `dog` (non sarà applicato a greyWolf!)
+dog.fetch = function () {
+    console.log(`dog wants to play fetch!, im ${this.latinName}`);
+};
 
-// greyWolf.fetch(); //! Error: greyWolf.fetch is not a function
-// greyWolf.hunt(); //? grey wolf is hunting its prey
+// METODO aggiunto solamente all'istanza dell'oggetto `greyWolf`(non sarà applicato a dog!)
+greyWolf.hunt = function () {
+    console.log(`grey wolf is hunting its prey, im ${this.latinName}`);
+};
+
+
+
+dog.fetch(); //? dog wants to play fetch!
+dog.hunt(); //! Error: dog.hunt is not a function
+
+greyWolf.hunt(); //? grey wolf is hunting its prey
+greyWolf.fetch(); //! Error: greyWolf.fetch is not a function
 
 
 
@@ -228,7 +234,7 @@ con proprietà come titolo, autore e numero di pagine.
 
 aggiunta di un metodo al prototipo per condividere funzionalità tra gli oggetti,
 come simulare la lettura del libro, aggiornando le pagine lette e stampando un messaggio
-In questo modo, ottieni oggetti con proprietà uniche e comportamenti comuni.*/
+In questo modo, ottieni oggetti con proprietà uniche e comportamenti comuni. */
 
 // // constructor function whit the proprieties of the book
 // function Book(title, author, numPages) {
@@ -238,16 +244,17 @@ In questo modo, ottieni oggetti con proprietà uniche e comportamenti comuni.*/
 //     this.currentReadPages = 0;
 // }
 
-
-
 // // aggiunta di un metodo (read) al prototipo dell'oggetto (Book)
 // Book.prototype.read = function () {
 //     this.currentPage = this.numPages;
 //     console.log('You read ' + this.numPages + ' pages!');
 // };
 
+
 // // instantiating a new Book object
 // let book = new Book('Robot Dreams', 'Isaac Asimov', 320);
+
+// console.log(`the title of the book is ${book.title} and it's author is ${book.author}`);
 // book.read();
 
 
@@ -283,30 +290,30 @@ da impostare, poiché semplifica la gestione dei dati e rende il codice più leg
 In questo modo, se non vengono forniti parametri alla funzione costruttrice (ad esempio, se manca l'autore),
 vengono utilizzati valori predefiniti per garantire che l'oggetto sia comunque valido e informativo. */
 
-// // some properties can be made optional by assigning default values
-// function Book(config) {
-//     this.title = config.title || 'Untitled';
-//     this.author = config.author || 'Unknown';
-//     this.numPages = config.numPages || "No informations!";
-//     this.currentPage = 0;
-// }
+// some properties can be made optional by assigning default values
+function Book(config) {
+    this.title = config.title || 'Untitled';
+    this.author = config.author || 'Unknown';
+    this.numPages = config.numPages || "No informations!";
+    this.currentPage = 0;
+}
 
 
-// /* nel caso non fossero passati dei parametri alla funzione costruttrice (ex non è presente la prop AUTHOR)
-// allora mettiamo delle opzioni di "altra scelta" nella funzione costruttrice (||) */
-// let book = new Book({
-//     title: 'Robot Dreams',
-//     numPages: 320
-// });
+/* nel caso non fossero passati dei parametri alla funzione costruttrice (ex non è presente la prop AUTHOR)
+allora mettiamo delle opzioni di "altra scelta" nella funzione costruttrice (||) */
+let book = new Book({
+    title: 'Robot Dreams',
+    numPages: 320
+});
 
-// console.log(book);
+console.log(book);
 
 
 // --------------------------------------------------------------------------------------------
 
 
 //!04. EXTENDING THE PROTOTYPE OBJECTS +
-// !05. OPERATOR ISTANCEOF
+//!05. OPERATOR ISTANCEOF
 /*
    Esaminazione dell'esempio su come funziona l'estensione:
 
@@ -316,78 +323,63 @@ vengono utilizzati valori predefiniti per garantire che l'oggetto sia comunque v
    TODO 02.
 */
 
-// Funzione costruttore per BOOK
-function Book(title, author, numPages) {
-    this.title = title;
-    this.author = author;
-    this.numPages = numPages;
-    this.currentPage = 0;
-}
+// // Funzione costruttore per BOOK
+// function Book(title, author, numPages) {
+//     this.title = title;
+//     this.author = author;
+//     this.numPages = numPages;
+//     this.currentPage = 0;
+// }
 
-// Funzione costruttore per PAPERBACK
-function PaperBack(title, author, numPages, cover) {
-    Book.call(this, title, author, numPages); // Inizializza le proprietà ereditate da Book
-    this.cover = cover; // Aggiunge la proprietà specifica per PaperBack
-}
-
-
-// Estensione del prototipo di Book
-PaperBack.prototype = Object.create(Book.prototype); // Permette a PaperBack di ereditare metodi da Book
+// // Funzione costruttore per PAPERBACK
+// function PaperBack(title, author, numPages, cover) {
+//     Book.call(this, title, author, numPages); // Inizializza le proprietà ereditate da Book
+//     this.cover = cover; // Aggiunge la proprietà specifica per PaperBack
+// }
 
 
-
-// Aggiunta di un metodo al prototipo di PaperBack
-PaperBack.prototype.read = function () {
-    this.currentPage = this.numPages; // Imposta la pagina corrente all'ultima
-    console.log('Hai letto ' + this.numPages + ' pagine!'); // Messaggio di conferma
-};
-
-// Aggiunta di un metodo al prototipo di PaperBack
-PaperBack.prototype.burn = function () {
-    console.log('Omg, hai bruciato tutte le ' + this.numPages + ' pagine'); // Messaggio di avviso
-    this.numPages = 0; // Imposta il numero di pagine a 0
-};
+// // Estensione del prototipo di Book
+// PaperBack.prototype = Object.create(Book.prototype); // Permette a PaperBack di ereditare metodi da Book
 
 
 
-// Creazione di una nuova istanza di oggetto PaperBack
-let paperback = new PaperBack('1984', 'George Orwell', 250, 'cover.jpg');
-console.log(paperback);
+// // Aggiunta di un metodo al prototipo di PaperBack
+// PaperBack.prototype.read = function () {
+//     this.currentPage = this.numPages; // Imposta la pagina corrente all'ultima
+//     console.log('Hai letto ' + this.numPages + ' pagine!'); // Messaggio di conferma
+// };
 
-paperback.read(); // Invocazione del metodo "leggere" sull'oggetto PaperBack
-paperback.burn(); // Invocazione del metodo "bruciare" sull'oggetto PaperBack
+// // Aggiunta di un metodo al prototipo di PaperBack
+// PaperBack.prototype.burn = function () {
+//     console.log('Omg, hai bruciato tutte le ' + this.numPages + ' pagine'); // Messaggio di avviso
+//     this.numPages = 0; // Imposta il numero di pagine a 0
+// };
+
+
+
+// // Creazione di una nuova istanza di oggetto PaperBack
+// let paperback = new PaperBack('1984', 'George Orwell', 250, 'cover.jpg');
+// console.log(paperback);
+
+// paperback.read(); // Invocazione del metodo "leggere" sull'oggetto PaperBack
+// paperback.burn(); // Invocazione del metodo "bruciare" sull'oggetto PaperBack
 
 
 
 //! PART OF istanceof -----------------------------------------------------------
 // TODO COMPLETE THE EXPL /* */
 
-// book is a book, also paperback is a Book
-console.log(book instanceof Book); // true
-console.log(paperback instanceof Book); // true
+// // book is a book, also paperback is a Book
+// console.log(book instanceof Book); // true
+// console.log(paperback instanceof Book); // true
 
-// but book is not a PaperBack
-console.log(paperback instanceof PaperBack); // true
-console.log(book instanceof PaperBack); // false
+// // but book is not a PaperBack
+// console.log(paperback instanceof PaperBack); // true
+// console.log(book instanceof PaperBack); // false
 
-// both are instances of Object because of prototype inheritance
-console.log(book instanceof Object); // true
-console.log(paperback instanceof Object); // true
-
-
-
-
-
-
-// *--------------------------------------------------------------------------------------------
-//*  ----------------------------- using CLASSES (dopo di JS ES6) ------------------------------
-
-
-
-
-
-
-//!
+// // both are instances of Object because of prototype inheritance
+// console.log(book instanceof Object); // true
+// console.log(paperback instanceof Object); // true
 
 
 
@@ -398,15 +390,7 @@ console.log(paperback instanceof Object); // true
 
 
 
-
-
-
-// * --------------------------------------------------------------------------------------------
-// * --------------------------------------------------------------------------------------------
-
-
-
-// !APPUNTI E RESOCONTO DI  ----> FUNZIONI NORMALI VS FUNZIONE COSTRUTTORE / CLASSI (new, this)
+// !APPUNTI E RESOCONTO DI  ----> FUNZIONI NORMALI   VS   FUNZIONE COSTRUTTORE / CLASSI (new, this)
 
 // ?01. Struttura OOP: Funzione Costruttore o Classi (con new):
 /* riuso del codice tramite prototipi: Con una funzione costruttore o una classe, i metodi

@@ -33,7 +33,9 @@
  */
 
 
+
 //! classes used to create istances ----------------------------------------------------------
+
 
 // CLASS for the creation of `video` istances
 class Video {
@@ -77,10 +79,6 @@ class MusicVideo extends Video {
 
 //! creation of the instances and execution of the methods -----------------------------------
 
-
-// array that will contain a mix of videos and songs, with random data!
-let musicVideoCollection = [];
-
 // array with a mix of video/song titles
 const titles = [
     "the godfather", "bohemian rhapsody", "inception", "imagine", "pulp fiction", "hotel california",
@@ -109,15 +107,20 @@ const artists = [
 
 
 //! creation of 30 random instances of: video/musicVideo
+
+// array that will contain a mix of videos and songs, with random data!
+let musicVideoCollection = [];
+
+
 for (let i = 0; i < 30; i++) {
 
     // randomly decide the type of instance to create (0 -> video, 1 -> musicVideo)
     const randomInstance = Math.round(Math.random());
 
-    
-    // if the random number is 0, create a video instance
+
+    // if the random number is 0, create a video instance whit a config file whit proprieties
     if (randomInstance === 0) {
-        let video = new Video({
+        const video = new Video({
             title: titles[Math.floor(Math.random() * titles.length)],
             seconds: seconds[Math.floor(Math.random() * seconds.length)]
         });
@@ -127,7 +130,7 @@ for (let i = 0; i < 30; i++) {
 
         // else if the random number is 1, create a musicVideo instance
     } else {
-        let musicVideo = new MusicVideo({
+        const musicVideo = new MusicVideo({
             title: titles[Math.floor(Math.random() * titles.length)],
             seconds: seconds[Math.floor(Math.random() * seconds.length)],
             artist: artists[Math.floor(Math.random() * artists.length)]

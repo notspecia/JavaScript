@@ -68,15 +68,14 @@ const validateCreditCard = (card) => {
 
 
 
-  //* 1 check --> card length, must be === 16 
+  // 1 check --> card length, must be === 16 
   if (cardModified.length !== 16) {
     creditCard.valid = false;
     creditCard.errors.push("=  error: wrong length!");
   }
 
 
-
-  //* 2 check --> all card digits, must be of the type NUMBER
+  // 2 check --> all card digits, must be of the type NUMBER
   for (const digit of cardModified) {
 
     // check if the digit is not a number
@@ -89,24 +88,21 @@ const validateCreditCard = (card) => {
   }
 
 
-
-  //* 3 check --> at least two different digits (ex: 0 1), `new Set` create an array without duplicates
+  // 3 check --> at least two different digits (ex: 0 1), `new Set` create an array without duplicates
   if (new Set(cardModified).size < 2) {
     creditCard.valid = false;
     creditCard.errors.push("=  error: You don't have at least two different digits represented!");
   }
 
 
-
-  //* 4 check --> the last digit of the credit card must be even
+  // 4 check --> the last digit of the credit card must be even
   if (+cardModified.charAt(cardModified.length - 1) % 2 !== 0) {
     creditCard.valid = false;
     creditCard.errors.push("=  error: final digit is not even!");
   }
 
 
-
-  //* 5 check --> the sum of all digits must be at least = 16
+  // 5 check --> the sum of all digits must be at least = 16
   const sumDigits = cardModified.split("")
     .reduce((sumDigits, digit) => sumDigits + +digit, 0);
 
@@ -119,8 +115,6 @@ const validateCreditCard = (card) => {
   printInformationCards(creditCard);
 
 }
-
-
 
 
 

@@ -21,7 +21,7 @@ html {
 initially is hidden --> display: none */
 div#moreInfoCars {
     display: none;
-    background: linear-gradient(to right, black, rgb(0, 34, 34));
+    background: linear-gradient(black, rgb(175, 20, 74));
     box-shadow: 0 0 0 100vw rgba(0, 0, 0, 0.85);
     width: 55vw;
     height: 60vh;
@@ -87,6 +87,9 @@ li {
 
 /* center the div which contains the cars of the factory */
 div#imagesCars {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
     width: 80%;
     margin: 0 auto;
 }
@@ -99,11 +102,11 @@ figure {
 
 figure img {
     width: 300px;
-    height: 200px;
+    height: 190px;
 }
 
 figure figcaption {
-    background: linear-gradient(rgb(3, 114, 114), black);
+    background-color: black;
     color: whitesmoke;
     font-size: 15px;
     font-weight: bold;

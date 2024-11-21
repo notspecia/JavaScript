@@ -131,12 +131,17 @@
 
 
 // !03. REDUCE
+// 01. creazione di un array con dei numeri, andremo a ridurre tutti questi numeri in un singolo valore moltiplicandoli
+// 02. utilizzo del chaining methods con i metodi `map` + `filter`
 
+const numbers = [2, 5, 7, 2, 3];
 
+const numberMoltiplicato = numbers
+    .map((number) => { return number * 3; })
+    .filter((number) => { return number % 2 !== 0; })
+    .reduce((totale, number) => { return totale * number; });
 
-
-
-
+console.log(numberMoltiplicato);
 
 
 

@@ -1,0 +1,10 @@
+{
+    "nome": "Mario",
+    "età": 30,
+    "città": "Torino",
+    "interessi": [
+        "videogames",
+        true,
+        20
+    ]
+}

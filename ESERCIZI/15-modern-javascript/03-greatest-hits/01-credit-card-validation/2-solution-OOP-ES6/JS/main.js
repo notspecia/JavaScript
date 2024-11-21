@@ -58,10 +58,9 @@ class CreateCreditCard {
     this.errors = [];
   }
 
-
   // methods created into the Class, used for the validation of the credit card
 
-  //* 1 check --> card length, must be === 16 
+  // 1 check --> card length, must be === 16 
   validateLength() {
     if (this.cleanNumber.length !== 16) {
       this.valid = false;
@@ -69,7 +68,7 @@ class CreateCreditCard {
     }
   }
 
-  //* 2 check --> all card digits, must be of the type NUMBER (trough isNaN)
+  // 2 check --> all card digits, must be of the type NUMBER (trough isNaN)
   validateDigitType() {
     for (const digit of this.cleanNumber) {
       if (isNaN(+digit)) {
@@ -80,7 +79,7 @@ class CreateCreditCard {
     }
   }
 
-  //* 3 check --> at least two different digits (ex: 0 1), `new Set` create an array without duplicates
+  // 3 check --> at least two different digits (ex: 0 1), `new Set` create an array without duplicates
   validateDifferentDigits() {
     if (new Set(this.cleanNumber).size < 2) {
       this.valid = false;
@@ -88,7 +87,7 @@ class CreateCreditCard {
     }
   }
 
-  //* 4 check --> the last digit of the credit card must be even
+  // 4 check --> the last digit of the credit card must be even
   validateLastDigitEven() {
     if (+this.cleanNumber.charAt(this.cleanNumber.length - 1) % 2 !== 0) {
       this.valid = false;
@@ -96,7 +95,7 @@ class CreateCreditCard {
     }
   }
 
-  //* 5 check --> the sum of all digits must be at least = 16
+  // 5 check --> the sum of all digits must be at least = 16
   validateSumDigits() {
 
     // create an array whit all the digits splitted and use the .reduce method (return a single value, the sum of the digits!)
@@ -110,6 +109,7 @@ class CreateCreditCard {
   }
 
 
+  
   // method which print on console all the proprieties into the credit card
   printInformationCard() {
     console.log(`\n\n
@@ -119,7 +119,6 @@ class CreateCreditCard {
 ${this.errors.join("\n")} 
 =======================================================================`);
   }
-
 
   // a method which evocate all the methods of validation into the Class
   validate() {
@@ -132,9 +131,6 @@ ${this.errors.join("\n")}
   }
 
 }
-
-
-// ------------------------------------------------------------------------
 
 
 const creditCards = [
@@ -152,6 +148,6 @@ creditCards.forEach(card => {
     valid: true
   });
 
-   // call the validate method to perform all the validation checks on the card
+  // call the validate method to perform all the validation checks on the card
   creditCard.validate();
 });
