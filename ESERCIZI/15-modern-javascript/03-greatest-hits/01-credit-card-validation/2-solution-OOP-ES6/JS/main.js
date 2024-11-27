@@ -58,6 +58,7 @@ class CreateCreditCard {
     this.errors = [];
   }
 
+  
   // methods created into the Class, used for the validation of the credit card
 
   // 1 check --> card length, must be === 16 

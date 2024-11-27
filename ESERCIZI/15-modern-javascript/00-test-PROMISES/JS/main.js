@@ -94,9 +94,8 @@ e utilizziamo resolve() | reject()
 function playVideogames() {
 
     return new Promise((resolve, reject) => {
-        // simuliamo una richiesta asincrona con setTimeout
         setTimeout(() => {
-            reject("now im playing videogames O.O"); // risolve la promise con successo, il messaggio dentro è il `value` della funzione `resolve()`
+            resolve("now im playing videogames O.O"); // risolve la promise con successo, il messaggio dentro è il `value` della funzione `resolve()`
         }, 3000);
     });
 }
@@ -104,9 +103,16 @@ function playVideogames() {
 
 function writeCode() {
 
+    let randNumber = 5;
+
     return new Promise((resolve, reject) => {
         setTimeout(() => {
-            resolve("im typing code :(");
+            if (randNumber > 3) {
+                resolve("im typing code");
+
+            } else {
+                reject("in not typing code");
+            }
         }, 2000);
     });
 }
@@ -116,7 +122,7 @@ function takeOutTrash() {
 
     return new Promise((resolve, reject) => {
         setTimeout(() => {
-            reject("im taking out the trash bleahhh!");
+            resolve("im taking out the trash bleahhh!");
         }, 500);
     });
 }
@@ -129,14 +135,14 @@ playVideogames()
     .then(value => { console.log(value); return writeCode(); })
     .then(value => { console.log(value); return takeOutTrash(); })
     .then(value => { console.log(value); console.log("DAY ENDED, GOODNIGHT!"); })
-    .catch(error => { console.log(error); console.log(`errore`); return "ciao"; }) // passerà il "ciao" anche se è in stato di catch(), sempre metterlo alla fine
-    .then(value => { console.log(value); });
+    .catch(error => { console.log(error); console.log(`ERRORE è STATO TROVATO UN reject()`); return "ciao"; }) // passerà il "ciao" anche se è in stato di catch(), sempre metterlo alla fine
+    .then(value => { console.log(value); }); // senza nessun .catch(), il valore sarà undefined
 
 
 //? -----------------------------------------------------------------------------------
 
 
-/*ESEMPIO DEL GIOCO DEL LANCIO DELLA MONETA DELLA SLIDE 
+/* ESEMPIO DEL GIOCO DEL LANCIO DELLA MONETA DELLA SLIDE
 notazioni importanti:
 01. Il valore passato a resolve (in questo caso "u win!") diventa il parametro di result nel .then().
 02. Il valore passato a reject (in questo caso "u lose...") diventa il parametro di error nel .catch().
@@ -169,38 +175,38 @@ notazioni importanti:
 /* Permette di eseguire più Promises in parallelo e di attendere che tutte siano risolte.
 
 - Se tutte le Promises vengono risolte, restituisce un array con i risultati.
-- Se una Promise fallisce, l'intera operazione fallisce. 
+- Se una Promise fallisce, l'intera operazione fallisce.
 
 dentro il `Promise.all`, andremo ad inserire tutte le SINGOLE promises, come abbiamo sempre fatto */
 
-Promise.all([
-    // prima promise nell'array .all
-    new Promise((resolve, reject) => {
-        setTimeout(() => {
-            let number = 9;
-            number > 10 ? resolve("u win first promise") : reject("u lose the first promise");
-        }, 2000);
-    }),
+// Promise.all([
+//     // prima promise nell'array .all
+//     new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             let number = 9;
+//             number > 10 ? resolve("u win first promise") : reject("u lose the first promise");
+//         }, 2000);
+//     }),
 
-    // seconda promise nell'array .all
-    new Promise((resolve, reject) => {
-        setTimeout(() => {
-            let isMale = true;
-            isMale ? resolve("u are male, and u win the second promise") : reject("u are female, and u lose the second promise");
-        }, 4000);
-    }),
+//     // seconda promise nell'array .all
+//     new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             let isMale = true;
+//             isMale ? resolve("u are male, and u win the second promise") : reject("u are female, and u lose the second promise");
+//         }, 4000);
+//     }),
 
-    // terza promise nell'array .all
-    new Promise((resolve, reject) => {
-        setTimeout(() => {
-            let name = "Gabriele";
-            name === "Gabriele" ? resolve("u win the last promise") : reject("u lost the last promise");
-        }, 1000);
-    })
-])
-    .then(results => { console.log(results); })  // "results" contiene un array con i risultati di tutte le Promises risolte
-    .catch(error => { console.log(error); })   // "error" contiene il messaggio di errore della Promise fallita
-    .finally(() => { console.log("u get a response from all the promises!"); });  // Questo viene sempre eseguito, per fare pulizia
+//     // terza promise nell'array .all
+//     new Promise((resolve, reject) => {
+//         setTimeout(() => {
+//             let name = "Gabriele";
+//             name === "Gabriele" ? resolve("u win the last promise") : reject("u lost the last promise");
+//         }, 1000);
+//     })
+// ])
+//     .then(results => { console.log(results); })  // "results" contiene un array con i risultati di tutte le Promises risolte
+//     .catch(error => { console.log(error); })   // "error" contiene il messaggio di errore della Promise fallita
+//     .finally(() => { console.log("u get a response from all the promises!"); });  // Questo viene sempre eseguito, per fare pulizia
 
 
 

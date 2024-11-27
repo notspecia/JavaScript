@@ -23,7 +23,7 @@ Se provi a farlo, non avrai l'effetto desiderato. */
 // console.log(dog, greyWolf);
 
 
-// --------------------------------------------------------------------------------------------
+//? --------------------------------------------------------------------------------------------
 
 
 // !02. SEMPLICE FUNZIONE --> WORK!
@@ -48,12 +48,8 @@ Questo è diverso dal meccanismo di una funzione costruttore delle istanze con `
 
 
 
-
 // * --------------------------------------------------------------------------------------------
 // * --------------------------------------------------------------------------------------------
-
-
-
 
 
 // !01. CREATION OBJECT WHITOUT CONSTRUCTOR and NO METHODS!
@@ -84,12 +80,8 @@ cambierà anche per sam (e viceversa), perché in realtà stai modificando lo st
 
 
 
-
 // * --------------------------------------------------------------------------------------------
 // * --------------------------------------------------------------------------------------------
-
-
-
 
 
 // !01. CREATION OBJECT WHIT Object.create() and NO CONSTRUCTOR
@@ -116,12 +108,8 @@ un oggetto esistente come prototipo del nuovo oggetto creato. */
 
 
 
-
-// *--------------------------------------------------------------------------------------------
-//* ----------------------------- using PROTOTYPE (prima di JS ES6) ----------------------------
-
-
-
+// *---------------------------------------------------------------------------------------------------
+//* ----------------------------- using PROTOTYPE (prima di JS ES6) -----------------------------------
 
 
 // !01. CREATION OBJECT WHIT CONSTRUCTOR FUNCTION (OOP) + create `new` instances
@@ -151,7 +139,7 @@ e `this` all'interno del costruttore si riferisce all'oggetto appena creato. */
 // greyWolf.saluti(); // try to use an method whit and istance
 
 
-// --------------------------------------------------------------------------------------------
+//? --------------------------------------------------------------------------------------------
 
 
 // !02. add METHODS and PROPERTIES (separated) to the prototype of the  ---> CONSTRUCTOR FUNCTION (Canine)!!!
@@ -182,7 +170,7 @@ possono comunque chiamarlo perché lo ereditano dal prototipo di `Canine` */
 // greyWolf.howl(); 
 
 
-// --------------------------------------------------------------------------------------------
+//? --------------------------------------------------------------------------------------------
 
 
 // !03. add METHODS and PROPERTIES to an `single ISTANCE` (dog || greywolf) does not apply them to all instances!!
@@ -220,12 +208,8 @@ greyWolf.fetch(); //! Error: greyWolf.fetch is not a function
 
 
 
-
 // * --------------------------------------------------------------------------------------------
 // * --------------------------------------------------------------------------------------------
-
-
-
 
 
 //!01. CREATE OBJECT and DEFINING CONSTRUCTOR FUNCTIONS AND METHODS
@@ -258,7 +242,7 @@ In questo modo, ottieni oggetti con proprietà uniche e comportamenti comuni. */
 // book.read();
 
 
-// --------------------------------------------------------------------------------------------
+//? --------------------------------------------------------------------------------------------
 
 
 //!02. CREATE CLEANER OBJECTS CONSTRUCTORS
@@ -282,7 +266,7 @@ da impostare, poiché semplifica la gestione dei dati e rende il codice più leg
 // });
 
 
-// --------------------------------------------------------------------------------------------
+//? --------------------------------------------------------------------------------------------
 
 
 //!03. OPTIONAL PROPERTIES CONSTRUCTORS
@@ -309,7 +293,7 @@ let book = new Book({
 console.log(book);
 
 
-// --------------------------------------------------------------------------------------------
+//? --------------------------------------------------------------------------------------------
 
 
 //!04. EXTENDING THE PROTOTYPE OBJECTS +
@@ -390,7 +374,7 @@ console.log(book);
 
 
 
-// !APPUNTI E RESOCONTO DI  ----> FUNZIONI NORMALI   VS   FUNZIONE COSTRUTTORE / CLASSI (new, this)
+// APPUNTI E RESOCONTO DI  ----> FUNZIONI NORMALI   VS   FUNZIONE COSTRUTTORE / CLASSI (new, this)
 
 // ?01. Struttura OOP: Funzione Costruttore o Classi (con new):
 /* riuso del codice tramite prototipi: Con una funzione costruttore o una classe, i metodi

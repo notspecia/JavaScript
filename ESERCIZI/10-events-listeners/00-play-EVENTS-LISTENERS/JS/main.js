@@ -43,23 +43,23 @@
 
 
 //! 2. ANDIAMO A CAMBIARE TRAMITE IL CLICK DEL BOTTONE IL BG COLOR DEL BODY (FUNZIONE SEPARATA)
-// let button = document.getElementById("onClick");
+let button = document.getElementById("onClick");
 
-// function randomChoiceColor(valueColor) {
-//     let colorRgb = Math.round(Math.random() * (valueColor - 1) + 1);
-//     return colorRgb;
-// }
+function randomChoiceColor(valueColor) {
+    let colorRgb = Math.round(Math.random() * (valueColor - 1) + 1);
+    return colorRgb;
+}
 
 
-// // settiamo i colori dell'RGB randomicamente, all'interno delle `` passiamo come parametro il numero 255 max per i colori,
-// // come se fosse un valore di una proprietà sottoforma di stringa
-// function colorBody() {
-//     const randomColor = `rgb(${randomChoiceColor(255)} ${randomChoiceColor(255)} ${randomChoiceColor(255)})`;
-//     document.body.style.backgroundColor = randomColor;
-// }
+// settiamo i colori dell'RGB randomicamente, all'interno delle `` passiamo come parametro il numero 255 max per i colori,
+// come se fosse un valore di una proprietà sottoforma di stringa
+function colorBody() {
+    const randomColor = `rgb(${randomChoiceColor(255)} ${randomChoiceColor(255)} ${randomChoiceColor(255)})`;
+    document.body.style.backgroundColor = randomColor;
+}
 
-// //event listener
-// button.addEventListener("click", colorBody);
+//event listener
+button.addEventListener("click", colorBody);
 
 
 
