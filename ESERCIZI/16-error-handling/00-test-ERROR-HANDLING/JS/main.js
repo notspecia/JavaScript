@@ -86,25 +86,25 @@
 può essere generato un nuovo errore o lo stesso errore può essere rilanciato per essere gestito altrove nel codice.
 PASSIAMO LA RESPONSABILITA A CHI HA INVOCATO QUELLA FUNZIONE */
 
-// // esegue un'operazione che potrebbe fallire e si genera un errore manualmente
-// function doSomething() {
+// esegue un'operazione che potrebbe fallire e si genera un errore manualmente
+function doSomething() {
 
-//     try {
-//         // code that might fail
-//         throw new Error('oops');
-//     }
-//     catch (error) {
-//         throw new Error('Something went wrong');
-//     }
+    try {
+        // code that might fail
+        throw new Error('oops');
+    }
+    catch (error) {
+        throw new Error('Something went wrong');
+    }
 
-// }
+}
 
-// // quando doSomething genera il nuovo errore, il blocco try-catch esterno lo cattura.
-// try {
-//     doSomething();
-// } catch (error) {
-//     console.log(error.message);
-// }
+// quando doSomething genera il nuovo errore, il blocco try-catch esterno lo cattura.
+try {
+    doSomething();
+} catch (error) {
+    console.log(error.message);
+}
 
 
 
@@ -129,25 +129,25 @@ PASSIAMO LA RESPONSABILITA A CHI HA INVOCATO QUELLA FUNZIONE */
 
 //!06. TERMINATE --------------------------------------------------------------------------
 /* importante NON ci sono casi in cui usare questa gestione degli errori nel FRONTEND!
-Termina l'applicazione in caso di errore critico (più comune in back-end). 
+Termina l'applicazione in caso di errore critico (più comune in back-end).
 non ha senso usarlo nel frontend (NON SI mostra una pagina bianca come errore critico!) */
 
-function doSomething() {
+// function doSomething() {
 
-    try {
-        // errore nel codice
-        throw new Error('oops');
-    }
-    catch (error) {
-        console.error('Critical error:', error.message);
-        // never a good reason to do this things in a browser
-        window.stop(); // stop the loading of the page
-        window.close(); // close the page
-    }
+//     try {
+//         // errore nel codice
+//         throw new Error('oops');
+//     }
+//     catch (error) {
+//         console.error('Critical error:', error.message);
+//         // never a good reason to do this things in a browser
+//         window.stop(); // stop the loading of the page
+//         window.close(); // close the page
+//     }
 
-}
+// }
 
-doSomething();
+// doSomething();
 
 
 
@@ -155,10 +155,10 @@ doSomething();
 
 //!07. IGNORE --------------------------------------------------------------------------
 // ignora letteralmente il problema dell'errore (SCONSIGLIATO)
-function divide(a, b) {
-    return a / b;
-}
+// function divide(a, b) {
+//     return a / b;
+// }
 
-const result = divide(10, 0);
-console.log(result); // Output: Infinity, ed è un problema
-console.log([1, 3, 4].forEach(num => num))
+// const result = divide(10, 0);
+// console.log(result); // Output: Infinity, ed è un problema
+// console.log([1, 3, 4].forEach(num => num));

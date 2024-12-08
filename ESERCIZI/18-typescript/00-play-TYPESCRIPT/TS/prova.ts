@@ -21,3 +21,14 @@ console.log(isEvening);
 
 
 //! SPECIAL TYPES (undefind & null) (any & unknow) -----------------------------------------------------------------
+
+
+
+
+
+let myTuple: [boolean, number, string];
+
+// initialize
+myTuple = [true, 18, 'working'];
+
+myTuple.push("ciao");

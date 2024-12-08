@@ -108,8 +108,8 @@ un oggetto esistente come prototipo del nuovo oggetto creato. */
 
 
 
-// *---------------------------------------------------------------------------------------------------
-//* ----------------------------- using PROTOTYPE (prima di JS ES6) -----------------------------------
+// *----------------------------------------------------------------------------------------------------------------------------
+//* ----------------------------------------------- using PROTOTYPE (prima di JS ES6) ------------------------------------------
 
 
 // !01. CREATION OBJECT WHIT CONSTRUCTOR FUNCTION (OOP) + create `new` instances
@@ -120,23 +120,23 @@ Quando viene chiamata con la parola chiave `new`, viene creata una nuova istanza
 e `this` all'interno del costruttore si riferisce all'oggetto appena creato. */
 
 
-// // Canine is called a Constructor Function -->  typeof Canine is 'function'
-// function Canine(latinName, age) {
-//     this.genus = 'Canis';
-//     this.latinName = latinName;
-//     this.age = age;
-//     this.saluti = function () {
-//         console.log(`ciao faccio parte della famiglia dei: ${this.latinName}`);
-//     }
-// };
+// Canine is called a Constructor Function -->  typeof Canine is 'function'
+function Canine(latinName, age) {
+    this.genus = 'Canis';
+    this.latinName = latinName;
+    this.age = age;
+    this.saluti = function () {
+        console.log(`ciao faccio parte della famiglia dei: ${this.latinName}`);
+    }
+};
 
 
-// // Use the new keyword to create new instances of this "class"
-// let dog = new Canine('Canis familiaris', 2);
-// let greyWolf = new Canine('Canis lupus', 7);
+// Use the new keyword to create new instances of this "class"
+let dog = new Canine('Canis familiaris', 2);
+let greyWolf = new Canine('Canis lupus', 7);
 
-// console.log(dog, greyWolf);
-// greyWolf.saluti(); // try to use an method whit and istance
+console.log(dog, greyWolf);
+greyWolf.saluti(); // try to use an method whit and istance
 
 
 //? --------------------------------------------------------------------------------------------
@@ -177,33 +177,33 @@ possono comunque chiamarlo perché lo ereditano dal prototipo di `Canine` */
 /* quando aggiungi metodi o proprietà a un'`istanza` specifica di un oggetto,
 questi NON VENGONO ereditati o applicati alle ALTRE ISTANZE dello stesso tipo!! */
 
-// funzione costruttrice per creare delle istanze
-function Canine(latinName) {
-    this.genus = 'Canis';
-    this.latinName = latinName;
-};
+// // funzione costruttrice per creare delle istanze
+// function Canine(latinName) {
+//     this.genus = 'Canis';
+//     this.latinName = latinName;
+// };
 
-let dog = new Canine('Canis familiaris');
-let greyWolf = new Canine('Canis lupus');
-
-
-// METODO aggiunto solamente all'istanza dell'oggetto `dog` (non sarà applicato a greyWolf!)
-dog.fetch = function () {
-    console.log(`dog wants to play fetch!, im ${this.latinName}`);
-};
-
-// METODO aggiunto solamente all'istanza dell'oggetto `greyWolf`(non sarà applicato a dog!)
-greyWolf.hunt = function () {
-    console.log(`grey wolf is hunting its prey, im ${this.latinName}`);
-};
+// let dog = new Canine('Canis familiaris');
+// let greyWolf = new Canine('Canis lupus');
 
 
+// // METODO aggiunto solamente all'istanza dell'oggetto `dog` (non sarà applicato a greyWolf!)
+// dog.fetch = function () {
+//     console.log(`dog wants to play fetch!, im ${this.latinName}`);
+// };
 
-dog.fetch(); //? dog wants to play fetch!
-dog.hunt(); //! Error: dog.hunt is not a function
+// // METODO aggiunto solamente all'istanza dell'oggetto `greyWolf`(non sarà applicato a dog!)
+// greyWolf.hunt = function () {
+//     console.log(`grey wolf is hunting its prey, im ${this.latinName}`);
+// };
 
-greyWolf.hunt(); //? grey wolf is hunting its prey
-greyWolf.fetch(); //! Error: greyWolf.fetch is not a function
+
+
+// dog.fetch(); //? dog wants to play fetch!
+// dog.hunt(); //! Error: dog.hunt is not a function
+
+// greyWolf.hunt(); //? grey wolf is hunting its prey
+// greyWolf.fetch(); //! Error: greyWolf.fetch is not a function
 
 
 

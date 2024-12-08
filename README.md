@@ -29,6 +29,6 @@ All the topics mentioned are fully in-depth whit examples, happy reading :) !!
 
 
 1. complete the examples and understand more Promises / async & await
-2. learn, read and do exsercise about the section 16 (error handling)
+2. complete the documentation of the ex section 16 (error-handling)
 3. learn, read and do exsercise about the section 17 (browser apis)
 4. learn, read and do exsercise about the section 18 (typescript)

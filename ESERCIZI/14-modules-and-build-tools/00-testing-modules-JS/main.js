@@ -14,10 +14,10 @@ console.log("\n-----------------------------------\n\n");
 
 
 //! importazioni di molteplici variabili e funzioni, proviamo ad invocare le funzioni da qui facendoci restuituire 
-import { PI, calcCircumfrence, calcArea, calcVolume } from "./mathOperations.js";
+import { PI as PiGreco, calcCircumfrence, calcArea, calcVolume } from "./mathOperations.js";
 
 
-console.log(PI);
+console.log(PiGreco);
 
 let circumfrence = calcCircumfrence(20);
 console.log(circumfrence.toFixed(2));
