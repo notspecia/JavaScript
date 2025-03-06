@@ -32,8 +32,6 @@ let nome = "specia";
 
 4) differenza tra var e let.
 
-nessuna in particolare, let è meglio.
-
 
 
 5) aggiornare la variabile.
@@ -44,7 +42,7 @@ nome = 'gabry'; -----------> non serve ridichiararla, il vecchio contenuto  cosi
 
 6)tipologie di variabili:
 
--NUMERI = interi(34)     flot(34.25 numeri conn la virgola)
+-NUMERI = interi(34)     float(34.25 numeri conn la virgola)
 
 
 -STRINGHE = "gabry è il top n1"

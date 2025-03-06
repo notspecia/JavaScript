@@ -24,7 +24,7 @@ function calculateDogAge(humanAge, yearDog) {
 }
 
 
-// costante di quanto vale 1 anno umano in anni cane
+// costante di quanto vale 1 anno umano in anni cane (meglio metterlo all'interno della funzione dato che è una costante fissa)
 const yearDog = 7;
 
 // 1 richiamo della funzione calculateDogAge con argomento età umana in anni di cane

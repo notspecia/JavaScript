@@ -20,21 +20,27 @@
  */
 function greaterNum(num1, num2) {
 
-    let greaterNum; // variabile che prende il valore del numero + alto
+    // opzione ternario senza una variabile apposita
+    return num1 === num2 ? "sono uguali!"
+    : num1 > num2 ? num1 
+    : num2
 
-    if (num1 > num2) {
-        greaterNum = num1;
-    } else {
-        greaterNum = num2;
-    }
-    return greaterNum;
+    // opzione da NOOB 
+    // let greaterNum; // variabile che prende il valore del numero + alto
+
+    // if (num1 > num2) {
+    //     greaterNum = num1;
+    // } else {
+    //     greaterNum = num2;
+    // }
+    // return greaterNum;
 }
 
 
 
 // dichiarazione e inizializzazione variabili
-let num1 = 10;
-let num2 = 7;
+let num1 = 9;
+let num2 = 10;
 let num3 = 6;
 let num4 = 3;
 let numeroAlto; // prenderà il valore del numero + alto passato dalla funzione
@@ -46,3 +52,6 @@ console.log("The greater number of", num1, "and", num2, "is", numeroAlto);
 // 2 richiamo funzione greaterNum utilizzando i succesivi 2 numeri per fare la seconda coppia
 numeroAlto = greaterNum(num3, num4);
 console.log("The greater number of", num3, "and", num4, "is", numeroAlto);
+
+// 3 MODO PER PRO
+console.log(`The greater number of ${num3} and ${num3}, is ${greaterNum(num3, num3)}`);
