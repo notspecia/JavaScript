@@ -33,7 +33,6 @@ function getSecondsToday(date) {
     totalSeconds = (hour * 3600) + (minutes * 60) + seconds;
 
     return totalSeconds;
-
 }
 
 
@@ -60,7 +59,6 @@ function getSecondsToTomorrow(date) {
     totalSeconds = 86400 - ((hour * 3600) + (minutes * 60) + seconds);
 
     return totalSeconds;
-
 }
 
 

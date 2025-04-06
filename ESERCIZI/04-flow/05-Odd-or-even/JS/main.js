@@ -16,10 +16,11 @@ let i;
 // ciclo for che stampa i numeri da 0 a 20
 for (i = 0; i <= 20; i++) {
 
+    i % 2 === 0 ? console.log("il numero", i, "è un numero pari") : console.log("il numero", i, "è un numero dispari");
     // condizione che verifica e stampa se il numero è pari o dispari
-    if (i % 2 == 0) {
-        console.log("il numero", i, "è un numero pari");
-    } else {
-        console.log("il numero", i, "è un numero dispari");
-    }
+    // if (i % 2 == 0) {
+    //     console.log("il numero", i, "è un numero pari");
+    // } else {
+    //     console.log("il numero", i, "è un numero dispari");
+    // }
 }

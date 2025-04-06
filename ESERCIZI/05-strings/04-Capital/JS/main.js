@@ -4,7 +4,7 @@
  * @date        2024-04-11
  * @description 
  *● Write a JavaScript function called capital which has one parameter, a string, and which returns 
-     that string with the first letter capitalized
+    that string with the first letter capitalized
   ● For example, the call capital("hello world") should return the string "Hello world"
   
   Bonus:
@@ -30,7 +30,7 @@ function capital(parola) {
   let i;
 
   /* cycle that builds character for character the new string*/
-  for (let i = 0; i < parola.length; i++) {
+  for (i = 0; i < parola.length; i++) {
 
     if (i === 0 || parola.charAt(i - 1) === " ") {
       parolaCapital += parola.charAt(i).toUpperCase();

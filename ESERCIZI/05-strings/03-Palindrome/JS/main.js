@@ -79,7 +79,15 @@ console.log("la parola", parola, "è palindroma?", isPalindromaParola);
 
 
 
+// ---------------------------------------------------------------
+// ---------------------------------------------------------------
+// ---------------------------------------------------------------
+
+// nuova soluzione da pro:
+
+const isPalindroma = (str) => {
+    return str.split("").reverse().join("") === str ? true : false;
+}
 
 
-
-
+console.log(`la parola ciaone è palindroma? ${isPalindroma("ciaone")}`);

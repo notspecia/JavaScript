@@ -120,7 +120,7 @@ che permette di:
 - Se un valore nell'array è undefined, puoi specificare un valore predefinito nel destructuring
 
 ! 03. rest operators ... :
-- Usa il rest operator ... permettono di raccogliere un numero variabile di argomenti in un array di quelli che sono rimasti dutante il destructing. 
+- Usa il rest operator ... permettono di raccogliere un numero variabile di argomenti in un array di quelli che sono rimasti durante il destructing. 
   Questo è utile quando non si conosce a priori quanti argomenti verranno passati a una funzione.
   IMPORTANTE: I rest parameters sono sempre l'ultimo parametro di una funzione,  Non è possibile avere parametri dopo i rest parameters:
 */

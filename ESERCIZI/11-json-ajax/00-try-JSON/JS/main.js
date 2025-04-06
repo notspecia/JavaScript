@@ -6,4 +6,3 @@ Caratteristiche principali:
 - Formato leggibile: Semplice da leggere e scrivere sia per gli umani che per le macchine.
 - Struttura a chiave-valore: I dati sono organizzati in coppie "chiave: valore".
 - Compatibilità: JSON è nativamente supportato in JavaScript ma è utilizzabile in quasi tutti i linguaggi di programmazione. */
-

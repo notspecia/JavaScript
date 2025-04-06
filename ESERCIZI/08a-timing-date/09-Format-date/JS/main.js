@@ -29,7 +29,6 @@ function formatDate(date) {
   // We attribute the current date to a variable (always updates)
   let currentDate = new Date();
 
-
   // We extract the information for print the date required format
   const year = date.getFullYear(); // used only for the format of the required date
   const month = date.getMonth(); // used only for the format of the required date

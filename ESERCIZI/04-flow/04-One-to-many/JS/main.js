@@ -23,16 +23,8 @@
  */
 function oneToMany(sostantivo, num) {
 
-  let message;
-
   // condizione se il num > 1 or num < -1, trasforma in plurale
-  if (numero > 1 || numero < - 1) {
-    message = sostantivo + "s";
-  } else {
-    message = sostantivo;
-  }
-
-  return message;
+  return num > 1 || num < -1 ? `${sostantivo}s` : sostantivo;
 }
 
 
@@ -40,7 +32,7 @@ function oneToMany(sostantivo, num) {
 
 // dichiarazione variabili
 let numero;    // rappresenta la quantità presente
-let messaggio; // prenderà il valore passato dalla funzione
+let messaggio; // prenderà il valore di ritorno dalla funzione oneToMany()
 
 // 1 richiamo funzione oneToMany passando argomento numero e un sonstativo al singolare
 numero = 17;

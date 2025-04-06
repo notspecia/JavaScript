@@ -64,7 +64,6 @@ ${stackCleanPlates.join("\n")}`);
  * @param {object} stackDirtyPlates - Array containing the clean dishes
  */
 function washDish(stackCleanPlates, stackDirtyPlates) {
-    
     stackCleanPlates.push(stackDirtyPlates.pop());
 }
 

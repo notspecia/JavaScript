@@ -49,7 +49,6 @@ For each card check, print out the result to the log in this format:
  * (length, numeric characters, different digits, even last digit, and digit sum).
  */
 class CreateCreditCard {
-
   // constructor object which will contains the number, cleaned number (no "-"), validation, errors 
   constructor(config) {
     this.number = config.number || null;
@@ -57,7 +56,6 @@ class CreateCreditCard {
     this.valid = config.valid;
     this.errors = [];
   }
-
   
   // methods created into the Class, used for the validation of the credit card
 
@@ -98,11 +96,9 @@ class CreateCreditCard {
 
   // 5 check --> the sum of all digits must be at least = 16
   validateSumDigits() {
-
     // create an array whit all the digits splitted and use the .reduce method (return a single value, the sum of the digits!)
     const sumDigits = this.cleanNumber.split("")
       .reduce((sumDigits, digit) => sumDigits + +digit, 0);
-
     if (sumDigits < 16) {
       this.valid = false;
       this.errors.push("=  error: sum of all the digits is not greater than 16!");
@@ -140,9 +136,7 @@ const creditCards = [
   "0000-0000-0000-0000"
 ];
 
-
 creditCards.forEach(card => {
-
   // create a new instance of the credit card, with the `number` and initial `validity` set to true
   let creditCard = new CreateCreditCard({
     number: card,
