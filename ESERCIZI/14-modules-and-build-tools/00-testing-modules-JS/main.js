@@ -5,7 +5,8 @@ import addition from "./mathOperations.js";
 let sommaOne = addition(10, 3);
 console.log(sommaOne);
 
-console.log(sommaOne + sommaOne);
+console.log(sommaOne + sommaOne); 
+console.log("")
 
 
 
